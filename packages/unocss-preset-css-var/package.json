@@ -1,8 +1,8 @@
 {
-  "name": "pkg-placeholder",
+  "name": "unocss-preset-css-var",
   "type": "module",
   "version": "0.0.0",
-  "description": "_description_",
+  "description": "A Unocss preset that allows you to write CSS variables using classes",
   "author": "onmax",
   "license": "MIT",
   "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",

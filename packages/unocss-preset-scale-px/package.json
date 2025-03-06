@@ -1,0 +1,35 @@
+{
+  "name": "unocss-preset-scale-px",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "UnoCSS Preset to map utilities numbers directly to pixel values",
+  "author": "onmax",
+  "license": "MIT",
+  "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/unocss-preset-onmax.git"
+  },
+  "bugs": "https://github.com/onmax/unocss-preset-onmax/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@unocss/core": "catalog:",
+    "unocss": "catalog:"
+  }
+}
