@@ -14,6 +14,6 @@ it('presetCSSVar', async () => {
   expect(css).toMatchInlineSnapshot(`
     "/* layer: default */
     .var\\:--max-width\\:70rem{--max-width:70rem;}
-    .var\\:my-var\\:pink{--my-var:var(--color-pink);}"
+    .var\\:my-var\\:pink{--my-var:oklch(0.718 0.202 349.761);}"
   `)
 })
