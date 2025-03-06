@@ -1,0 +1,8 @@
+me
+p-4
+text-blue
+bg-gray-100
+inverted:text-red
+inverted:text-pink
+hocus:text-green
+group-hocus:text-purple

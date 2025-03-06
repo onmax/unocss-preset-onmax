@@ -1,0 +1,9 @@
+me
+bg-gray-100
+[p-4=""]
+[text-blue=""]
+[text-green=""]
+[bg-gray-100=""]
+[inverted:text-red=""]
+[inverted:text-pink=""]
+[group-hocus:text-purple=""]
