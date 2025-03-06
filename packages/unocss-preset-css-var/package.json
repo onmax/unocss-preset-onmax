@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-css-var",
   "type": "module",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "A Unocss preset that allows you to write CSS variables using classes",
   "author": "onmax",
   "license": "MIT",
