@@ -1,5 +1,7 @@
 import type { PresetWind3Theme } from 'unocss'
 import { definePreset } from '@unocss/core'
+import { parseCssColor } from '@unocss/rule-utils'
+import { parseColor } from 'unocss/preset-mini'
 
 export interface PresetCSSVarOptions {
 }
@@ -12,13 +14,14 @@ export const presetCSSVar = definePreset((_options: PresetCSSVarOptions = {}) =>
         const cssVar = name.startsWith('--') ? name : `--${name}`
 
         const theme = _theme as PresetWind3Theme
-        if (theme.colors?.[value]) {
-          const variantRe = /-(\d+)$/
-          const variant = variantRe.test(value) ? value.match(variantRe)![1] : 'DEFAULT'
-          // @ts-expect-error Types could be improved
-          return { [cssVar]: theme.colors[value][variant] }
-        }
-        return { [cssVar]: value }
+        const maybeColor = parseColor(value, theme)
+        if (maybeColor && maybeColor.color)
+          return { [cssVar]: maybeColor.color }
+
+        const maybeCssColor = parseCssColor(value)
+        if (maybeCssColor)
+          return { [cssVar]: maybeCssColor }
+        return { [cssVar]: value.toString() }
       }],
     ],
   }

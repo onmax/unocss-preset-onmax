@@ -30,6 +30,8 @@
   },
   "dependencies": {
     "@unocss/core": "catalog:",
+    "@unocss/preset-mini": "catalog:",
+    "@unocss/rule-utils": "catalog:",
     "unocss": "catalog:"
   }
 }

@@ -9,11 +9,12 @@ it('presetCSSVar', async () => {
   const presets = uno.config.presets
   expect(presets).toHaveLength(2)
 
-  const { css } = await uno.generate('var:my-var:pink var:--max-width:70rem', { preflights: false })
+  const { css } = await uno.generate('var:my-var:pink var:--max-width:70rem var:finally:blue-300', { preflights: false })
 
   expect(css).toMatchInlineSnapshot(`
     "/* layer: default */
     .var\\:--max-width\\:70rem{--max-width:70rem;}
+    .var\\:finally\\:blue-300{--finally:oklch(0.809 0.105 251.813);}
     .var\\:my-var\\:pink{--my-var:oklch(0.718 0.202 349.761);}"
   `)
 })

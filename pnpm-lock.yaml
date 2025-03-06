@@ -27,9 +27,15 @@ catalogs:
     '@unocss/core':
       specifier: ^66.1.0-beta.3
       version: 66.1.0-beta.3
+    '@unocss/preset-mini':
+      specifier: ^66.1.0-beta.3
+      version: 66.1.0-beta.3
     '@unocss/reset':
       specifier: ^66.0.0
       version: 66.0.0
+    '@unocss/rule-utils':
+      specifier: ^66.1.0-beta.3
+      version: 66.1.0-beta.3
     '@vueuse/core':
       specifier: ^12.8.2
       version: 12.8.2
@@ -187,6 +193,12 @@ importers:
   packages/unocss-preset-css-var:
     dependencies:
       '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      '@unocss/preset-mini':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      '@unocss/rule-utils':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
       unocss:
