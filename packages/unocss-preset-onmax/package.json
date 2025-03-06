@@ -1,0 +1,37 @@
+{
+  "name": "unocss-preset-onmax",
+  "type": "module",
+  "version": "1.0.0-beta.1",
+  "description": "UnoCSS Preset that contains all my UnoCSS preferences",
+  "author": "onmax",
+  "license": "MIT",
+  "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/unocss-preset-onmax.git"
+  },
+  "bugs": "https://github.com/onmax/unocss-preset-onmax/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@unocss/core": "catalog:",
+    "unocss": "catalog:",
+    "unocss-preset-css-var": "workspace:*",
+    "unocss-preset-scale-px": "workspace:*"
+  }
+}

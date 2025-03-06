@@ -205,6 +205,21 @@ importers:
         specifier: 'catalog:'
         version: 66.1.0-beta.3(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
 
+  packages/unocss-preset-onmax:
+    dependencies:
+      '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      unocss:
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+      unocss-preset-css-var:
+        specifier: workspace:*
+        version: link:../unocss-preset-css-var
+      unocss-preset-scale-px:
+        specifier: workspace:*
+        version: link:../unocss-preset-scale-px
+
   packages/unocss-preset-scale-px:
     dependencies:
       '@unocss/core':
