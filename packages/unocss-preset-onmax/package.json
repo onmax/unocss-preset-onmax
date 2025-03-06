@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-onmax",
   "type": "module",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "UnoCSS Preset that contains all my UnoCSS preferences",
   "author": "onmax",
   "license": "MIT",
@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@unocss/core": "catalog:",
-    "@unocss/reset": "catalog:",
     "pathe": "^2.0.3",
     "unocss": "catalog:",
     "unocss-preset-css-var": "workspace:*",
