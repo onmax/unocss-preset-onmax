@@ -2,7 +2,7 @@ import type { Preset } from '@unocss/core'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
 import { definePreset } from '@unocss/core'
-import { presetAttributify, presetWind3 } from 'unocss'
+import { presetAttributify, presetWind3, transformerDirectives } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
 import { presetScalePx } from 'unocss-preset-scale-px'
 
@@ -47,5 +47,8 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   return {
     name: 'unocss-preset-onmax',
     presets,
+    transformers: [
+      transformerDirectives(),
+    ],
   } satisfies Preset
 })
