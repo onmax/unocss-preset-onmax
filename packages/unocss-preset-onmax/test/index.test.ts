@@ -16,7 +16,4 @@ it('presetOnmax', async () => {
     .text-4{font-size:0.25rem;}
     .var\\:test\\:cssvar{--test:cssvar;}"
   `)
-
-  const { css: withPreflight } = await uno.generate('', { preflights: true })
-  expect(withPreflight).not.toBe('')
 })

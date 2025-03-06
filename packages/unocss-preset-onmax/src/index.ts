@@ -5,7 +5,6 @@ import { definePreset } from '@unocss/core'
 import { presetAttributify, presetWind3 } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
 import { presetScalePx } from 'unocss-preset-scale-px'
-import { resetPreflight } from './preflights/reset'
 
 export interface PresetOnmaxOptions {
   // Core presets
@@ -18,11 +17,6 @@ export interface PresetOnmaxOptions {
    * @default true
    */
   presetAttributify?: boolean
-
-  /**
-   * @default true
-   */
-  reset?: boolean
 
   // Custom presets
   /**
@@ -50,17 +44,8 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   if (_options.cssVar !== false)
     presets.push(presetCSSVar(_options.cssVar))
 
-  // Create preflights array conditionally
-  const preflights = []
-
-  // Add Tailwind reset CSS if enabled (default is true)
-  if (_options.reset !== false) {
-    preflights.push(resetPreflight)
-  }
-
   return {
     name: 'unocss-preset-onmax',
-    preflights,
     presets,
   } satisfies Preset
 })

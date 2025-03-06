@@ -210,9 +210,6 @@ importers:
       '@unocss/core':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
-      '@unocss/reset':
-        specifier: 'catalog:'
-        version: 66.1.0-beta.3
       pathe:
         specifier: ^2.0.3
         version: 2.0.3
