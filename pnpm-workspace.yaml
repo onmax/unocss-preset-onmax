@@ -10,7 +10,6 @@ catalog:
   '@iconify-json/svg-spinners': ^1.2.2
   '@shikijs/vitepress-twoslash': ^3.1.0
   '@types/node': ^22.13.9
-  '@unocss/reset': ^66.0.0
   '@vueuse/core': ^12.8.2
   bumpp: ^10.0.3
   eslint: ^9.21.0
@@ -26,6 +25,7 @@ catalog:
   '@unocss/core': ^66.1.0-beta.3
   '@unocss/preset-mini': ^66.1.0-beta.3
   '@unocss/rule-utils': ^66.1.0-beta.3
+  '@unocss/reset': ^66.1.0-beta.3
   unplugin-vue-components: ^28.4.1
   vite: ^6.2.0
   vite-tsconfig-paths: ^5.1.4

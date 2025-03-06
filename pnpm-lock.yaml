@@ -31,8 +31,8 @@ catalogs:
       specifier: ^66.1.0-beta.3
       version: 66.1.0-beta.3
     '@unocss/reset':
-      specifier: ^66.0.0
-      version: 66.0.0
+      specifier: ^66.1.0-beta.3
+      version: 66.1.0-beta.3
     '@unocss/rule-utils':
       specifier: ^66.1.0-beta.3
       version: 66.1.0-beta.3
@@ -161,7 +161,7 @@ importers:
         version: 3.1.0(typescript@5.8.2)
       '@unocss/reset':
         specifier: 'catalog:'
-        version: 66.0.0
+        version: 66.1.0-beta.3
       '@vueuse/core':
         specifier: 'catalog:'
         version: 12.8.2(typescript@5.8.2)
@@ -210,6 +210,12 @@ importers:
       '@unocss/core':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
+      '@unocss/reset':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      pathe:
+        specifier: ^2.0.3
+        version: 2.0.3
       unocss:
         specifier: 'catalog:'
         version: 66.1.0-beta.3(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
@@ -1214,9 +1220,6 @@ packages:
 
   '@unocss/preset-wind@66.1.0-beta.3':
     resolution: {integrity: sha512-DpXhga5gj0d/TwTbvnVaFzwvRidSFZeTdI8DunNIOnE3lc0QkkjrhoIYVriCJ83+XszVR/6D8+jWapLIeOB0YQ==}
-
-  '@unocss/reset@66.0.0':
-    resolution: {integrity: sha512-YLFz/5yT7mFJC8JSmIUA5+bS3CBCJbtztOw+8rWzjQr/BEVSGuihWUUpI2Df6VVxXIXxKanZR6mIl59yvf+GEA==}
 
   '@unocss/reset@66.1.0-beta.3':
     resolution: {integrity: sha512-QV8ZWhj/4cuTGtxiqDmSZDc339cb9IJT40o9FGmOMRH20kJNlDX0OIsevOX/LsTiGgp6KTM5ORVr6QUMmiRv0w==}
@@ -4509,8 +4512,6 @@ snapshots:
     dependencies:
       '@unocss/core': 66.1.0-beta.3
       '@unocss/preset-wind3': 66.1.0-beta.3
-
-  '@unocss/reset@66.0.0': {}
 
   '@unocss/reset@66.1.0-beta.3': {}
 
