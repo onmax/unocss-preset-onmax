@@ -1,0 +1,64 @@
+{
+  "name": "unocss-preset-fluid-sizing",
+  "type": "module",
+  "version": "0.0.17",
+  "packageManager": "pnpm@10.4.1",
+  "description": "UnoCSS preset for fluid sizing with UnoCSS philosophy in mind",
+  "author": "onmax <https://github.com/onmax>",
+  "license": "MIT",
+  "homepage": "https://github.com/onmax/unocss-preset-fluid-sizing#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/unocss-preset-fluid-sizing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onmax/unocss-preset-fluid-sizing/issues"
+  },
+  "keywords": [
+    "unocss",
+    "unpreset",
+    "unocss-preset",
+    "unocss-preset-fluid-sizing"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr run build",
+    "test": "vitest",
+    "play": "vite playground",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@unocss/core": "catalog:"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "catalog:",
+    "unbuild": "catalog:",
+    "unocss": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
+}
