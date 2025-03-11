@@ -3,7 +3,7 @@ import { theme } from '@unocss/preset-mini/theme'
 import { h, parseColor, positionMap } from '@unocss/preset-mini/utils'
 import { cubicBezier, easingFunctions as defaultEasingFunctions } from './easing'
 
-interface PresetEasingGradientOptions {
+export interface PresetEasingGradientOptions {
   customFunctions?: Record<string, (t: number) => number>
 }
 

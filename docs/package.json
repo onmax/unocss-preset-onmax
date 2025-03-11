@@ -6,14 +6,21 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
+  "dependencies": {
+    "nimiq-css": "https://pkg.pr.new/onmax/nimiq-ui/nimiq-css@06eeac0",
+    "nimiq-vitepress-theme": "https://pkg.pr.new/onmax/nimiq-ui/nimiq-vitepress-theme@06eeac0"
+  },
   "devDependencies": {
-    "@iconify-json/svg-spinners": "catalog:",
+    "@iconify-json/logos": "^1.2.4",
+    "@iconify-json/tabler": "^1.2.17",
+    "@iconify/utils": "^2.3.0",
     "@shikijs/vitepress-twoslash": "catalog:",
     "@unocss/reset": "catalog:",
     "@vueuse/core": "catalog:",
     "floating-vue": "catalog:",
     "pinia": "catalog:",
     "unocss": "catalog:",
+    "unocss-preset-onmax": "workspace:*",
     "unplugin-vue-components": "catalog:",
     "vite-tsconfig-paths": "catalog:",
     "vitepress": "catalog:",

@@ -1,28 +1,15 @@
-import type { DefaultTheme } from 'vitepress'
+import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
-import { defineConfig } from 'vitepress'
+import { defineConfigWithTheme } from 'vitepress'
 import { groupIconMdPlugin } from 'vitepress-plugin-group-icons'
-import { version } from '../../package.json'
+import { themeConfig } from './theme.config'
 import vite from './vite.config'
 
-const GUIDES: DefaultTheme.NavItemWithLink[] = [
-  { text: 'Getting Started', link: '/guide/' },
-  { text: 'Installation & Usage', link: '/guide/install' },
-]
-
-const VERSIONS: (DefaultTheme.NavItemWithLink | DefaultTheme.NavItemChildren)[] = [
-  { text: `v${version} (current)`, link: '/' },
-  { text: `Release Notes`, link: 'https://github.com/onmax/unocss-preset-onmax/releases' },
-  { text: `Contributing`, link: 'https://github.com/onmax/unocss-preset-onmax/blob/main/CONTRIBUTING.md' },
-]
-
-export default defineConfig({
-  title: 'pkg-placeholder',
-  description: '_description_',
+export default defineConfigWithTheme<NimiqVitepressThemeConfig>({
+  title: 'uno-css-preset-onmax',
+  description: 'A set of presets and utilities that I use',
   markdown: {
     theme: {
-      light: 'vitesse-light',
-      dark: 'vitesse-dark',
     },
     codeTransformers: [
       transformerTwoslash(),
@@ -34,52 +21,12 @@ export default defineConfig({
   },
   cleanUrls: true,
   vite,
-  themeConfig: {
-    // logo: '/logo.svg',
-    nav: [
-      {
-        text: 'Guide',
-        items: [
-          {
-            items: GUIDES,
-          },
-        ],
-      },
-      {
-        text: `v${version}`,
-        items: VERSIONS,
-      },
-    ],
-    sidebar: {
-      '/': [
-        {
-          text: 'Guide',
-          items: GUIDES,
-        },
-      ],
-    },
-    editLink: {
-      pattern: 'https://github.com/onmax/unocss-preset-onmax/edit/main/docs/:path',
-      text: 'Suggest changes to this page',
-    },
-    search: {
-      provider: 'local',
-    },
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/onmax/unocss-preset-onmax' },
-    ],
-
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2025-PRESENT Anthony Fu.',
-    },
-  },
+  themeConfig,
 
   head: [
     // ['meta', { name: 'theme-color', content: '#ffffff' }],
     // ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
-    ['meta', { name: 'author', content: 'Anthony Fu' }],
+    ['meta', { name: 'author', content: 'Maxi' }],
     // ['meta', { property: 'og:title', content: '' }],
     // ['meta', { property: 'og:image', content: '' }],
     // ['meta', { property: 'og:description', content: '_description_' }],

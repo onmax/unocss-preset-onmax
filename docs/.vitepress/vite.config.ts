@@ -25,4 +25,9 @@ export default defineConfig({
     ),
     GroupIconVitePlugin(),
   ],
+  ssr: {
+    noExternal: [
+      'nimiq-vitepress-theme',
+    ],
+  },
 })
