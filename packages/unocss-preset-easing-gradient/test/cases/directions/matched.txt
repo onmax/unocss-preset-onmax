@@ -1,0 +1,8 @@
+bg-gradient-fn-from-blue-500
+bg-gradient-fn-to-red-500
+bg-gradient-fn-to-t
+bg-gradient-fn-ease
+bg-gradient-fn-to-b
+bg-gradient-fn-to-r
+bg-gradient-fn-shape-[45deg]
+bg-gradient-fn-color-space-srgb

@@ -1,8 +1,9 @@
 {
-  "name": "unocss-preset-onmax",
+  "name": "unocss-preset-easing-gradient",
   "type": "module",
-  "version": "1.0.0-beta.10",
-  "description": "UnoCSS Preset that contains all my UnoCSS preferences",
+  "version": "0.0.1-beta-1.0",
+  "packageManager": "pnpm@9.12.3",
+  "description": "UnoCSS preset to create gradients with easing functions.",
   "author": "onmax",
   "license": "MIT",
   "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",
@@ -30,11 +31,6 @@
   },
   "dependencies": {
     "@unocss/core": "catalog:",
-    "pathe": "^2.0.3",
-    "unocss": "catalog:",
-    "unocss-preset-css-var": "workspace:*",
-    "unocss-preset-easing-gradient": "workspace:*",
-    "unocss-preset-fluid-sizing": "workspace:*",
-    "unocss-preset-scale-px": "workspace:*"
+    "unocss": "catalog:"
   }
 }

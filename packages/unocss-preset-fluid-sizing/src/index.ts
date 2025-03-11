@@ -20,7 +20,7 @@ const units = Object.entries(Unit).map(([key]) => key).join('|')
 const unitToNumberMap = { [Unit.px]: `1px`, [Unit.rem]: `1rem`, [Unit.em]: `1em`, [Unit.vw]: `1vw`, [Unit.vh]: `1vh`, [Unit.vmin]: `1vmin`, [Unit.vmax]: `1vmax`, [Unit.fr]: `1fr`, percent: `1%` }
 const unitToNumber = (unit: keyof typeof unitToNumberMap): string => unitToNumberMap[unit]
 
-export interface FluidSizingOptions {
+export interface PresetFluidSizingOptions {
   /**
    * Default minimum screen width
    *
@@ -75,7 +75,7 @@ export interface FluidSizingOptions {
 
 const globalConfig = { maxContainerWidth: 1920, minContainerWidth: 320, baseUnit: unitToNumberMap[Unit.px], expandCSSVariables: false, prefix: 'f-' }
 
-export const presetFluidSizing = definePreset((_options: FluidSizingOptions = {}) => {
+export const presetFluidSizing = definePreset((_options: PresetFluidSizingOptions = {}) => {
   const {
     prefix,
     maxContainerWidth,
@@ -319,7 +319,7 @@ function getCSSVarRules(): Preset['rules'] {
  * 3. Shortcut for `rounded-2xs` becomes: `rounded-min/max`. The values are taken from the theme.
  * 4. Shortcut for the rest of utilities becomes: `utility-min/max`. The values are taken from the theme.
  */
-function getShortcuts(utilities: string[], { attributify, disableTheme }: Pick<FluidSizingOptions, 'attributify' | 'disableTheme'>): Preset['shortcuts'] {
+function getShortcuts(utilities: string[], { attributify, disableTheme }: Pick<PresetFluidSizingOptions, 'attributify' | 'disableTheme'>): Preset['shortcuts'] {
   const prefix = globalConfig.prefix
 
   const shortcuts: Preset['shortcuts'] = utilities.map(utility => [

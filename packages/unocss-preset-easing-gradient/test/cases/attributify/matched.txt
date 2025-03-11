@@ -1,0 +1,15 @@
+from-blue-500
+to-red-500
+ease
+from-[#123]
+to-[#456]
+ease-in-out
+[bg-gradient-fn~="from-blue-500"]
+[bg-gradient-fn~="to-red-500"]
+[bg-gradient-fn~="ease"]
+[bg-gradient-fn~="from-[#123]"]
+[bg-gradient-fn~="to-[#456]"]
+[bg-gradient-fn~="ease-in-out"]
+[bg-gradient-fn~="to-r"]
+[bg-gradient-fn~="color-space-srgb"]
+[bg-gradient-fn~="bezier-[0.16,1,0.3,1]"]

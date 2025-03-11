@@ -1,9 +1,12 @@
 import type { Preset } from '@unocss/core'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
+import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
+import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
 import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
 import { definePreset } from '@unocss/core'
 import { presetAttributify, presetWind3, transformerDirectives } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
+import { presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
 import { presetScalePx } from 'unocss-preset-scale-px'
 import { variants } from './variants'
@@ -34,7 +37,12 @@ export interface PresetOnmaxOptions {
   /**
    * @default {}
    */
-  presetFluidSizing?: PresetCSSVarOptions | false
+  presetFluidSizing?: PresetFluidSizingOptions | false
+
+  /**
+   * @default {}
+   */
+  presetEasingGradient?: PresetEasingGradientOptions | false
 }
 
 export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
@@ -52,6 +60,8 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
     presets.push(presetCSSVar(_options.presetCssVar))
   if (_options.presetFluidSizing !== false)
     presets.push(presetFluidSizing(_options.presetFluidSizing))
+  if (_options.presetEasingGradient !== false)
+    presets.push(presetEasingGradient(_options.presetEasingGradient))
 
   return {
     name: 'unocss-preset-onmax',

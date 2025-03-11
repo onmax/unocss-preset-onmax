@@ -205,6 +205,15 @@ importers:
         specifier: 'catalog:'
         version: 66.1.0-beta.3(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
 
+  packages/unocss-preset-easing-gradient:
+    dependencies:
+      '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      unocss:
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3(postcss@8.5.3)(vite@6.2.0(@types/node@22.13.9)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+
   packages/unocss-preset-fluid-sizing:
     dependencies:
       '@unocss/core':
@@ -244,6 +253,9 @@ importers:
       unocss-preset-css-var:
         specifier: workspace:*
         version: link:../unocss-preset-css-var
+      unocss-preset-easing-gradient:
+        specifier: workspace:*
+        version: link:../unocss-preset-easing-gradient
       unocss-preset-fluid-sizing:
         specifier: workspace:*
         version: link:../unocss-preset-fluid-sizing
