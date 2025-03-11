@@ -11,14 +11,16 @@ const uno = await createGenerator({
 describe('basic setup', () => {
   it('presetOnmax', async () => {
     const presets = uno.config.presets
-    expect(presets).toHaveLength(6)
+    expect(presets).toHaveLength(7)
 
-    const { css } = await uno.generate('text-4 var:test:cssvar', { preflights: false })
+    const { css } = await uno.generate('text-4 var:test:cssvar f-text-xl', { preflights: false })
 
     expect(css).toMatchInlineSnapshot(`
-    "/* layer: default */
-    .text-4{font-size:0.25rem;}
-    .var\\:test\\:cssvar{--test:cssvar;}"
+      "/* layer: shortcuts */
+      .f-text-xl{--f-text-min:18;--f-text-max:22;font-size:clamp(calc(var(--f-text-unit, 1px) * var(--f-text-min, 16)), calc(var(--f-text-unit, 1px) * var(--f-text-min, 16) + (var(--f-text-max, 16) - var(--f-text-min, 16)) * (var(--f-text-container, 100vw) - (var(--f-text-unit, 1px) * var(--f-text-min-container, 320))) / (var(--f-text-max-container, 1920) - var(--f-text-min-container, 320))), calc(var(--f-text-unit, 1px) * var(--f-text-max, 16)));}
+      /* layer: default */
+      .text-4{font-size:0.25rem;}
+      .var\\:test\\:cssvar{--test:cssvar;}"
     `)
   })
 })

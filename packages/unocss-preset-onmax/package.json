@@ -33,6 +33,7 @@
     "pathe": "^2.0.3",
     "unocss": "catalog:",
     "unocss-preset-css-var": "workspace:*",
+    "unocss-preset-fluid-sizing": "workspace:*",
     "unocss-preset-scale-px": "workspace:*"
   }
 }

@@ -4,6 +4,7 @@ import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
 import { definePreset } from '@unocss/core'
 import { presetAttributify, presetWind3, transformerDirectives } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
+import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
 import { presetScalePx } from 'unocss-preset-scale-px'
 import { variants } from './variants'
 
@@ -23,12 +24,17 @@ export interface PresetOnmaxOptions {
   /**
    * @default {}
    */
-  scalePx?: PresetScalePxOptions | false
+  presetScalePx?: PresetScalePxOptions | false
 
   /**
    * @default {}
    */
-  cssVar?: PresetCSSVarOptions | false
+  presetCssVar?: PresetCSSVarOptions | false
+
+  /**
+   * @default {}
+   */
+  presetFluidSizing?: PresetCSSVarOptions | false
 }
 
 export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
@@ -40,10 +46,12 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   if (_options.presetAttributify !== false)
     presets.push(presetAttributify())
 
-  if (_options.scalePx !== false)
-    presets.push(presetScalePx(_options.scalePx))
-  if (_options.cssVar !== false)
-    presets.push(presetCSSVar(_options.cssVar))
+  if (_options.presetScalePx !== false)
+    presets.push(presetScalePx(_options.presetScalePx))
+  if (_options.presetCssVar !== false)
+    presets.push(presetCSSVar(_options.presetCssVar))
+  if (_options.presetFluidSizing !== false)
+    presets.push(presetFluidSizing(_options.presetFluidSizing))
 
   return {
     name: 'unocss-preset-onmax',
