@@ -6,7 +6,8 @@ import { themeConfig } from './theme.config'
 import vite from './vite.config'
 
 export default defineConfigWithTheme<NimiqVitepressThemeConfig>({
-  title: 'uno-css-preset-onmax',
+  base: '/unocss-preset-onmax/',
+  title: 'unocss-preset-onmax',
   description: 'A set of presets and utilities that I use',
   markdown: {
     theme: {
