@@ -5,18 +5,26 @@ import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme'
 export const themeConfig: NimiqVitepressThemeConfig = {
   modules: [
     {
-      text: 'Validators',
-      subpath: '/validators/',
-      icon: 'i-tabler:shield-check',
-      defaultPageLink: '/validators/',
-      description: 'Your Staking and Pools Hub',
+      text: 'UnoCSS Preset Onmax',
+      subpath: '/',
+      defaultPageLink: '/',
+      description: 'The presets and config that I use',
       sidebar: [
         {
-          label: 'Validators',
           items: [
-            { text: 'Add Your Pool to the Wallet', link: 'https://github.com/nimiq/validators-api?tab=readme-ov-file#nimiq-validators', icon: 'i-tabler:wallet' },
-            { text: 'Validator Trustscore', link: '/validators/validator-trustscore', icon: 'i-tabler:shield-star' },
-            { text: 'FAQs for Stakers and Pools', link: '/validators/staking-faq', icon: 'i-tabler:help' },
+            { text: 'Getting started', link: '/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/installation/', icon: 'i-tabler:download' },
+            { text: 'Rules and variants', link: '/rules-and-variants/', icon: 'i-tabler:code' },
+          ],
+        },
+        {
+          label: 'presets',
+          items: [
+            { text: 'Overview', link: '/presets/' },
+            { text: 'CSS Variables', link: '/presets/unocss-preset-css-var/', icon: 'i-tabler:baseline' },
+            { text: 'Easing Gradient', link: '/presets/unocss-preset-easing-gradient/', icon: 'i-tabler:gradienter' },
+            { text: 'Fluid Sizing', link: '/presets/unocss-preset-fluid-sizing/', icon: 'i-tabler:spaces' },
+            { text: 'Scale PX', link: '/presets/unocss-preset-scale-px/', icon: 'i-tabler:scale' },
           ],
         },
       ],

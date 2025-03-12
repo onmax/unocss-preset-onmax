@@ -7,6 +7,9 @@ import {
 import { presetOnmax } from 'unocss-preset-onmax'
 
 export default defineConfig({
+  content: {
+    filesystem: ['./vitepress/theme/components/**/*.vue', '**/*.md', '!**/node_modules/**', './.vitepress/theme.config.ts'],
+  },
   blocklist: [
     'container',
   ],

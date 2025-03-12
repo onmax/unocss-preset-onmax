@@ -10,12 +10,9 @@ export default defineConfigWithTheme<NimiqVitepressThemeConfig>({
   title: 'unocss-preset-onmax',
   description: 'A set of presets and utilities that I use',
   markdown: {
-    theme: {
-    },
     codeTransformers: [
       transformerTwoslash(),
     ],
-    languages: ['js', 'jsx', 'ts', 'tsx'],
     config: (md) => {
       md.use(groupIconMdPlugin)
     },
