@@ -208,9 +208,6 @@ importers:
       '@unocss/core':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
-      '@unocss/preset-mini':
-        specifier: 'catalog:'
-        version: 66.1.0-beta.3
       '@unocss/rule-utils':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
@@ -221,6 +218,9 @@ importers:
   packages/unocss-preset-easing-gradient:
     dependencies:
       '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.3
+      '@unocss/preset-mini':
         specifier: 'catalog:'
         version: 66.1.0-beta.3
       unocss:
