@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
       "unocss-preset-css-var": ["./packages/unocss-preset-css-var/src/index.ts"],
-      "unocss-preset-scale-px": ["./packages/unocss-preset-scale-px/src/index.ts"]
+      "unocss-preset-scale-px": ["./packages/unocss-preset-scale-px/src/index.ts"],
+      "unocss-preset-easing-gradient": ["./packages/unocss-preset-easing-gradient/src/index.ts"],
+      "unocss-preset-fluid-sizing": ["./packages/unocss-preset-fluid-sizing/src/index.ts"],
+      "unocss-onmax": ["./packages/unocss-preset-onmax/src/index.ts"]
     },
     "resolveJsonModule": true,
     "strict": true,

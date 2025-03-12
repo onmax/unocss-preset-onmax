@@ -47,18 +47,16 @@
     "dev": "unbuild --stub",
     "prepublishOnly": "nr run build",
     "test": "vitest",
-    "play": "vite playground",
+    "play": "nr -C playground dev",
+    "dev:prepare": "nr build",
     "start": "tsx src/index.ts"
   },
   "dependencies": {
     "@unocss/core": "catalog:"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "typescript": "catalog:",
     "unbuild": "catalog:",
     "unocss": "catalog:",
-    "vite": "catalog:",
     "vitest": "catalog:"
   }
 }

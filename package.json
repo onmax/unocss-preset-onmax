@@ -13,7 +13,7 @@
     "docs:build": "nr build && pnpm -C docs run docs:build",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "vue-tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
@@ -35,7 +35,8 @@
     "unocss-preset-css-var": "workspace:*",
     "unocss-preset-scale-px": "workspace:*",
     "vite": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "vue-tsc": "catalog:"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
