@@ -10,7 +10,7 @@
     "lint:fix": "eslint --cache . --fix",
     "prepublishOnly": "nr build",
     "docs": "pnpm -C docs run docs:dev",
-    "docs:build": "pnpm -C docs run docs:build",
+    "docs:build": "nr build && pnpm -C docs run docs:build",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
