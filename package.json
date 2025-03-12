@@ -41,7 +41,11 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
-      "simple-git-hooks"
+      "simple-git-hooks",
+      "vue-demi"
+    ],
+    "ignoredBuiltDependencies": [
+      "vue-demi"
     ]
   },
   "simple-git-hooks": {
