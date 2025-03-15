@@ -1,8 +1,10 @@
 /* layer: default */
-:is(.group,[group]):hover .group-hocus\:text-purple, :is(.group,[group]):focus-visible .group-hocus\:text-purple{--un-text-opacity:100%;color:color-mix(in oklch, var(--colors-purple-400) var(--un-text-opacity), transparent);}
-:is([data-inverted], [data-inverted] *) .inverted\:text-pink{--un-text-opacity:100%;color:color-mix(in oklch, var(--colors-pink-400) var(--un-text-opacity), transparent);}
-:is([data-inverted], [data-inverted] *) .inverted\:text-red{--un-text-opacity:100%;color:color-mix(in oklch, var(--colors-red-400) var(--un-text-opacity), transparent);}
-.hocus\:text-green:hover, .hocus\:text-green:focus-visible{--un-text-opacity:100%;color:color-mix(in oklch, var(--colors-green-400) var(--un-text-opacity), transparent);}
-.text-blue{--un-text-opacity:100%;color:color-mix(in oklch, var(--colors-blue-400) var(--un-text-opacity), transparent);}
+@property --un-text-opacity {syntax: "<percentage>";inherits: false;initial-value: 100%;}
+:is(.group,[group]):hover .group-hocus\:text-purple, :is(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in oklch, var(--colors-purple-400) var(--un-text-opacity), transparent);}
+:is([data-inverted], [data-inverted] *) .inverted\:text-pink{color:color-mix(in oklch, var(--colors-pink-400) var(--un-text-opacity), transparent);}
+:is([data-inverted], [data-inverted] *) .inverted\:text-red{color:color-mix(in oklch, var(--colors-red-400) var(--un-text-opacity), transparent);}
+.hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in oklch, var(--colors-green-400) var(--un-text-opacity), transparent);}
+.text-blue{color:color-mix(in oklch, var(--colors-blue-400) var(--un-text-opacity), transparent);}
 .p-4{padding:calc(var(--spacing) * 4);}
-.bg-gray-100{--un-bg-opacity:100%;background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
+@property --un-bg-opacity {syntax: "<percentage>";inherits: false;initial-value: 100%;}
+.bg-gray-100{background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}

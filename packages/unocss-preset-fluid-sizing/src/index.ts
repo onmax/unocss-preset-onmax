@@ -213,6 +213,7 @@ function getRules(utility: string, cssProperties: string[] = [], reUtility = `${
     ([_, minSize]) => {
       return { [getCSSVarName('min', utility)]: minSize }
     },
+    { autocomplete: `${reUtility}-min-<num>` },
   ] satisfies DynamicRule)
 
   // min-container-<container-width>
@@ -221,6 +222,8 @@ function getRules(utility: string, cssProperties: string[] = [], reUtility = `${
     ([_, userMinContainerWidth]) => {
       return { [getCSSVarName('minContainer', utility)]: userMinContainerWidth }
     },
+
+    { autocomplete: `${reUtility}-min-container-<num>` },
   ] satisfies DynamicRule)
 
   // max-<number>
@@ -229,6 +232,7 @@ function getRules(utility: string, cssProperties: string[] = [], reUtility = `${
     ([_, maxSize]) => {
       return { [getCSSVarName('max', utility)]: maxSize }
     },
+    { autocomplete: `${reUtility}-max-<num>` },
   ] satisfies DynamicRule)
 
   // max-container-<container-width>
@@ -237,6 +241,7 @@ function getRules(utility: string, cssProperties: string[] = [], reUtility = `${
     ([_, userMaxContainerWidth]) => {
       return { [getCSSVarName('maxContainer', utility)]: userMaxContainerWidth }
     },
+    { autocomplete: `${reUtility}-max-container-<num>` },
   ] satisfies DynamicRule)
 
   rules.push([
@@ -246,10 +251,15 @@ function getRules(utility: string, cssProperties: string[] = [], reUtility = `${
         return
       return getFluidCSS({ utility, properties: cssProperties })
     },
+    { autocomplete: reUtility },
   ])
 
   // Support rePrefix-base-<number>
-  rules.push([new RegExp(`^${reUtility}-base-(${units})$`), ([_, newUnit]) => ({ [getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap) })])
+  rules.push([
+    new RegExp(`^${reUtility}-base-(${units})$`),
+    ([_, newUnit]) => ({ [getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap) }),
+    { autocomplete: `${reUtility}-base-<unit>` },
+  ])
 
   // Use cqw instead of vw
   rules.push([new RegExp(`^${reUtility}-container$`), ([_, _group, utility]) => ({ [getCSSVarName('container', utility)]: '100cqw' })])
@@ -267,6 +277,7 @@ function getCSSVarRules(): Preset['rules'] {
     ([_, utility, minSize]) => {
       return { [getCSSVarName('min', utility)]: minSize }
     },
+    { autocomplete: `${reUtility}-min-<num>` },
   ] satisfies DynamicRule)
 
   // min-container-<container-width>
@@ -275,6 +286,7 @@ function getCSSVarRules(): Preset['rules'] {
     ([_, utility, userMinContainerWidth]) => {
       return { [getCSSVarName('minContainer', utility)]: userMinContainerWidth }
     },
+    { autocomplete: `${reUtility}-min-container-<num>` },
   ] satisfies DynamicRule)
 
   // max-<number>
@@ -283,6 +295,7 @@ function getCSSVarRules(): Preset['rules'] {
     ([_, utility, maxSize]) => {
       return { [getCSSVarName('max', utility)]: maxSize }
     },
+    { autocomplete: `${reUtility}-max-<num>` },
   ] satisfies DynamicRule)
 
   // max-container-<container-width>
@@ -291,6 +304,7 @@ function getCSSVarRules(): Preset['rules'] {
     ([_, utility, userMaxContainerWidth]) => {
       return { [getCSSVarName('maxContainer', utility)]: userMaxContainerWidth }
     },
+    { autocomplete: `${reUtility}-max-container-<num>` },
   ] satisfies DynamicRule)
 
   rules.push([
@@ -301,6 +315,7 @@ function getCSSVarRules(): Preset['rules'] {
       const properties = [getCSSVarName('', matches[1])]
       return getFluidCSS({ utility: matches[1], properties })
     },
+    { autocomplete: reUtility },
   ])
 
   // Support rePrefix-base-<number>
@@ -325,14 +340,20 @@ function getShortcuts(utilities: string[], { attributify, disableTheme }: Pick<P
   const shortcuts: Preset['shortcuts'] = utilities.map(utility => [
     new RegExp(`^${prefix}${utility}-(\\d+)/(\\d+)$`),
     ([, min, max]) => `${prefix}${utility} ${prefix}${utility}-min-${min} ${prefix}${utility}-max-${max}`,
+    { autocomplete: `${prefix}${utility}-<num>/<num>` },
   ] as const)
 
   if (!disableTheme) {
     const getPrefixAttribute = (utility: string): string => `${utility}-${prefix.endsWith('-') ? prefix.slice(0, -1) : prefix}`
     for (const [name, [min, max]] of Object.entries(theme.fontSize)) {
       shortcuts.push([`${prefix}text-${name}`, `${prefix}text-${min}/${max}`])
-      if (attributify)
-        shortcuts.push([`${getPrefixAttribute('text')}-${name}`, `${prefix}text-${min}/${max}`])
+      if (attributify) {
+        shortcuts.push([
+          `${getPrefixAttribute('text')}-${name}`,
+          `${prefix}text-${min}/${max}`,
+          { autocomplete: [`${getPrefixAttribute('text')}-${name}`, 'f-lg'] },
+        ])
+      }
     }
 
     for (const [name, [min, max]] of Object.entries(theme.borderRadius)) {

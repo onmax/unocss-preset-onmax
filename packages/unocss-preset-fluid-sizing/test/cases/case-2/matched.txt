@@ -1,3 +1,5 @@
+[flex~="~"]
 [text~="blue"]
 [text~="xl"]
+f-gap-x-md
 [text~="f-lg"]

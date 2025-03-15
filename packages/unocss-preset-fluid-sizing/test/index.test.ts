@@ -25,6 +25,11 @@ describe('presetFluidSizing', async () => {
       .f-text{font-size:clamp(calc(var(--f-text-unit, 1px) * var(--f-text-min, 16)), calc(var(--f-text-unit, 1px) * var(--f-text-min, 16) + (var(--f-text-max, 16) - var(--f-text-min, 16)) * (var(--f-text-container, 100vw) - (var(--f-text-unit, 1px) * var(--f-text-min-container, 320))) / (var(--f-text-max-container, 1920) - var(--f-text-min-container, 320))), calc(var(--f-text-unit, 1px) * var(--f-text-max, 16)));}"
     `)
   })
+
+  it('attributify mode', async () => {
+    const { css } = await uno.generate('flex-f-gap-12', { preflights: false })
+    expect(css).toMatchInlineSnapshot(`""`)
+  })
 })
 
 describe('cases', () => {

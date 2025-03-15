@@ -7,15 +7,10 @@ f-text-max-container-1920
 f-text-base-rem
 f-text-base-em
 f-text-container
-f-$myvar
-f-$myvar-min-10
-f-$myvar-max-50
 f-w-min-100
 f-w-max-300
 f-h-min-50
 f-h-max-150
-f-size-min-100
-f-size-max-200
 f-m-min-10
 f-m-max-20
 f-mx-min-10
@@ -140,6 +135,7 @@ f-rounded-4/8
 f-text-2xs
 f-text-xs
 f-text-sm
+f-text-md
 f-text-lg
 f-text-xl
 f-text-2xl
@@ -171,6 +167,7 @@ f-shadow-lg
 [text-f-2xs=""]
 [text-f-xs=""]
 [text-f-sm=""]
+[text-f-md=""]
 [text-f-lg=""]
 [text-f-xl=""]
 [text-f-2xl=""]
@@ -179,6 +176,7 @@ f-shadow-lg
 [text~="f-2xs"]
 [text~="f-xs"]
 [text~="f-sm"]
+[text~="f-md"]
 [text~="f-lg"]
 [text~="f-xl"]
 [text~="f-2xl"]
