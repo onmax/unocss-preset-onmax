@@ -25,7 +25,7 @@ export interface PresetOnmaxOptions {
   }
 
   /**
-   * @default true
+   * @default {}
    */
   presetAttributify?: boolean
 
