@@ -2,13 +2,12 @@ import type { Preset } from '@unocss/core'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
 import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
-import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
+import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
-import { presetAttributify, presetWind3, transformerDirectives } from 'unocss'
+import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
 import { presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
-import { presetScalePx } from 'unocss-preset-scale-px'
 import { variants } from './variants'
 
 export interface PresetOnmaxOptions {
@@ -16,7 +15,14 @@ export interface PresetOnmaxOptions {
   /**
    * @default true
    */
-  presetWind3?: boolean
+  presetWind4?: boolean | {
+    options: PresetWind4Options
+    /**
+     * The default base font size
+     * @default '0.0625rem' 1px. p-4 becomes padding: 4px
+     */
+    baseFontSize: '0.0625rem'
+  }
 
   /**
    * @default true
@@ -24,11 +30,6 @@ export interface PresetOnmaxOptions {
   presetAttributify?: boolean
 
   // Custom presets
-  /**
-   * @default {}
-   */
-  presetScalePx?: PresetScalePxOptions | false
-
   /**
    * @default {}
    */
@@ -49,22 +50,25 @@ export interface PresetOnmaxOptions {
 
 export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   const presets: Preset[] = []
+  const theme: Theme = {}
 
-  if (_options.presetWind3 !== false)
-    presets.push(presetWind3())
+  if (_options.presetWind4 !== false) {
+    presets.push(presetWind4())
+    const defaultBaseFontSize = _options.presetWind4 === true
+      ? '0.0625rem'
+      : _options.presetWind4?.baseFontSize || '0.0625rem'
+    theme.spacing = { DEFAULT: defaultBaseFontSize }
+  }
 
   if (_options.presetAttributify !== false)
     presets.push(presetAttributify())
 
   const {
-    presetScalePx: presetScalePxOptions = {},
     presetCssVar: presetCssVarOptions = {},
     presetFluidSizing: presetFluidSizingOptions = { attributify: true },
     presetEasingGradient: presetEasingGradientOptions = {},
   } = _options
 
-  if (presetScalePxOptions !== false)
-    presets.push(presetScalePx(presetScalePx))
   if (presetCssVarOptions !== false)
     presets.push(presetCSSVar(presetCssVarOptions))
   if (presetFluidSizingOptions !== false)
@@ -96,6 +100,7 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   return {
     name: 'unocss-preset-onmax',
     presets,
+    theme,
     variants,
     rules,
     transformers: [
