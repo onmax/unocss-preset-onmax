@@ -2,6 +2,7 @@ import type { Preset } from '@unocss/core'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
 import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
+import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
@@ -27,7 +28,7 @@ export interface PresetOnmaxOptions {
   /**
    * @default {}
    */
-  presetAttributify?: boolean
+  presetAttributify?: boolean | PresetAttributifyOptions
 
   // Custom presets
   /**
