@@ -35,7 +35,9 @@ export interface PresetOnmaxOptions {
   presetCssVar?: PresetCSSVarOptions | false
 
   /**
-   * @default {}
+   * @default {
+   *   attributify: true,
+   * }
    */
   presetFluidSizing?: PresetFluidSizingOptions | false
 
@@ -54,14 +56,21 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   if (_options.presetAttributify !== false)
     presets.push(presetAttributify())
 
-  if (_options.presetScalePx !== false)
-    presets.push(presetScalePx(_options.presetScalePx))
-  if (_options.presetCssVar !== false)
-    presets.push(presetCSSVar(_options.presetCssVar))
-  if (_options.presetFluidSizing !== false)
-    presets.push(presetFluidSizing(_options.presetFluidSizing))
-  if (_options.presetEasingGradient !== false)
-    presets.push(presetEasingGradient(_options.presetEasingGradient))
+  const {
+    presetScalePx: presetScalePxOptions = {},
+    presetCssVar: presetCssVarOptions = {},
+    presetFluidSizing: presetFluidSizingOptions = { attributify: true },
+    presetEasingGradient: presetEasingGradientOptions = {},
+  } = _options
+
+  if (presetScalePxOptions !== false)
+    presets.push(presetScalePx(presetScalePx))
+  if (presetCssVarOptions !== false)
+    presets.push(presetCSSVar(presetCssVarOptions))
+  if (presetFluidSizingOptions !== false)
+    presets.push(presetFluidSizing(presetFluidSizingOptions))
+  if (presetEasingGradientOptions !== false)
+    presets.push(presetEasingGradient(presetEasingGradientOptions))
 
   const rules: Preset['rules'] = [
     [
