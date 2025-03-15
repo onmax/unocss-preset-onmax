@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-onmax",
   "type": "module",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.12.1",
   "packageManager": "pnpm@10.6.3",
   "description": "UnoCSS Preset that contains all my UnoCSS preferences",
   "author": "onmax",
