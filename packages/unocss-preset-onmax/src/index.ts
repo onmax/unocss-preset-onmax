@@ -53,15 +53,22 @@ export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
   const theme: Theme = {}
 
   if (_options.presetWind4 !== false) {
-    presets.push(presetWind4())
+    const wind4Options: PresetWind4Options = typeof _options.presetWind4 === 'object'
+      ? _options.presetWind4.options
+      : { attributifyPseudo: true }
+    presets.push(presetWind4(wind4Options))
     const defaultBaseFontSize = _options.presetWind4 === true
       ? '0.0625rem'
       : _options.presetWind4?.baseFontSize || '0.0625rem'
     theme.spacing = { DEFAULT: defaultBaseFontSize }
   }
 
-  if (_options.presetAttributify !== false)
-    presets.push(presetAttributify())
+  if (_options.presetAttributify !== false) {
+    const attributifyOptions = typeof _options.presetAttributify === 'object'
+      ? _options.presetAttributify
+      : {}
+    presets.push(presetAttributify(attributifyOptions))
+  }
 
   const {
     presetCssVar: presetCssVarOptions = {},
