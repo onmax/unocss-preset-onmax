@@ -1,9 +1,8 @@
 {
-  "name": "unocss-preset-onmax",
+  "name": "unocss-preset-reka-ui",
   "type": "module",
   "version": "1.0.0-beta.12.2",
-  "packageManager": "pnpm@10.6.3",
-  "description": "UnoCSS Preset that contains all my UnoCSS preferences",
+  "description": "A Unocss Preset to work seamlessly with Reka UI",
   "author": "onmax",
   "license": "MIT",
   "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",
@@ -30,16 +29,12 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
     "@unocss/core": "catalog:",
+    "@unocss/preset-wind4": "catalog:",
+    "@unocss/rule-utils": "catalog:",
     "defu": "catalog:",
-    "pathe": "^2.0.3",
     "unocss": "catalog:",
-    "unocss-preset-css-var": "workspace:*",
-    "unocss-preset-easing-gradient": "workspace:*",
-    "unocss-preset-fluid-sizing": "workspace:*",
-    "unocss-preset-unovue": "workspace:*"
-  },
-  "devDependencies": {
-    "@unocss/preset-attributify": "66.1.0-beta.5"
+    "unocss-preset-animations": "catalog:"
   }
 }

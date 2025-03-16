@@ -1,0 +1,10 @@
+shadow-black4A
+outline-grass8
+text-mauve11
+bg-mauve5
+bg-black5
+text-green10
+bg-green11
+text-grass11
+bg-grass4
+hover:text-green9

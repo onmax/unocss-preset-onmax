@@ -1,0 +1,6 @@
+bg-gray-100/10
+text-green-300
+bg-green-700
+text-green10
+border-gray-100
+hover:text-green9

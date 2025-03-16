@@ -46,7 +46,6 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "prepublishOnly": "nr build",
-    "test": "vitest",
     "play": "nr -C playground dev",
     "dev:prepare": "nr build",
     "start": "tsx src/index.ts"
@@ -55,6 +54,7 @@
     "@unocss/core": "catalog:"
   },
   "devDependencies": {
+    "defu": "catalog:",
     "unbuild": "catalog:",
     "unocss": "catalog:",
     "vitest": "catalog:"

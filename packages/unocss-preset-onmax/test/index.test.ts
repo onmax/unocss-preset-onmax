@@ -11,7 +11,7 @@ const uno = await createGenerator({
 describe('basic setup', () => {
   it('presetOnmax', async () => {
     const presets = uno.config.presets
-    expect(presets).toHaveLength(6)
+    expect(presets).toHaveLength(8)
 
     const { css } = await uno.generate('text-4 var:test:cssvar f-text-xl bg-gradient-fn-from-blue', { preflights: false })
 
@@ -27,24 +27,15 @@ describe('basic setup', () => {
 })
 
 describe('cases', () => {
-  it('basic', async () => {
-    const input = readFileSync(resolve(__dirname, './cases/basic/input.html'), 'utf-8')
-    const { css, matched } = await uno.generate(input, { preflights: true /* enabled to see --spacing is correct */ })
-    await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/basic/matched.txt'))
-    await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/basic/output.css'))
-  })
+  async function checkCase(_baseFolder: string, { preflights = false } = {}) {
+    const baseFolder = resolve(__dirname, _baseFolder)
+    const input = readFileSync(resolve(baseFolder, 'input.html'), 'utf-8')
+    const { css, matched } = await uno.generate(input, { preflights })
+    await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(baseFolder, 'matched.txt'))
+    await expect(css).toMatchFileSnapshot(resolve(baseFolder, 'output.css'))
+  }
 
-  it('variants', async () => {
-    const input = readFileSync(resolve(__dirname, './cases/variants/input.html'), 'utf-8')
-    const { css, matched } = await uno.generate(input, { preflights: false })
-    await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/variants/matched.txt'))
-    await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/variants/output.css'))
-  })
-
-  it('variants with attributify', async () => {
-    const input = readFileSync(resolve(__dirname, './cases/variants-attributify/input.html'), 'utf-8')
-    const { css, matched } = await uno.generate(input, { preflights: false })
-    await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/variants-attributify/matched.txt'))
-    await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/variants-attributify/output.css'))
-  })
+  it('basic', async () => checkCase('./cases/basic', { preflights: true }))
+  it('basic variants', async () => checkCase('./cases/variants'))
+  it('basic attributify', async () => checkCase('./cases/variants-attributify'))
 })

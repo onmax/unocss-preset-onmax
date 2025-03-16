@@ -1,5 +1,6 @@
 import type { DynamicRule, Preset } from '@unocss/core'
 import { definePreset } from '@unocss/core'
+import { defu } from 'defu'
 import { theme } from './theme'
 import { fluidSizeUtilities } from './utilities'
 
@@ -73,7 +74,19 @@ export interface PresetFluidSizingOptions {
   attributify?: boolean
 }
 
-const globalConfig = { maxContainerWidth: 1920, minContainerWidth: 320, baseUnit: unitToNumberMap[Unit.px], expandCSSVariables: false, prefix: 'f-' }
+export const defaultFluidSizingOptions = {
+  minContainerWidth: 320,
+  maxContainerWidth: 1920,
+  defaultBaseUnit: Unit.px,
+  prefix: 'f-',
+  expandCSSVariables: false,
+  disableTheme: false,
+  utilities: [],
+  attributify: false,
+  baseUnit: unitToNumberMap[Unit.px],
+}
+
+const globalConfig = { ...defaultFluidSizingOptions }
 
 export const presetFluidSizing = definePreset((_options: PresetFluidSizingOptions = {}) => {
   const {
@@ -85,13 +98,13 @@ export const presetFluidSizing = definePreset((_options: PresetFluidSizingOption
     disableTheme = false,
     utilities: userUtilities = [],
     attributify = false,
-  } = _options
+  } = defu(_options, defaultFluidSizingOptions)
 
-  globalConfig.prefix = prefix ?? globalConfig.prefix
-  globalConfig.maxContainerWidth = maxContainerWidth ?? globalConfig.maxContainerWidth
-  globalConfig.minContainerWidth = minContainerWidth ?? globalConfig.minContainerWidth
-  globalConfig.baseUnit = unitToNumberMap[defaultBaseUnit as keyof typeof unitToNumberMap] ?? globalConfig.baseUnit
-  globalConfig.expandCSSVariables = expandCSSVariables ?? globalConfig.expandCSSVariables
+  globalConfig.prefix = prefix
+  globalConfig.maxContainerWidth = maxContainerWidth
+  globalConfig.minContainerWidth = minContainerWidth
+  globalConfig.baseUnit = unitToNumberMap[defaultBaseUnit as keyof typeof unitToNumberMap]
+  globalConfig.expandCSSVariables = expandCSSVariables
 
   // in case of conflict in utilities, use the user's utilities
   const mergedFluidSizeUtilities = userUtilities

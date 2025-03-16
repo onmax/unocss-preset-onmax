@@ -2,87 +2,130 @@ import type { Preset } from '@unocss/core'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
 import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
+import type { PresetUnoVueOptions } from 'unocss-preset-unovue'
 import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
+import { defu } from 'defu'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
-import { presetCSSVar } from 'unocss-preset-css-var'
-import { presetEasingGradient } from 'unocss-preset-easing-gradient'
-import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
+import { defaultCSSVarOptions, presetCSSVar } from 'unocss-preset-css-var'
+import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-preset-easing-gradient'
+import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
+import { defaultUnoVueOptions, presetUnoVue } from 'unocss-preset-unovue'
 import { variants } from './variants'
 
 export interface PresetOnmaxOptions {
-  // Core presets
   /**
-   * @default true
+   * The default base font size
+   * @default '0.0625rem' 1px. p-4 becomes padding: 4px
    */
-  presetWind4?: boolean | {
-    options: PresetWind4Options
+  baseFontSize?: string
+
+  /**
+   * TODO
+   * Prefix to use for all the generated classes and presets. Feel free to open PR! Include tests please.
+   */
+  // prefix?: string
+
+  presets?: {
+    // ---------- Core presets ----------
+
     /**
-     * The default base font size
-     * @default '0.0625rem' 1px. p-4 becomes padding: 4px
+     * @default { attributifyPseudo: true }
      */
-    baseFontSize: '0.0625rem'
+    wind4?: PresetWind4Options | false
+
+    /**
+     * @default {}
+     */
+    attributify?: PresetAttributifyOptions | false
+
+    // -------- Custom presets --------
+    /**
+     * @default {}
+     */
+    cssVar?: PresetCSSVarOptions | false
+
+    /**
+     * @default { attributify: true }
+     */
+    fluidSizing?: PresetFluidSizingOptions | false
+
+    /**
+     * @default {}
+     */
+    easingGradient?: PresetEasingGradientOptions | false
+
+    /**
+     * @default {}
+     */
+    unoVue?: PresetUnoVueOptions | false
   }
-
-  /**
-   * @default {}
-   */
-  presetAttributify?: boolean | PresetAttributifyOptions
-
-  // Custom presets
-  /**
-   * @default {}
-   */
-  presetCssVar?: PresetCSSVarOptions | false
-
-  /**
-   * @default {
-   *   attributify: true,
-   * }
-   */
-  presetFluidSizing?: PresetFluidSizingOptions | false
-
-  /**
-   * @default {}
-   */
-  presetEasingGradient?: PresetEasingGradientOptions | false
 }
 
-export const presetOnmax = definePreset((_options: PresetOnmaxOptions = {}) => {
+interface DefaultPresetsOptions {
+  // Core presets
+  wind4: PresetWind4Options
+  attributify: PresetAttributifyOptions
+
+  // Custom presets
+  cssVar: PresetCSSVarOptions
+  fluidSizing: PresetFluidSizingOptions
+  easingGradient: PresetEasingGradientOptions
+  unoVue: PresetUnoVueOptions
+}
+
+interface DefaultOptions {
+  baseFontSize: string
+  presets: DefaultPresetsOptions
+}
+
+const defaultOptions: DefaultOptions = {
+  baseFontSize: '0.0625rem',
+  presets: {
+    wind4: { attributifyPseudo: true },
+    attributify: {},
+    cssVar: defu({}, defaultCSSVarOptions),
+    fluidSizing: defu({ attributify: true }, defaultFluidSizingOptions),
+    easingGradient: defu({}, defaultEasingGradientsOptions),
+    unoVue: defu({}, defaultUnoVueOptions),
+  },
+}
+
+export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
+  const {
+    baseFontSize,
+    presets: {
+      wind4: wind4Options,
+      attributify: attributifyOptions,
+      cssVar: cssVarOptions,
+      fluidSizing: fluidSizingOptions,
+      easingGradient: easingGradientOptions,
+      unoVue: unoVueOptions,
+    },
+  } = defu(options, defaultOptions)
   const presets: Preset[] = []
   const theme: Theme = {}
 
-  if (_options.presetWind4 !== false) {
-    const wind4Options: PresetWind4Options = typeof _options.presetWind4 === 'object'
-      ? _options.presetWind4.options
-      : { attributifyPseudo: true }
+  if (wind4Options !== false) {
     presets.push(presetWind4(wind4Options))
-    const defaultBaseFontSize = _options.presetWind4 === true
-      ? '0.0625rem'
-      : _options.presetWind4?.baseFontSize || '0.0625rem'
-    theme.spacing = { DEFAULT: defaultBaseFontSize }
+    theme.spacing = { DEFAULT: baseFontSize }
   }
 
-  if (_options.presetAttributify !== false) {
-    const attributifyOptions = typeof _options.presetAttributify === 'object'
-      ? _options.presetAttributify
-      : {}
+  if (attributifyOptions !== false)
     presets.push(presetAttributify(attributifyOptions))
-  }
 
-  const {
-    presetCssVar: presetCssVarOptions = {},
-    presetFluidSizing: presetFluidSizingOptions = { attributify: true },
-    presetEasingGradient: presetEasingGradientOptions = {},
-  } = _options
+  if (cssVarOptions !== false)
+    presets.push(presetCSSVar(cssVarOptions))
 
-  if (presetCssVarOptions !== false)
-    presets.push(presetCSSVar(presetCssVarOptions))
-  if (presetFluidSizingOptions !== false)
-    presets.push(presetFluidSizing(presetFluidSizingOptions))
-  if (presetEasingGradientOptions !== false)
-    presets.push(presetEasingGradient(presetEasingGradientOptions))
+  if (fluidSizingOptions !== false)
+    presets.push(presetFluidSizing(fluidSizingOptions))
+
+  if (easingGradientOptions !== false)
+    presets.push(presetEasingGradient(easingGradientOptions))
+
+  if (unoVueOptions !== false)
+    presets.push(presetUnoVue(unoVueOptions))
 
   const rules: Preset['rules'] = [
     [

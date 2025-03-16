@@ -27,6 +27,9 @@ catalogs:
     '@unocss/preset-mini':
       specifier: ^66.1.0-beta.5
       version: 66.1.0-beta.5
+    '@unocss/preset-wind4':
+      specifier: ^66.1.0-beta.5
+      version: 66.1.0-beta.5
     '@unocss/reset':
       specifier: ^66.1.0-beta.5
       version: 66.1.0-beta.5
@@ -39,6 +42,9 @@ catalogs:
     bumpp:
       specifier: ^10.1.0
       version: 10.1.0
+    defu:
+      specifier: ^6.1.4
+      version: 6.1.4
     eslint:
       specifier: ^9.22.0
       version: 9.22.0
@@ -69,6 +75,12 @@ catalogs:
     unocss:
       specifier: ^66.1.0-beta.5
       version: 66.1.0-beta.5
+    unocss-preset-animations:
+      specifier: ^1.1.1
+      version: 1.1.1
+    unocss-preset-shadcn:
+      specifier: ^0.5.0
+      version: 0.5.0
     unplugin-vue-components:
       specifier: ^28.4.1
       version: 28.4.1
@@ -117,6 +129,9 @@ importers:
       bumpp:
         specifier: 'catalog:'
         version: 10.1.0
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       eslint:
         specifier: 'catalog:'
         version: 9.22.0(jiti@2.4.2)
@@ -239,6 +254,9 @@ importers:
         specifier: 'catalog:'
         version: 66.1.0-beta.5
     devDependencies:
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       unbuild:
         specifier: 'catalog:'
         version: 3.5.0(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
@@ -273,6 +291,9 @@ importers:
       '@unocss/core':
         specifier: 'catalog:'
         version: 66.1.0-beta.5
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       pathe:
         specifier: ^2.0.3
         version: 2.0.3
@@ -288,13 +309,37 @@ importers:
       unocss-preset-fluid-sizing:
         specifier: workspace:*
         version: link:../unocss-preset-fluid-sizing
-      unocss-preset-scale-px:
+      unocss-preset-unovue:
         specifier: workspace:*
-        version: link:../unocss-preset-scale-px
+        version: link:../unocss-preset-unovue
     devDependencies:
       '@unocss/preset-attributify':
         specifier: 66.1.0-beta.5
         version: 66.1.0-beta.5
+
+  packages/unocss-preset-reka-ui:
+    dependencies:
+      '@radix-ui/colors':
+        specifier: ^3.0.0
+        version: 3.0.0
+      '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      '@unocss/preset-wind4':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      '@unocss/rule-utils':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
+      unocss:
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+      unocss-preset-animations:
+        specifier: 'catalog:'
+        version: 1.1.1(@unocss/preset-wind@66.1.0-beta.5)(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2)))
 
   packages/unocss-preset-scale-px:
     dependencies:
@@ -304,6 +349,33 @@ importers:
       unocss:
         specifier: 'catalog:'
         version: 66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+
+  packages/unocss-preset-unovue:
+    dependencies:
+      '@radix-ui/colors':
+        specifier: ^3.0.0
+        version: 3.0.0
+      '@unocss/core':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      '@unocss/preset-wind4':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      '@unocss/rule-utils':
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
+      unocss:
+        specifier: 'catalog:'
+        version: 66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+      unocss-preset-reka-ui:
+        specifier: workspace:*
+        version: link:../unocss-preset-reka-ui
+      unocss-preset-shadcn:
+        specifier: 'catalog:'
+        version: 0.5.0(unocss-preset-animations@1.1.1(@unocss/preset-wind@66.1.0-beta.5)(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))))(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2)))
 
 packages:
 
@@ -1061,6 +1133,9 @@ packages:
   '@quansync/fs@0.1.1':
     resolution: {integrity: sha512-sx8J1O/+j2lqs8MvsEz6rs/6UAUpCb4fu7C6EqtMqzbS3CmqLkTDTOMK+DrWukvyUuHzl8DhMjfNJzQDTqfGJg==}
     engines: {node: '>=20.18.0'}
+
+  '@radix-ui/colors@3.0.0':
+    resolution: {integrity: sha512-FUOsGBkHrYJwCSEtWRCIfQbZG7q1e6DgxCIOe1SUQzDe/7rXXeA47s8yCn6fuTNQAj1Zq4oTFi9Yjp3wzElcxg==}
 
   '@rollup/plugin-alias@5.1.1':
     resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
@@ -3822,6 +3897,18 @@ packages:
     resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
     engines: {node: '>= 4.0.0'}
 
+  unocss-preset-animations@1.1.1:
+    resolution: {integrity: sha512-YBttRSHWH0r8OABPzXNcxDhRV67LNIsA0ZrWoYTMHUc/SzVYZBU79IXLtOneLk1NCpzlfkyxm+8DWLJnmG1R6g==}
+    peerDependencies:
+      '@unocss/preset-wind': '>=0.56.0 < 101'
+      unocss: '>=0.56.0 < 101'
+
+  unocss-preset-shadcn@0.5.0:
+    resolution: {integrity: sha512-e/bF/+b5adcolHio3kst3WVF+f09+BiDkyTshUVqcWXB0RabQ0T8lzqfM3KAegTTi1iJo1jjCZoE88cUzaVDmQ==}
+    peerDependencies:
+      unocss: '>=0.56.0 < 101'
+      unocss-preset-animations: ^1.1.1
+
   unocss@66.1.0-beta.5:
     resolution: {integrity: sha512-i+cvutPA5OwVuqKHO6Cu/dNAInGRiDWyfEX35LyhFhunA9pRiB8wlWe6inkFzMe3P/a0Ssdm473hMnzPujgtGw==}
     engines: {node: '>=14'}
@@ -4794,6 +4881,8 @@ snapshots:
   '@quansync/fs@0.1.1':
     dependencies:
       quansync: 0.2.8
+
+  '@radix-ui/colors@3.0.0': {}
 
   '@rollup/plugin-alias@5.1.1(rollup@4.35.0)':
     optionalDependencies:
@@ -8071,6 +8160,16 @@ snapshots:
       unist-util-visit-parents: 6.0.1
 
   universalify@0.2.0: {}
+
+  unocss-preset-animations@1.1.1(@unocss/preset-wind@66.1.0-beta.5)(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))):
+    dependencies:
+      '@unocss/preset-wind': 66.1.0-beta.5
+      unocss: 66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+
+  unocss-preset-shadcn@0.5.0(unocss-preset-animations@1.1.1(@unocss/preset-wind@66.1.0-beta.5)(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))))(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))):
+    dependencies:
+      unocss: 66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+      unocss-preset-animations: 1.1.1(@unocss/preset-wind@66.1.0-beta.5)(unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2)))
 
   unocss@66.1.0-beta.5(postcss@8.5.3)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2)):
     dependencies:

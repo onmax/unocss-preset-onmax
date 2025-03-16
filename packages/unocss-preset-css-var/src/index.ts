@@ -6,6 +6,9 @@ import { parseColor } from 'unocss/preset-mini'
 export interface PresetCSSVarOptions {
 }
 
+export const defaultCSSVarOptions: PresetCSSVarOptions = {
+}
+
 export const presetCSSVar = definePreset((_options: PresetCSSVarOptions = {}) => {
   return {
     name: 'unocss-preset-css-var',

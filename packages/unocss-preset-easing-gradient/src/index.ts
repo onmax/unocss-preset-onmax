@@ -7,6 +7,10 @@ export interface PresetEasingGradientOptions {
   customFunctions?: Record<string, (t: number) => number>
 }
 
+export const defaultEasingGradientsOptions = {
+  customFunctions: {},
+}
+
 const varPrefix = '--un-gradient-fn'
 const colorSpace = `var(${varPrefix}-color-space, in oklch)`
 const validColorSpaces = ['srgb', 'srgb-linear', 'display-p3', 'oklch', 'a98-rgb', 'prophoto-rgb', 'rec2020', 'xyz'].join('|')
@@ -17,7 +21,8 @@ export const variantsRE = /^(?!.*\[[^:]+:.+\]$)((?:.+:)?!?)(.*)$/
 const toKebabCase = (str: string): string => str.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/[\s_]+/g, '-').toLowerCase()
 const toCamelCase = (str: string): string => str.replace(/[-_](.)/g, (_, char) => char.toUpperCase())
 
-export function presetEasingGradient(options: PresetEasingGradientOptions = {}): Preset {
+export function presetEasingGradient(_options: PresetEasingGradientOptions = {}): Preset {
+  const options = { ...defaultEasingGradientsOptions, ..._options }
   const easingFunctions = {
     ...defaultEasingFunctions,
     ...(options.customFunctions || {}),
