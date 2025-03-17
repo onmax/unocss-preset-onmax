@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-reka-ui",
   "type": "module",
-  "version": "1.0.0-beta.12.2",
+  "version": "1.0.0-beta.12.3",
   "description": "A Unocss Preset to work seamlessly with Reka UI",
   "author": "onmax",
   "license": "MIT",
