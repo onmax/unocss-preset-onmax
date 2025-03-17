@@ -51,10 +51,10 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:"
+    "@unocss/core": "catalog:",
+    "defu": "catalog:"
   },
   "devDependencies": {
-    "defu": "catalog:",
     "unbuild": "catalog:",
     "unocss": "catalog:",
     "vitest": "catalog:"

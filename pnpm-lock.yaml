@@ -129,9 +129,6 @@ importers:
       bumpp:
         specifier: 'catalog:'
         version: 10.1.0
-      defu:
-        specifier: 'catalog:'
-        version: 6.1.4
       eslint:
         specifier: 'catalog:'
         version: 9.22.0(jiti@2.4.2)
@@ -253,10 +250,10 @@ importers:
       '@unocss/core':
         specifier: 'catalog:'
         version: 66.1.0-beta.5
-    devDependencies:
       defu:
         specifier: 'catalog:'
         version: 6.1.4
+    devDependencies:
       unbuild:
         specifier: 'catalog:'
         version: 3.5.0(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))

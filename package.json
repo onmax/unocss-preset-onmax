@@ -25,7 +25,6 @@
     "@antfu/utils": "catalog:",
     "@types/node": "catalog:",
     "bumpp": "catalog:",
-    "defu": "catalog:",
     "eslint": "catalog:",
     "lint-staged": "catalog:",
     "pnpm": "catalog:",
