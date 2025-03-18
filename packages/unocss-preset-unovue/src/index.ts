@@ -28,7 +28,7 @@ export const defaultUnoVueOptions: PresetUnoVueOptions = {
   reka: defaultRekaUIOptions,
   shadcn: {
     themeOptions: {},
-    controlOptions: {},
+    controlOptions: { componentLibrary: 'reka' },
   },
 }
 
