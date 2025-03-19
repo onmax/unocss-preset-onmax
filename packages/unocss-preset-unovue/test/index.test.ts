@@ -9,5 +9,5 @@ it('presetUnoVue basic', async () => {
     presets: [presetUnoVue()],
   })
   const presets = uno.config.presets
-  expect(presets).toHaveLength(4)
+  expect(presets).toHaveLength(3)
 })

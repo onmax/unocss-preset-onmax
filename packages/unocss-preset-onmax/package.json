@@ -34,6 +34,7 @@
     "defu": "catalog:",
     "pathe": "^2.0.3",
     "unocss": "catalog:",
+    "unocss-preset-animations": "catalog:",
     "unocss-preset-css-var": "workspace:*",
     "unocss-preset-easing-gradient": "workspace:*",
     "unocss-preset-fluid-sizing": "workspace:*",

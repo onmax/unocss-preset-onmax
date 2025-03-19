@@ -1,4 +1,5 @@
 import type { Preset } from '@unocss/core'
+import type { PresetAnimationsOptions } from 'unocss-preset-animations'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
 import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
@@ -8,6 +9,7 @@ import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
 import { defu } from 'defu'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
+import { presetAnimations } from 'unocss-preset-animations'
 import { defaultCSSVarOptions, presetCSSVar } from 'unocss-preset-css-var'
 import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
@@ -28,17 +30,25 @@ export interface PresetOnmaxOptions {
   // prefix?: string
 
   presets?: {
-    // ---------- Core presets ----------
+    // ---------- 3rd parties presets ----------
 
     /**
+     * https://unocss.dev/presets/wind4
      * @default { attributifyPseudo: true }
      */
     wind4?: PresetWind4Options | false
 
     /**
+     * https://unocss.dev/presets/attributify
      * @default {}
      */
     attributify?: PresetAttributifyOptions | false
+
+    /**
+     * https://unocss-preset-animations.aelita.me/
+     * @default {}
+     */
+    animations?: PresetAnimationsOptions | false
 
     // -------- Custom presets --------
     /**
@@ -60,6 +70,7 @@ export interface PresetOnmaxOptions {
      * @default {}
      */
     unoVue?: PresetUnoVueOptions | false
+
   }
 }
 
@@ -67,6 +78,7 @@ interface DefaultPresetsOptions {
   // Core presets
   wind4: PresetWind4Options
   attributify: PresetAttributifyOptions
+  animations: PresetAnimationsOptions
 
   // Custom presets
   cssVar: PresetCSSVarOptions
@@ -85,6 +97,7 @@ const defaultOptions: DefaultOptions = {
   presets: {
     wind4: { attributifyPseudo: true },
     attributify: {},
+    animations: {},
     cssVar: defu({}, defaultCSSVarOptions),
     fluidSizing: defu({ attributify: true }, defaultFluidSizingOptions),
     easingGradient: defu({}, defaultEasingGradientsOptions),
@@ -98,6 +111,7 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     presets: {
       wind4: wind4Options,
       attributify: attributifyOptions,
+      animations: animationsOptions,
       cssVar: cssVarOptions,
       fluidSizing: fluidSizingOptions,
       easingGradient: easingGradientOptions,
@@ -114,6 +128,9 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
 
   if (attributifyOptions !== false)
     presets.push(presetAttributify(attributifyOptions))
+
+  if (animationsOptions !== false)
+    presets.push(presetAnimations(animationsOptions))
 
   if (cssVarOptions !== false)
     presets.push(presetCSSVar(cssVarOptions))

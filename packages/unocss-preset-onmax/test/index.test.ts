@@ -11,7 +11,7 @@ const uno = await createGenerator({
 describe('basic setup', () => {
   it('presetOnmax', async () => {
     const presets = uno.config.presets
-    expect(presets).toHaveLength(10)
+    expect(presets).toHaveLength(9)
 
     const { css } = await uno.generate('text-4 var:test:cssvar f-text-xl bg-gradient-fn-from-blue', { preflights: false })
 
