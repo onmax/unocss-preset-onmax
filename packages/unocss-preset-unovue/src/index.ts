@@ -38,9 +38,13 @@ export const presetUnoVue = definePreset((_options: PresetUnoVueOptions = {}) =>
   const { reka, shadcn } = defu(_options, defaultUnoVueOptions)
 
   if (reka !== false) {
+    // Shadcn preset will add the animations to the theme
+    const withShadcn = shadcn !== false && shadcn !== undefined
+    const _defaultRekaUIOptions = withShadcn ? { ...defaultRekaUIOptions, animations: false } : defaultRekaUIOptions
+
     const options = typeof reka === 'boolean'
-      ? defaultRekaUIOptions
-      : defu(reka, defaultRekaUIOptions)
+      ? _defaultRekaUIOptions
+      : defu(reka, _defaultRekaUIOptions)
     presets.push(presetRekaUI(options))
   }
 
