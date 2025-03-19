@@ -1,10 +1,9 @@
 import type { Preset, Variant } from '@unocss/core'
 import type { PresetWind4Theme } from 'unocss'
-import type { PresetAnimationsOptions } from 'unocss-preset-animations'
 import type { Palette } from './radix-colors'
 import { definePreset } from '@unocss/core'
 import { defu } from 'defu'
-import { presetAnimations } from 'unocss-preset-animations'
+import { getRekaAnimations } from './animations'
 import { genCSS, generateColors, getColor, radixColors } from './radix-colors'
 import { getVariants } from './variants'
 
@@ -44,11 +43,11 @@ export interface PresetRekaUIOptions {
   variants?: string | boolean
 
   /**
-   * Wether to include the animations preset
+   * Wether to include the animations for collapsible and accordion elements
    *
    * @default true
    */
-  animations?: boolean | PresetAnimationsOptions
+  animations?: boolean
 }
 
 export const defaultRadixColorsOptions: RadixColorsOptions = {
@@ -68,13 +67,14 @@ export const presetRekaUI = definePreset((_options: PresetRekaUIOptions = {}) =>
   const preflights: Preset['preflights'] = []
   const theme: PresetWind4Theme = {}
   const variants: Variant[] = []
-  // const rules: Preset['rules'] = []
+  const rules: Preset['rules'] = []
 
-  const { radixColors: radixColorsOption, variants: variantOptions, animations: presetAnimationsOptions } = defu(_options, defaultRekaUIOptions)
+  const { radixColors: radixColorsOption, variants: variantOptions, animations } = defu(_options, defaultRekaUIOptions)
 
-  if (presetAnimationsOptions) {
-    const option = typeof presetAnimationsOptions === 'boolean' ? {} : presetAnimationsOptions
-    presets.push(presetAnimations(option))
+  if (animations) {
+    const { keyframes, rules: animationRules } = getRekaAnimations()
+    preflights.push({ getCSS: () => keyframes })
+    rules.push(...animationRules)
   }
 
   if (radixColorsOption) {
@@ -108,6 +108,7 @@ export const presetRekaUI = definePreset((_options: PresetRekaUIOptions = {}) =>
     name: 'unocss-preset-reka-ui',
     presets,
     variants,
+    rules,
     theme,
     preflights,
   }

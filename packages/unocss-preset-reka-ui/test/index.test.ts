@@ -14,7 +14,7 @@ it('presetUnoVue basic', async () => {
     presets: [presetRekaUI()],
   })
   const presets = uno.config.presets
-  expect(presets).toHaveLength(2)
+  expect(presets).toHaveLength(1)
 })
 
 describe('radix colors', () => {
@@ -30,4 +30,5 @@ describe('radix colors', () => {
   it('alpha colors', async () => checkCase('./cases/radix-colors/alpha-colors'))
   it('foreground colors', async () => checkCase('./cases/radix-colors/foreground-colors'))
   it('reka variants', async () => checkCase('./cases/reka-variants'))
+  it('reka animations', async () => checkCase('./cases/animations'))
 })

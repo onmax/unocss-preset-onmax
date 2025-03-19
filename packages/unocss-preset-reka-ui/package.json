@@ -34,7 +34,6 @@
     "@unocss/preset-wind4": "catalog:",
     "@unocss/rule-utils": "catalog:",
     "defu": "catalog:",
-    "unocss": "catalog:",
-    "unocss-preset-animations": "catalog:"
+    "unocss": "catalog:"
   }
 }

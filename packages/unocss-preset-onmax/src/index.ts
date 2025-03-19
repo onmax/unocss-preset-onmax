@@ -88,7 +88,7 @@ const defaultOptions: DefaultOptions = {
     cssVar: defu({}, defaultCSSVarOptions),
     fluidSizing: defu({ attributify: true }, defaultFluidSizingOptions),
     easingGradient: defu({}, defaultEasingGradientsOptions),
-    unoVue: defu({}, defaultUnoVueOptions),
+    unoVue: defu({ shadcn: false }, defaultUnoVueOptions),
   },
 }
 
