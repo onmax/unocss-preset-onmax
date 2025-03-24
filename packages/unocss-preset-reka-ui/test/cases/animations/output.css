@@ -1,3 +1,6 @@
+/* layer: shortcuts */
+[data-state="open"].animate-accordion, [data-state="open"] .animate-accordion{animation:reka-down 0.2s ease-out;}
+[data-state="closed"].animate-accordion, [data-state="closed"] .animate-accordion{animation:reka-up 0.2s ease-out;}
 /* layer: default */
 .animate-collapsible-down,
 [data-state="open"].reka-open\:animate-collapsible-down, [data-state="open"] .reka-open\:animate-collapsible-down{animation:reka-collapsible-down 0.2s ease-out;}

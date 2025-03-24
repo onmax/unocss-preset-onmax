@@ -1,7 +1,7 @@
-import type { Rule } from 'unocss'
+import type { Rule, Shortcut } from 'unocss'
 
 // Extracted from https://github.com/unocss-community/unocss-preset-shadcn/blob/main/src/index.ts
-export function getRekaAnimations(): { keyframes: string, rules: Rule[] } {
+export function getRekaAnimations(): { keyframes: string, rules: Rule[], shortcuts: Shortcut[] } {
   const keyframes = `
 @keyframes reka-down { from{ height: 0 } to { height: var(--reka-accordion-content-height)} }
 @keyframes reka-up { from{ height: var(--reka-accordion-content-height)} to { height: 0 } }
@@ -15,8 +15,14 @@ export function getRekaAnimations(): { keyframes: string, rules: Rule[] } {
     ['animate-collapsible-up', { animation: 'reka-collapsible-up 0.2s ease-out' }],
   ]
 
+  const shortcuts: Shortcut[] = [
+    ['animate-collapsible', 'reka-open:animate-collapsible-down reka-closed:animate-collapsible-up'],
+    ['animate-accordion', 'reka-open:animate-accordion-down reka-closed:animate-accordion-up'],
+  ]
+
   return {
     keyframes,
     rules,
+    shortcuts,
   }
 }

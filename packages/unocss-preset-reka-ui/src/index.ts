@@ -68,13 +68,15 @@ export const presetRekaUI = definePreset((_options: PresetRekaUIOptions = {}) =>
   const theme: PresetWind4Theme = {}
   const variants: Variant[] = []
   const rules: Preset['rules'] = []
+  const shortcuts: Preset['shortcuts'] = []
 
   const { radixColors: radixColorsOption, variants: variantOptions, animations } = defu(_options, defaultRekaUIOptions)
 
   if (animations) {
-    const { keyframes, rules: animationRules } = getRekaAnimations()
+    const { keyframes, rules: animationRules, shortcuts: animationShortcuts } = getRekaAnimations()
     preflights.push({ getCSS: () => keyframes })
     rules.push(...animationRules)
+    shortcuts.push(...animationShortcuts)
   }
 
   if (radixColorsOption) {
@@ -110,6 +112,7 @@ export const presetRekaUI = definePreset((_options: PresetRekaUIOptions = {}) =>
     variants,
     rules,
     theme,
+    shortcuts,
     preflights,
   }
 })

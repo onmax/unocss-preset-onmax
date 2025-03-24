@@ -1,3 +1,4 @@
 animate-collapsible-down
 reka-open:animate-collapsible-down
 reka-open:animate-collapsible-up
+animate-accordion
