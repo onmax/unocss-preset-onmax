@@ -1,4 +1,4 @@
-import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme'
+import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types'
 
 // @unocss-include
 
@@ -25,6 +25,9 @@ export const themeConfig: NimiqVitepressThemeConfig = {
             { text: 'Easing Gradient', link: '/presets/unocss-preset-easing-gradient/', icon: 'i-tabler:gradienter' },
             { text: 'Fluid Sizing', link: '/presets/unocss-preset-fluid-sizing/', icon: 'i-tabler:spaces' },
             { text: 'Scale PX', link: '/presets/unocss-preset-scale-px/', icon: 'i-tabler:scale' },
+            { text: 'Reka UI', link: '/presets/unocss-preset-reka-ui/', icon: 'i-custom:reka-ui-mono' },
+            { text: 'UnoVue', link: '/presets/unocss-preset-unovue/', icon: 'i-custom:unovue-mono' },
+
           ],
         },
       ],

@@ -1,4 +1,6 @@
+import { join } from 'node:path'
 import { createExternalPackageIconLoader } from '@iconify/utils/lib/loader/external-pkg'
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import { presetNimiq } from 'nimiq-css/unocss'
 import {
   defineConfig,
@@ -24,7 +26,7 @@ export default defineConfig({
       collections: {
         ...createExternalPackageIconLoader('@iconify-json/tabler'),
         ...createExternalPackageIconLoader('@iconify-json/logos'),
-        ...createExternalPackageIconLoader('@iconify-json/nimiq'),
+        custom: FileSystemIconLoader(join(__dirname, '../public/assets/icons/')),
       },
     }),
   ],
