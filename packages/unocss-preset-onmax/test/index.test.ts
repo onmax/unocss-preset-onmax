@@ -38,4 +38,5 @@ describe('cases', () => {
   it('basic', async () => checkCase('./cases/basic', { preflights: true }))
   it('basic variants', async () => checkCase('./cases/variants'))
   it('basic attributify', async () => checkCase('./cases/variants-attributify'))
+  it('rules-order', async () => checkCase('./cases/rules-order'))
 })

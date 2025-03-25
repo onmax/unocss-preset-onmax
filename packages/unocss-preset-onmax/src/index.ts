@@ -158,6 +158,9 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
           'grid-area': '1 / 1',
         }
       },
+      {
+        layer: 'onmax',
+      },
     ],
   ]
 
@@ -170,5 +173,9 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     transformers: [
       transformerDirectives(),
     ],
+    layers: {
+      onmax: -1,
+    },
+    outputToCssLayers: true,
   } satisfies Preset
 })
