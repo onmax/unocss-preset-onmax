@@ -31,6 +31,9 @@
   },
   "dependencies": {
     "@unocss/core": "catalog:",
+    "@unocss/preset-attributify": "catalog:",
+    "@unocss/preset-mini": "catalog:",
+    "@unocss/rule-utils": "catalog:",
     "defu": "catalog:",
     "pathe": "^2.0.3",
     "unocss": "catalog:",
@@ -39,8 +42,5 @@
     "unocss-preset-easing-gradient": "workspace:*",
     "unocss-preset-fluid-sizing": "workspace:*",
     "unocss-preset-unovue": "workspace:*"
-  },
-  "devDependencies": {
-    "@unocss/preset-attributify": "66.1.0-beta.5"
   }
 }
