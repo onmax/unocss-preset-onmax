@@ -152,10 +152,14 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
           'width': '100%',
           'display': 'grid',
           'place-content': 'center',
+          'grid-template-columns': '1fr',
+          'grid-template-rows': '1fr',
         }
         yield {
           [symbols.selector]: selector => `${selector} > *`,
           'grid-area': '1 / 1',
+          'align-self': 'center',
+          'justify-self': 'center',
         }
       },
       {

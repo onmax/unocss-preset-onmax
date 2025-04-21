@@ -1,8 +1,8 @@
 /* layer: onmax */
 .stack,
-[stack=""]{width:100%;display:grid;place-content:center;}
+[stack=""]{width:100%;display:grid;place-content:center;grid-template-columns:1fr;grid-template-rows:1fr;}
 .stack > *,
-[stack=""] > *{grid-area:1 / 1;}
+[stack=""] > *{grid-area:1 / 1;align-self:center;justify-self:center;}
 /* layer: default */
 .w-max,
 [w-max=""]{width:max-content;}
