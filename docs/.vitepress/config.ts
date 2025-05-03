@@ -1,11 +1,10 @@
-import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
-import { defineConfigWithTheme } from 'vitepress'
+import { defineNimiqVitepressConfig } from 'nimiq-vitepress-theme'
 import { groupIconMdPlugin } from 'vitepress-plugin-group-icons'
 import { themeConfig } from './theme.config'
 import vite from './vite.config'
 
-export default defineConfigWithTheme<NimiqVitepressThemeConfig>({
+export default defineNimiqVitepressConfig({
   base: '/unocss-preset-onmax/',
   title: 'unocss-preset-onmax',
   description: 'A set of presets and utilities that I use',

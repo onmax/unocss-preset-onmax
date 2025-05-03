@@ -9,7 +9,7 @@
       "unocss-preset-scale-px": ["./packages/unocss-preset-scale-px/src/index.ts"],
       "unocss-preset-easing-gradient": ["./packages/unocss-preset-easing-gradient/src/index.ts"],
       "unocss-preset-fluid-sizing": ["./packages/unocss-preset-fluid-sizing/src/index.ts"],
-      "unocss-onmax": ["./packages/unocss-preset-onmax/src/index.ts"]
+      "unocss-preset-onmax": ["./packages/unocss-preset-onmax/src/index.ts"]
     },
     "resolveJsonModule": true,
     "strict": true,

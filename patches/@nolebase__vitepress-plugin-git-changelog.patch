@@ -1,0 +1,21 @@
+diff --git a/package.json b/package.json
+index 299dbd60f5b6d73660323f2419fd2fbb43db8300..ed11979cd22edef31be3a7ff59d92d1874387e91 100644
+--- a/package.json
++++ b/package.json
+@@ -54,6 +54,16 @@
+       "types": "./dist/vite/index.d.ts",
+       "import": "./dist/vite/index.mjs",
+       "require": "./dist/vite/index.cjs"
++    },
++    "./client/composables/changelog": {
++      "types": "./dist/client/composables/changelog.d.ts",
++      "import": "./dist/client/composables/changelog.mjs",
++      "require": "./dist/client/composables/changelog.cjs"
++    },
++    "./client/utils": {
++      "types": "./dist/client/utils.d.ts",
++      "import": "./dist/client/utils.mjs",
++      "require": "./dist/client/utils.cjs"
+     }
+   },
+   "main": "./dist/vite/index.cjs",

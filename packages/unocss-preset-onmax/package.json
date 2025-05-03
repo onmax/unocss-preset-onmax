@@ -35,7 +35,7 @@
     "@unocss/preset-mini": "catalog:",
     "@unocss/rule-utils": "catalog:",
     "defu": "catalog:",
-    "pathe": "^2.0.3",
+    "pathe": "catalog:",
     "unocss": "catalog:",
     "unocss-preset-animations": "catalog:",
     "unocss-preset-css-var": "workspace:*",

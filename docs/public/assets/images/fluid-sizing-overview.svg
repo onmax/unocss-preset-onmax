@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="400" fill="#f3f4f6" rx="10" ry="10"/>
+  
+  <!-- Graph visualization -->
+  <g>
+    <!-- Axes -->
+    <line x1="100" y1="300" x2="700" y2="300" stroke="#334155" stroke-width="2"/>
+    <line x1="100" y1="50" x2="100" y2="300" stroke="#334155" stroke-width="2"/>
+    
+    <!-- Axis labels -->
+    <text x="400" y="340" text-anchor="middle" fill="#334155" font-family="system-ui, sans-serif" font-size="16">Viewport Width (px)</text>
+    <text x="50" y="175" text-anchor="middle" fill="#334155" font-family="system-ui, sans-serif" font-size="16" transform="rotate(-90 50 175)">Element Size (px)</text>
+    
+    <!-- Min/Max viewport indicators -->
+    <line x1="150" y1="290" x2="150" y2="310" stroke="#334155" stroke-width="2"/>
+    <line x1="650" y1="290" x2="650" y2="310" stroke="#334155" stroke-width="2"/>
+    <text x="150" y="330" text-anchor="middle" fill="#334155" font-family="system-ui, sans-serif" font-size="14">320px</text>
+    <text x="650" y="330" text-anchor="middle" fill="#334155" font-size="14" font-family="system-ui, sans-serif">1920px</text>
+    <text x="150" y="280" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui, sans-serif">min-container</text>
+    <text x="650" y="280" text-anchor="middle" fill="#64748b" font-size="12" font-family="system-ui, sans-serif">max-container</text>
+    
+    <!-- Min/Max size indicators -->
+    <line x1="90" y1="250" x2="110" y2="250" stroke="#334155" stroke-width="2"/>
+    <line x1="90" y1="100" x2="110" y2="100" stroke="#334155" stroke-width="2"/>
+    <text x="85" y="250" text-anchor="end" fill="#334155" font-family="system-ui, sans-serif" font-size="14">16px</text>
+    <text x="85" y="100" text-anchor="end" fill="#334155" font-family="system-ui, sans-serif" font-size="14">48px</text>
+    <text x="70" y="250" text-anchor="end" fill="#64748b" font-size="12" font-family="system-ui, sans-serif">min</text>
+    <text x="70" y="100" text-anchor="end" fill="#64748b" font-size="12" font-family="system-ui, sans-serif">max</text>
+    
+    <!-- Fluid scaling line -->
+    <line x1="150" y1="250" x2="650" y2="100" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Fixed size vs Fluid size visualization -->
+    <line x1="150" y1="250" x2="650" y2="250" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="400" y="260" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="14">Fixed Size Approach</text>
+    
+    <path d="M150,250 C250,230 550,120 650,100" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+    <text x="400" y="140" text-anchor="middle" fill="#0d9488" font-family="system-ui, sans-serif" font-size="14">Media Query Approach</text>
+    
+    <!-- Fluid sizing area -->
+    <path d="M150,250 L650,100 L650,300 L150,300 Z" fill="url(#fluid-gradient)" opacity="0.2"/>
+    <text x="400" y="200" text-anchor="middle" fill="#0369a1" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">Fluid Sizing</text>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" fill="#0f172a" font-family="system-ui, sans-serif" font-size="20" font-weight="bold">UnoCSS Fluid Sizing</text>
+    
+    <!-- Code sample -->
+    <rect x="500" y="50" width="230" height="35" fill="#1e293b" rx="5" ry="5"/>
+    <text x="515" y="73" fill="#e2e8f0" font-family="monospace" font-size="14">f-p-min-16 f-p-max-48</text>
+  </g>
+  
+  <!-- Legends -->
+  <g transform="translate(130, 370)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#0ea5e9" stroke-width="4"/>
+    <text x="25" y="5" fill="#334155" font-family="system-ui, sans-serif" font-size="14">Fluid Scaling</text>
+    
+    <line x1="150" y1="0" x2="170" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="175" y="5" fill="#334155" font-family="system-ui, sans-serif" font-size="14">Fixed Size</text>
+    
+    <line x1="300" y1="0" x2="320" y2="0" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="325" y="5" fill="#334155" font-family="system-ui, sans-serif" font-size="14">Media Queries</text>
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="fluid-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+</svg>

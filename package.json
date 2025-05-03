@@ -2,7 +2,7 @@
   "type": "module",
   "version": "1.0.0-beta.16",
   "private": true,
-  "packageManager": "pnpm@10.6.3",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "build": "nr -r build",
     "dev": "nr -r dev",
@@ -37,16 +37,6 @@
     "vite": "catalog:",
     "vitest": "catalog:",
     "vue-tsc": "catalog:"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "simple-git-hooks",
-      "vue-demi"
-    ],
-    "ignoredBuiltDependencies": [
-      "vue-demi"
-    ]
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

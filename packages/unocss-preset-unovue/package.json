@@ -29,7 +29,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/colors": "catalog:",
     "@unocss/core": "catalog:",
     "@unocss/preset-wind4": "catalog:",
     "@unocss/rule-utils": "catalog:",
