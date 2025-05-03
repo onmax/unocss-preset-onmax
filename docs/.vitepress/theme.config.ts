@@ -58,6 +58,90 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         },
       ],
     },
+    {
+      text: 'UnoCSS CSS Variables',
+      subpath: 'unocss-preset-css-var',
+      defaultPageLink: '/unocss-preset-css-var/',
+      description: 'Create and use CSS variables with UnoCSS',
+      sidebar: [
+        {
+          items: [
+            { text: 'Introduction', link: '/unocss-preset-css-var/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-css-var/installation/', icon: 'i-tabler:download' },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'UnoCSS Easing Gradient',
+      subpath: 'unocss-preset-easing-gradient',
+      defaultPageLink: '/unocss-preset-easing-gradient/',
+      description: 'Create smoother, more natural gradient transitions',
+      sidebar: [
+        {
+          items: [
+            { text: 'Introduction', link: '/unocss-preset-easing-gradient/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-easing-gradient/installation/', icon: 'i-tabler:download' },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'UnoCSS Scale PX',
+      subpath: 'unocss-preset-scale-px',
+      defaultPageLink: '/unocss-preset-scale-px/',
+      description: 'Scale rem values for precise sizing',
+      sidebar: [
+        {
+          items: [
+            { text: 'Introduction', link: '/unocss-preset-scale-px/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-scale-px/installation/', icon: 'i-tabler:download' },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'UnoCSS Reka UI',
+      subpath: 'unocss-preset-reka-ui',
+      defaultPageLink: '/unocss-preset-reka-ui/',
+      description: 'UI components and styling utilities',
+      sidebar: [
+        {
+          items: [
+            { text: 'Introduction', link: '/unocss-preset-reka-ui/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-reka-ui/installation/', icon: 'i-tabler:download' },
+          ],
+        },
+        {
+          label: 'Features',
+          items: [
+            { text: 'Radix Colors', link: '/unocss-preset-reka-ui/features/radix-colors/', icon: 'i-tabler:palette' },
+            { text: 'Variants System', link: '/unocss-preset-reka-ui/features/variants/', icon: 'i-tabler:selector' },
+            { text: 'Animations', link: '/unocss-preset-reka-ui/features/animations/', icon: 'i-tabler:animation' },
+          ],
+        },
+        {
+          label: 'Examples',
+          items: [
+            { text: 'Component Examples', link: '/unocss-preset-reka-ui/examples/', icon: 'i-tabler:components' },
+          ],
+        },
+      ],
+    },
+    {
+      text: 'UnoCSS UnoVue',
+      subpath: 'unocss-preset-unovue',
+      defaultPageLink: '/unocss-preset-unovue/',
+      description: 'Integrated presets for Vue applications',
+      sidebar: [
+        {
+          items: [
+            { text: 'Introduction', link: '/unocss-preset-unovue/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-unovue/installation/', icon: 'i-tabler:download' },
+          ],
+        },
+      ],
+    },
   ],
   links: [
     { icon: 'i-tabler:brand-bluesky', link: 'https://twitter.com/@nimiq' },
