@@ -169,6 +169,8 @@ watch(
 )
 
 const rotation = {'to-tl': -135, 'to-t': -90, 'to-tr': -45, '': 0, 'to-l': 180, 'to-r': 0, 'to-bl': 135, 'to-b': 90, 'to-br': 45 } as const
+// Create a type for the keys of rotation
+type DirectionKey = keyof typeof rotation
 
 // Calculate if direction control should be shown - only show for linear gradients
 const showDirectionControl = computed(() => {
@@ -302,7 +304,7 @@ const directionOptions = [
                 aspect-1
                 :class="{'op-40 pointer-events-none': disabled}"
               >
-                <div v-if="option.value.startsWith('to-')" i-nimiq:arrow-right :style="{ transform: `rotate(${rotation[option.value]!}deg)` }" />
+                <div v-if="option.value.startsWith('to-')" i-nimiq:arrow-right :style="{ transform: `rotate(${rotation[option.value as DirectionKey] ?? 0}deg)` }" />
                 <div v-else-if="option.value === ''" text-25 relative translate-y-7>&dot;</div>
                 <div v-else i-nimiq:focus />
                 
