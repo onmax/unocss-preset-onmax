@@ -2,7 +2,7 @@
 import { createGenerator } from '@unocss/core'
 import { presetMini } from '@unocss/preset-mini'
 import { computedAsync, useLocalStorage, useStyleTag } from '@vueuse/core'
-import { computed, watch, watchEffect } from 'vue'
+import { computed, watch } from 'vue'
 import Tooltip from './Tooltip.vue'
 import { presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { easingFunctions } from 'unocss-preset-easing-gradient/easing'
@@ -14,6 +14,7 @@ const defaultToColor = '#f0008b'
 const defaultFromHoverColor = '#7800e1'
 const defaultToHoverColor = '#00ccff'
 const defaultSteps = 4
+const defaultDirection = 'to-b'
 // const defaultLength = '100%'
 
 const fromColor = useLocalStorage('from', defaultFromColor)
@@ -21,6 +22,7 @@ const toColor = useLocalStorage('to', defaultToColor)
 const fromHoverColor = useLocalStorage('from-hover', defaultFromHoverColor)
 const toHoverColor = useLocalStorage('to-hover', defaultToHoverColor)
 const steps = useLocalStorage('steps', defaultSteps)
+const direction = useLocalStorage('direction', defaultDirection)
 
 // TODO add hover to the logic
 const allowHover = useLocalStorage('allow-hover', true)
@@ -36,13 +38,17 @@ function reset() {
   toHoverColor.value = defaultToHoverColor
   allowHover.value = true
   steps.value = defaultSteps
+  direction.value = defaultDirection
 }
 
 const easeFn = useLocalStorage('easing-function', 'ease')
 
 const unocssCode = computed(() => {
   // First add the direction which provides the background-image property
-  let classes = [`bg-gradient-fn-to-b`];
+  let classes = [];
+
+  // Add the direction
+  classes.push(`bg-gradient-fn-${toKebabCase(direction.value)}`);
   
   // Add the from color
   classes.push(`bg-gradient-fn-from-[${fromColor.value}]`);
@@ -51,7 +57,6 @@ const unocssCode = computed(() => {
   classes.push(`bg-gradient-fn-to-[${toColor.value}]`);
   
   // Add the easing function - add a timestamp to force re-evaluation
-  const timestamp = Date.now()
   classes.push(`bg-gradient-fn-${toKebabCase(easeFn.value)}`);
   
   // Add optional step count if it's not the default
@@ -72,26 +77,39 @@ const unocssCode = computed(() => {
   return classes.join(' ');
 })
 
-// Generate a unique key whenever the easing function changes to force regeneration
-const generatorKey = computed(() => `${easeFn.value}-${Date.now()}`)
+// Generate a unique key whenever any user-modifiable value changes
+const generatorKey = computed(() => 
+  `${easeFn.value}-${direction.value}-${fromColor.value}-${toColor.value}-${fromHoverColor.value}-${toHoverColor.value}-${steps.value}-${allowHover.value}-${Date.now()}`
+)
 
 const cssCode = computedAsync(async () => {
+  // Force dependency on generatorKey to ensure reactivity
+  const key = generatorKey.value
+  
   // Create a fresh generator instance each time to avoid caching issues
   const ctx = await createGenerator({ presets: [presetMini(), presetEasingGradient()] })
   const res = await ctx.generate(unocssCode.value, { preflights: true })
   return res.css
 })
 
-// Force refresh of CSS when easing function changes
-watch(easeFn, () => {
-  requestAnimationFrame(() => {
-    useStyleTag(cssCode.value || '', { id: `gradient-${Date.now()}` })
-  })
-}, { immediate: true })
+// Watch all reactive values that should trigger CSS regeneration
+watch(
+  [easeFn, direction, fromColor, toColor, fromHoverColor, toHoverColor, steps, allowHover],
+  () => {
+    // Force immediate recalculation when any value changes
+    const newClassId = `gradient-${Date.now()}`
+    
+    // Apply styles with a slight delay to ensure proper DOM update
+    setTimeout(() => {
+      if (cssCode.value) {
+        useStyleTag(cssCode.value, { id: newClassId })
+      }
+    }, 50)
+  },
+  { immediate: true }
+)
 
-watchEffect(() => {
-  useStyleTag(cssCode.value || '', { id: 'gradient' })
-})
+const rotation = {'to-tl': -135, 'to-t': -90, 'to-tr': -45, '': 0, 'to-l': 180, 'to-r': 0, 'to-bl': 135, 'to-b': 90, 'to-br': 45 } as const
 </script>
 
 <template>
@@ -174,6 +192,30 @@ watchEffect(() => {
             <span text="neutral-800 f-xs">Steps: {{ steps }}</span>
             <input v-model="steps" type="range" :min="2" :max="16" px-8 py-3 bg-white:10 rounded-2 />
           </label>
+
+          <div flex="~ col gap-2" f-mt-sm>
+            <div flex="~ gap-8 items-center">
+              <span text="neutral-800 f-xs">
+                Direction: <code>{{ direction }}</code>
+              </span>
+              <Tooltip>
+                <p f-text-xs>
+                  You can set the direction of the gradient using the <code text-0.9em>bg-gradient-fn-to-*</code> classes. The default is <code text-0.9em>to-b</code>.
+                </p>
+              </Tooltip>
+            </div>
+
+            <div f-mt-2xs grid="~ cols-3 rows-3" w-max>
+              <label v-for="i in ['to-tl', 'to-t', 'to-tr', 'to-l', '', 'to-r', 'to-bl', 'to-b', 'to-br'] as const" text="10 neutral-500 has-checked:white" bg="hocus:neutral-200 has-checked:blue hocus:has-checked:blue" transition-colors stack size-16 rounded-2 :key="i" w-full f-p-2xs aspect-1>
+                <div v-if="i !== ''" i-nimiq:arrow-right :style="{ transform: `rotate(${rotation[i]!}deg)` }" />
+                <div v-else text-25 relative  translate-y-7>&dot;</div>
+                <input v-model="direction" type="radio" name="direction" :value="i" :id="i" sr-only />
+              </label>
+             
+
+            </div>
+
+          </div>
           </fieldset>
         </div>
       </form>
