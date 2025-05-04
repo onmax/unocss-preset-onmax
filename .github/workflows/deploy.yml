@@ -28,21 +28,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          fetch-depth: 0
-      - uses: pnpm/action-setup@v3
+          run_install: false
+      - uses: actions/setup-node@v4
         with:
-          version: 9
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+          node-version: lts/*
           cache: pnpm
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - run: pnpm i -g @antfu/ni
       - run: nci
       - name: Build with VitePress
