@@ -39,10 +39,19 @@ export default defineConfig({
       customFunctions: {
         myCustomEasing: t => t * t * (3 - 2 * t),
       },
+      // optional: change default number of steps (default is 4)
+      defaultSteps: 6,
     }),
   ],
 })
 ```
+
+### Configuration Options
+
+| Option            | Type                                    | Default | Description                                                       |
+| ----------------- | --------------------------------------- | ------- | ----------------------------------------------------------------- |
+| `customFunctions` | `Record<string, (t: number) => number>` | `{}`    | Custom easing functions to add to the preset                      |
+| `defaultSteps`    | `number`                                | `4`     | Default number of color stops to generate along the gradient path |
 
 ## Basic Usage
 
@@ -56,3 +65,12 @@ export default defineConfig({
 <!-- With different color space -->
 <div class="bg-gradient-fn-cubic fn-from-red-500 fn-to-yellow-500 fn-to-r fn-color-space-oklch"></div>
 ```
+
+## Browser Compatibility
+
+This preset uses modern CSS features that may not be supported in all browsers:
+
+- `color-mix()` function
+- CSS `@property` rule
+
+Make sure to check browser compatibility or provide fallbacks when using in production.

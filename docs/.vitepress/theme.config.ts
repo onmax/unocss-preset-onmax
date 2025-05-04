@@ -2,6 +2,7 @@ import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 
 const playgrounds = {
   fluidSizing: 'https://unocss.dev/play/#html=DwEwlgbgBAxg9gOwC4EMwIKYCcoDMC0ADgB74A2A5nkQJ74DOAtgHwBQUUwAFgIx4C8AIiQZiSfAGYATAHoALAA5BeROIBGcMiGYBVBHADCAZSNQAYmQCuYEFCNgAXuioAFMihoUscSwhDAZXjYOYEJ2DmpGcWJ6cI4CQnwYuKg1CnwYGhQEfABWAAYU%2Bi4UEDgAdyEmWCycnnz8wRSfJDJ0DCEpKAA-KDhcXHoMcXwuzOz8OQamiOpvXxAMEHIKFJExIXGchQbIkBmoYIjAQrIoACUMekcMKBofHDVvcqGccvQy8qgkOCghm9wrDZfo5nFB0FAUDAkGBEABCcIBQhsBHgaAEKIrI4hLhdXBCdbiKTEMjKXCqfAaLTMAAqXAwjBuOmhbWhlygAAojPTstCYFAAHIoBn0ACUARxyNmoEg1ESlEi0XofUsrXam1q%2BAAbLs%2BN1Sfh5n4lpiUiF4ItUuktqNdglSDEoIQ6BI5j4jctKMwEisAuaMFiIqEFaMYgHZrSwEqNMQoCUlcA-V6iD6ZImoOUuGAYFwoBRIGyAdZbIRSuAEFRcN5GFBpCQvnBTRFFCQAHSNxEBgKoyWB1HB4mRNRJJXexi2FptTDqiba-JQXX6w2LD0UMOcP2WjIaqS2oj2pVOySuhbGz3o6JkQfD2X4Me%2BuCLHtSwjBon0NccAxwRhqdq2JB0gyUAqmALJgJcABc64Pv655JGQ96PhyjAoFgeY5N8hAigANI2ZowUmP7Doh-rIah6EUnASDfIwOHQY%2Bo7%2BKmBEciWIBlhQIrtjISIpF2kBPpwfYTmqgjWrO849IubrLis1AEiGl5wWON5MGuCYwZu1o7nOdrXoeLoEEup6rgQClEkpyZMCRgkhLxsyzBYRZfDQhBwF4KCEFwNDpmAAH0bB%2BDmcSNkQn4jqlqCbwAXhAVJok1nMY%2B3H2YGMjdgi6UCaw-EQGwQA&config=JYWwDg9gTgLgBAbwFBzgEwKYDNgDsMDCEuOA5gDQpxhQYDOGMAgjDFMAEYCuMwWAnpVQ16jAJIBjYnSHVaDGAHU8aAMyUAvnCxQIIOAHIuuCBLp0DSUJFiI5omADEANl2BoAysABeeUnC0dPUNjU3MAWhEFcKxXd3C6Hz9LJAwADxt4TCwAQy5nLOw8QmIyAApkYXlGOgAuOABtKMZlXDUygEpyewUWNk4ePn5O7uanOM8k3FJOgF1NDqQgA&css=PQKgBA6gTglgLgUzAYwK4Gc4HsC2YDCAyoWABYJQIA0YAhgHYAmYcUD6AZllDhWOqgAOg7nAB0YAGLcwCAB60cggDYIAXGBDAAUKDBi0mXGADe2sGC704AWgDuCGAHNScDQFYADJ4Dc5sAACtMLKAJ5gggCMLPK2ABR2pPBIcsoAlH4WAEa0yADWTlBYqEw2yFjK3Bpw5LxxAOTllVDoYpSMYgAs3vUZ2gC%2BmsBAA&options=N4IgLgTghgdgzgMwPYQLYAkyoDYgFwJTZwCmAvkA&version=66.0.0',
+  easingGradient: 'https://unocss.dev/play/#html=DwCwjAfAUCcgdgQxASwEYCcD2AXAtgIwBMARgKYBOAlgHxRgAuAnqWutQCbkB28L5YtQDWM7AHN4AXngQQDBkzLwBEOWmEiAQQA0QDIn3rCunft16AA2mM7IAD0zA84MCGsJgAXntBwAOlAHFkQAdwBfAEpwXEDnEC9ff0I3WHRWOMT4BHZKZA8AVxt4OiUVNXRgmgBGODwRcEDdIJCwyJiKQODuEKiYmiZGNMyc-KKS8orqiNi6FKSo1LRFgGYAFiQwFvae3v7BodGJ1cW1zd3D4-PL69vbnJO7h+2HzYHm0fbo4doRhNbZ97l9fv8QWDYYYACJQAB6AEEkTAAe8Hj1HvEAF5gYHw95wQgAJQAKigRmAhGA5gAVgAHCgwXDATBgJABgAMAgtgAASCwuNQAMiMBBQQPRjEoWGh8Lg-B8QA',
 }
 // @unocss-include
 
@@ -82,8 +83,20 @@ export const themeConfig: NimiqVitepressThemeConfig = {
           items: [
             { text: 'Introduction', link: '/unocss-preset-easing-gradient/', icon: 'i-tabler:home' },
             { text: 'Installation', link: '/unocss-preset-easing-gradient/installation/', icon: 'i-tabler:download' },
-            { text: 'Playground', link: '/unocss-preset-easing-gradient/playground/', icon: 'i-tabler:ball-basketball' },
-            { text: 'Technical implementation', link: '/unocss-preset-easing-gradient/technical-implementation', icon: 'i-tabler:code' },
+            { text: 'Usage Guide', link: '/unocss-preset-easing-gradient/usage/', icon: 'i-tabler:book' },
+          ],
+        },
+        {
+          label: 'Playground',
+          items: [
+            { text: 'Generator', link: '/unocss-preset-easing-gradient/generator/', icon: 'i-tabler:adjustments' },
+            { text: 'Interactive Playground', link: '/unocss-preset-easing-gradient/playground/', icon: 'i-tabler:ball-basketball' },
+          ],
+        },
+        {
+          label: 'Technical',
+          items: [
+            { text: 'Implementation Details', link: '/unocss-preset-easing-gradient/technical-implementation/', icon: 'i-tabler:code' },
           ],
         },
       ],
