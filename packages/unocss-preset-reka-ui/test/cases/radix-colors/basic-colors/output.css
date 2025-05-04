@@ -1,35 +1,11 @@
+/* layer: cssvar-property */
+@property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-border-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 /* layer: default */
-@property --un-text-opacity {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 100%;
-}
-.text-green-300 {
-  color: color-mix(in oklch, var(--colors-green-300) var(--un-text-opacity), transparent);
-}
-.text-green10 {
-  color: color-mix(in oklch, var(--colors-green-10) var(--un-text-opacity), transparent);
-}
-.hover\:text-green9:hover {
-  color: color-mix(in oklch, var(--colors-green-9) var(--un-text-opacity), transparent);
-}
-@property --un-border-opacity {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 100%;
-}
-.border-gray-100 {
-  border-color: color-mix(in oklch, var(--colors-gray-100) var(--un-border-opacity), transparent);
-}
-.bg-gray-100\/10 {
-  --un-bg-opacity: 10%;
-  background-color: color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);
-}
-@property --un-bg-opacity {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 100%;
-}
-.bg-green-700 {
-  background-color: color-mix(in oklch, var(--colors-green-700) var(--un-bg-opacity), transparent);
-}
+.text-green-300{color:color-mix(in oklch, var(--colors-green-300) var(--un-text-opacity), transparent);}
+.text-green10{color:color-mix(in oklch, var(--colors-green-10) var(--un-text-opacity), transparent);}
+.hover\:text-green9:hover{color:color-mix(in oklch, var(--colors-green-9) var(--un-text-opacity), transparent);}
+.border-gray-100{border-color:color-mix(in oklch, var(--colors-gray-100) var(--un-border-opacity), transparent);}
+.bg-gray-100\/10{--un-bg-opacity:10%;background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
+.bg-green-700{background-color:color-mix(in oklch, var(--colors-green-700) var(--un-bg-opacity), transparent);}

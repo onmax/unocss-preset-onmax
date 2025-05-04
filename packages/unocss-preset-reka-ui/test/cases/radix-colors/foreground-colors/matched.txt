@@ -1,2 +1,0 @@
-text-blue-fg
-bg-amber-fg

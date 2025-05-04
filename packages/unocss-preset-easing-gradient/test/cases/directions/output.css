@@ -1,46 +1,9 @@
 /* layer: default */
-.bg-gradient-fn-from-blue-500 {
-  --un-gradient-fn-from: #3b82f6;
-}
-.bg-gradient-fn-to-red-500 {
-  --un-gradient-fn-to: #ef4444;
-}
-.bg-gradient-fn-color-space-srgb {
-  --un-gradient-fn-color-space: in srgb;
-}
-.bg-gradient-fn-to-b {
-  --un-gradient-fn-shape: to bottom var(--un-gradient-fn-color-space, in oklch);
-  --un-gradient-fn-gradient: var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);
-  background-image: linear-gradient(var(--un-gradient-fn-gradient));
-}
-.bg-gradient-fn-to-r {
-  --un-gradient-fn-shape: to right var(--un-gradient-fn-color-space, in oklch);
-  --un-gradient-fn-gradient: var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);
-  background-image: linear-gradient(var(--un-gradient-fn-gradient));
-}
-.bg-gradient-fn-to-t {
-  --un-gradient-fn-shape: to top var(--un-gradient-fn-color-space, in oklch);
-  --un-gradient-fn-gradient: var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);
-  background-image: linear-gradient(var(--un-gradient-fn-gradient));
-}
-.bg-gradient-fn-shape-\[45deg\] {
-  --un-gradient-fn-shape: 45deg var(--un-gradient-fn-color-space, in oklch);
-  --un-gradient-fn-gradient: var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);
-}
-.bg-gradient-fn-ease {
-  --un-gradient-fn-stops:
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%)
-      100%;
-  --un-gradient-fn-gradient:
-    var(--un-gradient-fn-shape),
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%)
-      100%;
-}
+.bg-gradient-fn-from-blue-500{--un-gradient-fn-from:#3b82f6;}
+.bg-gradient-fn-to-red-500{--un-gradient-fn-to:#ef4444;}
+.bg-gradient-fn-color-space-srgb{--un-gradient-fn-color-space:in srgb;}
+.bg-gradient-fn-to-b{--un-gradient-fn-shape:to bottom var(--un-gradient-fn-color-space, in oklch);--un-gradient-fn-gradient:var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);background-image:linear-gradient(var(--un-gradient-fn-gradient));}
+.bg-gradient-fn-to-r{--un-gradient-fn-shape:to right var(--un-gradient-fn-color-space, in oklch);--un-gradient-fn-gradient:var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);background-image:linear-gradient(var(--un-gradient-fn-gradient));}
+.bg-gradient-fn-to-t{--un-gradient-fn-shape:to top var(--un-gradient-fn-color-space, in oklch);--un-gradient-fn-gradient:var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);background-image:linear-gradient(var(--un-gradient-fn-gradient));}
+.bg-gradient-fn-shape-\[45deg\]{--un-gradient-fn-shape:45deg var(--un-gradient-fn-color-space, in oklch);--un-gradient-fn-gradient:var(--un-gradient-fn-shape), var(--un-gradient-fn-stops);}
+.bg-gradient-fn-ease{--un-gradient-fn-stops:color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%) 100.00%;--un-gradient-fn-gradient:var(--un-gradient-fn-shape), color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75.00%, color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%) 100.00%;}

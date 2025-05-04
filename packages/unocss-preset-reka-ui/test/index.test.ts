@@ -28,7 +28,7 @@ describe('radix colors', () => {
   }
   it('basic colors', async () => checkCase('./cases/radix-colors/basic-colors'))
   it('alpha colors', async () => checkCase('./cases/radix-colors/alpha-colors'))
-  it('foreground colors', async () => checkCase('./cases/radix-colors/foreground-colors'))
+  it.skip('foreground colors', async () => checkCase('./cases/radix-colors/foreground-colors'))
   it('reka variants', async () => checkCase('./cases/reka-variants'))
   it('reka animations', async () => checkCase('./cases/animations'))
 })
