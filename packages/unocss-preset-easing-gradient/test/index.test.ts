@@ -51,4 +51,51 @@ describe('cases', () => {
       await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/attributify/output.css'))
     })
   })
+
+  describe('gradient shapes', () => {
+    it('should handle different gradient shapes', async () => {
+      const input = readFileSync(resolve(__dirname, './cases/shapes/input.html'), 'utf-8')
+      const { css, matched } = await uno.generate(input, { preflights: false })
+      await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/shapes/matched.txt'))
+      await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/shapes/output.css'))
+    })
+  })
+
+  describe('steps syntax', () => {
+    it('should handle different step values with the new syntax', async () => {
+      // Create a new test with UnoCSS classes using the new steps syntax
+      const classes = [
+        'bg-gradient-fn-ease/8',
+        'bg-gradient-fn-ease-in/6',
+        'bg-gradient-fn-from-[#ff5533]',
+        'bg-gradient-fn-to-[#3355ff]',
+        'bg-gradient-fn-bezier-[0.25,0.1,0.25,1.0]/12',
+      ].join(' ')
+
+      const { css, matched } = await uno.generate(classes, { preflights: false })
+      await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/steps-syntax/matched.txt'))
+      await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/steps-syntax/output.css'))
+    })
+
+    it('should use default steps when not specified', async () => {
+      const uno = await createGenerator({
+        presets: [
+          presetWind3(),
+          presetEasingGradient({ defaultSteps: 5 }),
+          presetAttributify(),
+        ],
+      })
+
+      const classes = [
+        'bg-gradient-fn-ease',
+        'bg-gradient-fn-from-[#ff5533]',
+        'bg-gradient-fn-to-[#3355ff]',
+        'bg-gradient-fn-linear',
+      ].join(' ')
+
+      const { css, matched } = await uno.generate(classes, { preflights: false })
+      await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/default-steps/matched.txt'))
+      await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/default-steps/output.css'))
+    })
+  })
 })

@@ -1,0 +1,5 @@
+bg-gradient-fn-ease/8
+bg-gradient-fn-ease-in/6
+bg-gradient-fn-from-[#ff5533]
+bg-gradient-fn-to-[#3355ff]
+bg-gradient-fn-bezier-[0.25,0.1,0.25,1.0]/12

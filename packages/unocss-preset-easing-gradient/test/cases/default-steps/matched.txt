@@ -1,0 +1,4 @@
+bg-gradient-fn-ease
+bg-gradient-fn-from-[#ff5533]
+bg-gradient-fn-to-[#3355ff]
+bg-gradient-fn-linear

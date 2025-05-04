@@ -1,0 +1,14 @@
+bg-gradient-fn-from-[#ff0000]
+bg-gradient-fn-to-[#0000ff]
+bg-gradient-fn-ease-in
+bg-gradient-fn-ease-out
+bg-gradient-fn-radial
+bg-gradient-fn-ease
+bg-gradient-fn-circle
+bg-gradient-fn-ease-in-out
+bg-gradient-fn-ellipse
+bg-gradient-fn-conic
+bg-gradient-fn-circle-at-center
+bg-gradient-fn-ellipse-at-top-right
+bg-gradient-fn-conic-from-45deg
+bg-gradient-fn-conic-from-top-left

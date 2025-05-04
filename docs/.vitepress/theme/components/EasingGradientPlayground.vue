@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { createGenerator } from '@unocss/core'
 import { presetMini } from '@unocss/preset-mini'
-import { computedAsync, useLocalStorage, useStyleTag } from '@vueuse/core'
+import { computedAsync, useLocalStorage, useStyleTag, createReusableTemplate } from '@vueuse/core'
 import { computed, watch } from 'vue'
 import Tooltip from './Tooltip.vue'
 import { presetEasingGradient } from 'unocss-preset-easing-gradient'
@@ -9,12 +9,39 @@ import { easingFunctions } from 'unocss-preset-easing-gradient/easing'
 
 const easingFunctionsNames = Object.keys(easingFunctions)
 
+// Define available gradient shapes
+const gradientShapes = [
+  { name: 'linear', label: 'Linear' },
+  { name: 'radial', label: 'Radial' },
+  { name: 'circle', label: 'Circle' },
+  { name: 'ellipse', label: 'Ellipse' },
+  { name: 'conic', label: 'Conic' },
+  { name: 'circle-at-center', label: 'Circle at center' },
+  { name: 'ellipse-at-center', label: 'Ellipse at center' },
+  { name: 'conic-from-center', label: 'Conic from center' }
+]
+
+// Define position options for center
+const positionOptions = [
+  { value: 'center', label: 'Center' },
+  { value: 'top', label: 'Top' },
+  { value: 'bottom', label: 'Bottom' },
+  { value: 'left', label: 'Left' },
+  { value: 'right', label: 'Right' },
+  { value: 'top-left', label: 'Top Left' },
+  { value: 'top-right', label: 'Top Right' },
+  { value: 'bottom-left', label: 'Bottom Left' },
+  { value: 'bottom-right', label: 'Bottom Right' }
+]
+
 const defaultFromColor = '#ffd200'
 const defaultToColor = '#f0008b'
 const defaultFromHoverColor = '#7800e1'
 const defaultToHoverColor = '#00ccff'
 const defaultSteps = 4
 const defaultDirection = 'to-b'
+const defaultShape = 'linear'
+const defaultPosition = 'center'
 // const defaultLength = '100%'
 
 const fromColor = useLocalStorage('from', defaultFromColor)
@@ -23,6 +50,8 @@ const fromHoverColor = useLocalStorage('from-hover', defaultFromHoverColor)
 const toHoverColor = useLocalStorage('to-hover', defaultToHoverColor)
 const steps = useLocalStorage('steps', defaultSteps)
 const direction = useLocalStorage('direction', defaultDirection)
+const position = useLocalStorage('position', defaultPosition)
+const gradientShape = useLocalStorage('gradient-shape', defaultShape)
 
 // TODO add hover to the logic
 const allowHover = useLocalStorage('allow-hover', true)
@@ -39,16 +68,46 @@ function reset() {
   allowHover.value = true
   steps.value = defaultSteps
   direction.value = defaultDirection
+  position.value = defaultPosition
+  gradientShape.value = defaultShape
 }
 
 const easeFn = useLocalStorage('easing-function', 'ease')
+
+// Create reusable template for the direction/position selector
+const [DefineSelectorGrid, ReuseSelectorGrid] = createReusableTemplate<{
+  modelValue: string,
+  options: Array<{value: string, label: string}>,
+  disabled?: boolean,
+  updateModelValue: (value: string) => void
+}>()
 
 const unocssCode = computed(() => {
   // First add the direction which provides the background-image property
   let classes = [];
 
-  // Add the direction
-  classes.push(`bg-gradient-fn-${toKebabCase(direction.value)}`);
+  // Add the shape (new)
+  if (gradientShape.value === 'linear') {
+    // For linear gradients, we use the direction
+    classes.push(`bg-gradient-fn-${toKebabCase(direction.value)}`);
+  } else if (gradientShape.value === 'circle' || gradientShape.value === 'ellipse') {
+    // For circle or ellipse, add position if specified
+    if (position.value && position.value !== 'center') {
+      classes.push(`bg-gradient-fn-${gradientShape.value}-at-${position.value}`);
+    } else {
+      classes.push(`bg-gradient-fn-${gradientShape.value}`);
+    }
+  } else if (gradientShape.value === 'conic') {
+    // For conic gradients, add position if specified
+    if (position.value && position.value !== 'center') {
+      classes.push(`bg-gradient-fn-conic-from-${position.value}`);
+    } else {
+      classes.push(`bg-gradient-fn-${gradientShape.value}`);
+    }
+  } else {
+    // For other shapes like radial
+    classes.push(`bg-gradient-fn-${gradientShape.value}`);
+  }
   
   // Add the from color
   classes.push(`bg-gradient-fn-from-[${fromColor.value}]`);
@@ -56,13 +115,13 @@ const unocssCode = computed(() => {
   // Add the to color
   classes.push(`bg-gradient-fn-to-[${toColor.value}]`);
   
-  // Add the easing function - add a timestamp to force re-evaluation
-  classes.push(`bg-gradient-fn-${toKebabCase(easeFn.value)}`);
-  
-  // Add optional step count if it's not the default
+  // Add the easing function with steps if needed
   if (steps.value !== defaultSteps) {
-    // Note: we're not using this yet as the preset doesn't seem to support custom steps count
-    // classes.push(`bg-gradient-fn-steps-${steps.value}`);
+    // Using the new syntax format: bg-gradient-fn-ease/8
+    classes.push(`bg-gradient-fn-${toKebabCase(easeFn.value)}/${steps.value}`);
+  } else {
+    // No steps specified, use default
+    classes.push(`bg-gradient-fn-${toKebabCase(easeFn.value)}`);
   }
   
   // Add hover variants if enabled
@@ -79,7 +138,7 @@ const unocssCode = computed(() => {
 
 // Generate a unique key whenever any user-modifiable value changes
 const generatorKey = computed(() => 
-  `${easeFn.value}-${direction.value}-${fromColor.value}-${toColor.value}-${fromHoverColor.value}-${toHoverColor.value}-${steps.value}-${allowHover.value}-${Date.now()}`
+  `${easeFn.value}-${direction.value}-${position.value}-${fromColor.value}-${toColor.value}-${fromHoverColor.value}-${toHoverColor.value}-${steps.value}-${allowHover.value}-${gradientShape.value}-${Date.now()}`
 )
 
 const cssCode = computedAsync(async () => {
@@ -94,7 +153,7 @@ const cssCode = computedAsync(async () => {
 
 // Watch all reactive values that should trigger CSS regeneration
 watch(
-  [easeFn, direction, fromColor, toColor, fromHoverColor, toHoverColor, steps, allowHover],
+  [easeFn, direction, position, fromColor, toColor, fromHoverColor, toHoverColor, steps, allowHover, gradientShape],
   () => {
     // Force immediate recalculation when any value changes
     const newClassId = `gradient-${Date.now()}`
@@ -110,6 +169,29 @@ watch(
 )
 
 const rotation = {'to-tl': -135, 'to-t': -90, 'to-tr': -45, '': 0, 'to-l': 180, 'to-r': 0, 'to-bl': 135, 'to-b': 90, 'to-br': 45 } as const
+
+// Calculate if direction control should be shown - only show for linear gradients
+const showDirectionControl = computed(() => {
+  return gradientShape.value === 'linear';
+})
+
+// Calculate if position control should be shown - show for circle, ellipse, and conic gradients
+const showPositionControl = computed(() => {
+  return ['circle', 'ellipse', 'conic'].includes(gradientShape.value);
+})
+
+// Directions for the grid
+const directionOptions = [
+  { value: 'to-tl', label: 'Top Left' },
+  { value: 'to-t', label: 'Top' },
+  { value: 'to-tr', label: 'Top Right' },
+  { value: 'to-l', label: 'Left' },
+  { value: '', label: 'Center' },
+  { value: 'to-r', label: 'Right' },
+  { value: 'to-bl', label: 'Bottom Left' },
+  { value: 'to-b', label: 'Bottom' },
+  { value: 'to-br', label: 'Bottom Right' }
+]
 </script>
 
 <template>
@@ -179,7 +261,17 @@ const rotation = {'to-tl': -135, 'to-t': -90, 'to-tr': -45, '': 0, 'to-l': 180, 
               </p>
             </Tooltip>
           </legend>
-          <label flex="~ col gap-2">
+          <!-- Gradient shape selector -->
+          <label flex="~ col gap-2" f-mt-sm>
+            <span text="neutral-800 f-xs">Gradient shape</span>
+            <select v-model="gradientShape" text-neutral-200 rounded-4>
+              <option v-for="shape in gradientShapes" :key="shape.name" :value="shape.name">
+                {{ shape.label }}
+              </option>
+            </select>
+          </label>
+
+          <label flex="~ col gap-2" f-mt-sm>
             <span text="neutral-800 f-xs">Easing function</span>
             <select v-model="easeFn" text-neutral-200 rounded-4 >
               <option v-for="option in easingFunctionsNames" :key="option" :name="option" :value="option">
@@ -193,29 +285,77 @@ const rotation = {'to-tl': -135, 'to-t': -90, 'to-tr': -45, '': 0, 'to-l': 180, 
             <input v-model="steps" type="range" :min="2" :max="16" px-8 py-3 bg-white:10 rounded-2 />
           </label>
 
-          <div flex="~ col gap-2" f-mt-sm>
+          <!-- Define the reusable grid template -->
+          <DefineSelectorGrid v-slot="{ modelValue, options, updateModelValue, disabled }">
+            <div f-mt-2xs grid="~ cols-3 rows-3" w-max>
+              <label 
+                v-for="option in options" 
+                :key="option.value"
+                text="10 neutral-500 has-checked:white" 
+                bg="hocus:neutral-200 has-checked:blue hocus:has-checked:blue" 
+                transition-colors 
+                stack 
+                size-16 
+                rounded-2 
+                w-full 
+                f-p-2xs 
+                aspect-1
+                :class="{'op-40 pointer-events-none': disabled}"
+              >
+                <div v-if="option.value.startsWith('to-')" i-nimiq:arrow-right :style="{ transform: `rotate(${rotation[option.value]!}deg)` }" />
+                <div v-else-if="option.value === ''" text-25 relative translate-y-7>&dot;</div>
+                <div v-else i-nimiq:focus />
+                
+                <input 
+                  type="radio" 
+                  sr-only
+                  :value="option.value" 
+                  :checked="modelValue === option.value" 
+                  @change="updateModelValue(option.value)"
+                  :disabled="disabled"
+                />
+              </label>
+            </div>
+          </DefineSelectorGrid>
+
+          <!-- Direction control - only show for linear gradients -->
+          <div flex="~ col gap-2" f-mt-sm v-if="showDirectionControl">
             <div flex="~ gap-8 items-center">
               <span text="neutral-800 f-xs">
                 Direction: <code>{{ direction }}</code>
               </span>
               <Tooltip>
                 <p f-text-xs>
-                  You can set the direction of the gradient using the <code text-0.9em>bg-gradient-fn-to-*</code> classes. The default is <code text-0.9em>to-b</code>.
+                  Direction controls apply to linear gradients.
                 </p>
               </Tooltip>
             </div>
-
-            <div f-mt-2xs grid="~ cols-3 rows-3" w-max>
-              <label v-for="i in ['to-tl', 'to-t', 'to-tr', 'to-l', '', 'to-r', 'to-bl', 'to-b', 'to-br'] as const" text="10 neutral-500 has-checked:white" bg="hocus:neutral-200 has-checked:blue hocus:has-checked:blue" transition-colors stack size-16 rounded-2 :key="i" w-full f-p-2xs aspect-1>
-                <div v-if="i !== ''" i-nimiq:arrow-right :style="{ transform: `rotate(${rotation[i]!}deg)` }" />
-                <div v-else text-25 relative  translate-y-7>&dot;</div>
-                <input v-model="direction" type="radio" name="direction" :value="i" :id="i" sr-only />
-              </label>
-             
-
-            </div>
-
+            <ReuseSelectorGrid
+              :modelValue="direction"
+              :options="directionOptions"
+              :updateModelValue="(value) => direction = value"
+            />
           </div>
+
+          <!-- Position control - only show for circle, ellipse, conic gradients -->
+          <div flex="~ col gap-2" f-mt-sm v-if="showPositionControl">
+            <div flex="~ gap-8 items-center">
+              <span text="neutral-800 f-xs">
+                Position: <code>{{ position }}</code>
+              </span>
+              <Tooltip>
+                <p f-text-xs>
+                  Position controls the center point of the gradient.
+                </p>
+              </Tooltip>
+            </div>
+            <ReuseSelectorGrid
+              :modelValue="position"
+              :options="positionOptions"
+              :updateModelValue="(value) => position = value"
+            />
+          </div>
+
           </fieldset>
         </div>
       </form>

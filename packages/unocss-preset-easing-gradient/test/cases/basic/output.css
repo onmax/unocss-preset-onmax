@@ -20,103 +20,17 @@
 .bg-gradient-fn-ease {
   --un-gradient-fn-stops:
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%)
-          50%
-      )
-      12.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%)
-          50%
-      )
-      37.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(
-          var(--un-gradient-fn-color-space, in oklch),
-          var(--un-gradient-fn-from),
-          var(--un-gradient-fn-to) 25%
-        ),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%)
-          50%
-      )
-      62.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(
-          var(--un-gradient-fn-color-space, in oklch),
-          var(--un-gradient-fn-from),
-          var(--un-gradient-fn-to) 56%
-        ),
-        color-mix(
-            var(--un-gradient-fn-color-space, in oklch),
-            var(--un-gradient-fn-from),
-            var(--un-gradient-fn-to) 100%
-          )
-          50%
-      )
-      87.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%)
       100%;
   --un-gradient-fn-gradient:
     var(--un-gradient-fn-shape),
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%) 0%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 0%),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%)
-          50%
-      )
-      12.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%) 25%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 6%),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%)
-          50%
-      )
-      37.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 25%) 50%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(
-          var(--un-gradient-fn-color-space, in oklch),
-          var(--un-gradient-fn-from),
-          var(--un-gradient-fn-to) 25%
-        ),
-        color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%)
-          50%
-      )
-      62.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 56%) 75%,
-    color-mix(
-        var(--un-gradient-fn-color-space, in oklch),
-        color-mix(
-          var(--un-gradient-fn-color-space, in oklch),
-          var(--un-gradient-fn-from),
-          var(--un-gradient-fn-to) 56%
-        ),
-        color-mix(
-            var(--un-gradient-fn-color-space, in oklch),
-            var(--un-gradient-fn-from),
-            var(--un-gradient-fn-to) 100%
-          )
-          50%
-      )
-      87.5%,
     color-mix(var(--un-gradient-fn-color-space, in oklch), var(--un-gradient-fn-from), var(--un-gradient-fn-to) 100%)
       100%;
 }
