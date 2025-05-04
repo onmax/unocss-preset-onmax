@@ -46,7 +46,7 @@ jobs:
       - run: pnpm i -g @antfu/ni
       - run: nci
       - name: Build with VitePress
-        run: pnpm run docs:build
+        run: nr docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
