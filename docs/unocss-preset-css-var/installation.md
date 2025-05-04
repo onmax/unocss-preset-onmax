@@ -1,50 +1,77 @@
-# Installation
+# Installing CSS Variables Preset
 
-Once you have UnoCSS set up, you can install the `unocss-preset-css-var` package to start using CSS variable utilities.
+The CSS Variables preset is already included in UnoCSS Preset Onmax, but you can also use it standalone if needed.
+
+## Using with UnoCSS Preset Onmax
+
+If you're using the UnoCSS Preset Onmax, the CSS Variables preset is included and enabled by default. You can customize its settings:
+
+```js
+import { defineConfig } from 'unocss'
+import { presetOnmax } from 'unocss-preset-onmax'
+
+export default defineConfig({
+  presets: [
+    presetOnmax({
+      presets: {
+        cssVar: {
+          // Custom CSS Variables preset options
+          prefix: 'app-',
+          varStyle: 'kebab-case',
+          // Other options...
+        }
+      }
+    }),
+  ],
+})
+```
+
+## Standalone Installation
+
+If you want to use just the CSS Variables preset on its own:
 
 ::: code-group
 
-```bash [pnpm]
-pnpm add -D unocss-preset-css-var unocss
-```
-
 ```bash [npm]
-npm install -D unocss-preset-css-var unocss
+npm install unocss-preset-css-var
 ```
 
 ```bash [yarn]
-yarn add -D unocss-preset-css-var unocss
+yarn add unocss-preset-css-var
 ```
 
-```bash [bun]
-bun add -D unocss-preset-css-var unocss
+```bash [pnpm]
+pnpm add unocss-preset-css-var
 ```
 
 :::
 
-## Configuration
+Then add it to your UnoCSS configuration:
 
-Add the preset to your UnoCSS configuration:
-
-```ts
-// uno.config.ts
+```js
 import { defineConfig } from 'unocss'
 import { presetCSSVar } from 'unocss-preset-css-var'
 
 export default defineConfig({
   presets: [
-    // other presets...
-    presetCSSVar(),
+    // Other presets...
+    presetCSSVar({
+      // Configuration options
+      prefix: 'app-',
+      varStyle: 'kebab-case',
+    }),
   ],
 })
 ```
 
-## Basic Usage
+## Configuration Options
 
-```html
-<!-- Define CSS variables -->
-<div class="var:--primary:blue-500 var:--text-size:16px">
-  <!-- Use the CSS variables -->
-  <p class="text-[var(--primary)] text-[var(--text-size)]">Styled text</p>
-</div>
-```
+| Option     | Type                            | Default        | Description                       |
+| ---------- | ------------------------------- | -------------- | --------------------------------- |
+| `prefix`   | `string`                        | `''`           | Prefix for all CSS variable names |
+| `varStyle` | `'kebab-case'` \| `'camelCase'` | `'kebab-case'` | Naming style for CSS variables    |
+| `defaults` | `Record<string, string>`        | `{}`           | Default CSS variable values       |
+
+## What's Next
+
+Learn how to use CSS Variables effectively in your UnoCSS project by checking out the [usage examples](/unocss-preset-css-var/).

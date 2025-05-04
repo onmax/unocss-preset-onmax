@@ -3,33 +3,24 @@ import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 const playgrounds = {
   fluidSizing: 'https://unocss.dev/play/#html=DwEwlgbgBAxg9gOwC4EMwIKYCcoDMC0ADgB74A2A5nkQJ74DOAtgHwBQUUwAFgIx4C8AIiQZiSfAGYATAHoALAA5BeROIBGcMiGYBVBHADCAZSNQAYmQCuYEFCNgAXuioAFMihoUscSwhDAZXjYOYEJ2DmpGcWJ6cI4CQnwYuKg1CnwYGhQEfABWAAYU%2Bi4UEDgAdyEmWCycnnz8wRSfJDJ0DCEpKAA-KDhcXHoMcXwuzOz8OQamiOpvXxAMEHIKFJExIXGchQbIkBmoYIjAQrIoACUMekcMKBofHDVvcqGccvQy8qgkOCghm9wrDZfo5nFB0FAUDAkGBEABCcIBQhsBHgaAEKIrI4hLhdXBCdbiKTEMjKXCqfAaLTMAAqXAwjBuOmhbWhlygAAojPTstCYFAAHIoBn0ACUARxyNmoEg1ESlEi0XofUsrXam1q%2BAAbLs%2BN1Sfh5n4lpiUiF4ItUuktqNdglSDEoIQ6BI5j4jctKMwEisAuaMFiIqEFaMYgHZrSwEqNMQoCUlcA-V6iD6ZImoOUuGAYFwoBRIGyAdZbIRSuAEFRcN5GFBpCQvnBTRFFCQAHSNxEBgKoyWB1HB4mRNRJJXexi2FptTDqiba-JQXX6w2LD0UMOcP2WjIaqS2oj2pVOySuhbGz3o6JkQfD2X4Me%2BuCLHtSwjBon0NccAxwRhqdq2JB0gyUAqmALJgJcABc64Pv655JGQ96PhyjAoFgeY5N8hAigANI2ZowUmP7Doh-rIah6EUnASDfIwOHQY%2Bo7%2BKmBEciWIBlhQIrtjISIpF2kBPpwfYTmqgjWrO849IubrLis1AEiGl5wWON5MGuCYwZu1o7nOdrXoeLoEEup6rgQClEkpyZMCRgkhLxsyzBYRZfDQhBwF4KCEFwNDpmAAH0bB%2BDmcSNkQn4jqlqCbwAXhAVJok1nMY%2B3H2YGMjdgi6UCaw-EQGwQA&config=JYWwDg9gTgLgBAbwFBzgEwKYDNgDsMDCEuOA5gDQpxhQYDOGMAgjDFMAEYCuMwWAnpVQ16jAJIBjYnSHVaDGAHU8aAMyUAvnCxQIIOAHIuuCBLp0DSUJFiI5omADEANl2BoAysABeeUnC0dPUNjU3MAWhEFcKxXd3C6Hz9LJAwADxt4TCwAQy5nLOw8QmIyAApkYXlGOgAuOABtKMZlXDUygEpyewUWNk4ePn5O7uanOM8k3FJOgF1NDqQgA&css=PQKgBA6gTglgLgUzAYwK4Gc4HsC2YDCAyoWABYJQIA0YAhgHYAmYcUD6AZllDhWOqgAOg7nAB0YAGLcwCAB60cggDYIAXGBDAAUKDBi0mXGADe2sGC704AWgDuCGAHNScDQFYADJ4Dc5sAACtMLKAJ5gggCMLPK2ABR2pPBIcsoAlH4WAEa0yADWTlBYqEw2yFjK3Bpw5LxxAOTllVDoYpSMYgAs3vUZ2gC%2BmsBAA&options=N4IgLgTghgdgzgMwPYQLYAkyoDYgFwJTZwCmAvkA&version=66.0.0',
   easingGradient: 'https://unocss.dev/play/#html=DwCwjAfAUCcgdgQxASwEYCcD2AXAtgIwBMARgKYBOAlgHxRgAuAnqWutQCbkB28L5YtQDWM7AHN4AXngQQDBkzLwBEOWmEiAQQA0QDIn3rCunft16AA2mM7IAD0zA84MCGsJgAXntBwAOlAHFkQAdwBfAEpwXEDnEC9ff0I3WHRWOMT4BHZKZA8AVxt4OiUVNXRgmgBGODwRcEDdIJCwyJiKQODuEKiYmiZGNMyc-KKS8orqiNi6FKSo1LRFgGYAFiQwFvae3v7BodGJ1cW1zd3D4-PL69vbnJO7h+2HzYHm0fbo4doRhNbZ97l9fv8QWDYYYACJQAB6AEEkTAAe8Hj1HvEAF5gYHw95wQgAJQAKigRmAhGA5gAVgAHCgwXDATBgJABgAMAgtgAASCwuNQAMiMBBQQPRjEoWGh8Lg-B8QA',
-}
+} as const
 // @unocss-include
 
 export const themeConfig: NimiqVitepressThemeConfig = {
   modules: [
     {
-      text: 'UnoCSS Preset Onmax',
-      subpath: '/overview',
-      defaultPageLink: '/overview/',
-      description: 'The presets and config that I use',
+      text: 'Preset Onmax',
+      subpath: '',
+      defaultPageLink: '/',
+      icon: 'i-custom:preset-onmax',
+      description: 'Opinionated UnoCSS setup',
       sidebar: [
         {
           items: [
-            { text: 'Getting started', link: '/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/installation/', icon: 'i-tabler:download' },
+            { text: 'Introduction', link: '/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/installation', icon: 'i-tabler:download' },
             { text: 'Rules and variants', link: '/rules-and-variants/', icon: 'i-tabler:code' },
-          ],
-        },
-        {
-          label: 'presets',
-          items: [
-            { text: 'Overview', link: '/presets/' },
-            { text: 'CSS Variables', link: '/presets/unocss-preset-css-var/', icon: 'i-tabler:baseline' },
-            { text: 'Easing Gradient', link: '/presets/unocss-preset-easing-gradient/', icon: 'i-tabler:gradienter' },
-            { text: 'Scale PX', link: '/presets/unocss-preset-scale-px/', icon: 'i-tabler:scale' },
-            { text: 'Reka UI', link: '/presets/unocss-preset-reka-ui/', icon: 'i-custom:reka-ui-mono' },
-            { text: 'UnoVue', link: '/presets/unocss-preset-unovue/', icon: 'i-custom:unovue-mono' },
+            { text: 'Presets', link: '/presets', icon: 'i-tabler:palette' },
           ],
         },
       ],
@@ -39,6 +30,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       subpath: 'unocss-preset-fluid-sizing',
       defaultPageLink: '/unocss-preset-fluid-sizing/',
       description: 'Rethinking spacing in CSS',
+      icon: 'i-custom:preset-fluid-sizing',
       sidebar: [
         {
           items: [
@@ -60,10 +52,11 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       ],
     },
     {
-      text: 'UnoCSS CSS Variables',
+      text: 'CSS Variables',
       subpath: 'unocss-preset-css-var',
       defaultPageLink: '/unocss-preset-css-var/',
-      description: 'Create and use CSS variables with UnoCSS',
+      description: 'CSS vars with ease',
+      icon: 'i-custom:preset-css-var',
       sidebar: [
         {
           items: [
@@ -74,10 +67,11 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       ],
     },
     {
-      text: 'UnoCSS Easing Gradient',
+      text: 'Easing Gradient',
       subpath: 'unocss-preset-easing-gradient',
       defaultPageLink: '/unocss-preset-easing-gradient/',
-      description: 'Create smoother, more natural gradient transitions',
+      description: 'Extending native gradients',
+      icon: 'i-custom:preset-easing-gradient',
       sidebar: [
         {
           items: [
@@ -102,10 +96,11 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       ],
     },
     {
-      text: 'UnoCSS Scale PX',
+      text: 'UnoCSS Scale px',
       subpath: 'unocss-preset-scale-px',
       defaultPageLink: '/unocss-preset-scale-px/',
-      description: 'Scale rem values for precise sizing',
+      description: 'Use rem thinking in px',
+      icon: 'i-custom:preset-scale-px',
       sidebar: [
         {
           items: [
@@ -116,10 +111,11 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       ],
     },
     {
-      text: 'UnoCSS Reka UI',
+      text: 'Reka UI',
       subpath: 'unocss-preset-reka-ui',
       defaultPageLink: '/unocss-preset-reka-ui/',
-      description: 'UI components and styling utilities',
+      description: 'With UnoCSS flexibility',
+      icon: 'i-custom:preset-reka-ui',
       sidebar: [
         {
           items: [
@@ -144,10 +140,11 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       ],
     },
     {
-      text: 'UnoCSS UnoVue',
+      text: 'UnoVue',
       subpath: 'unocss-preset-unovue',
       defaultPageLink: '/unocss-preset-unovue/',
-      description: 'Integrated presets for Vue applications',
+      description: 'UnoCSS for UnoVue libraries',
+      icon: 'i-custom:preset-unovue',
       sidebar: [
         {
           items: [
