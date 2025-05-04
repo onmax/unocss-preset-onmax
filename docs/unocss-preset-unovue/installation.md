@@ -3,18 +3,23 @@
 Once you have UnoCSS set up, you can install the `unocss-preset-unovue` package to add comprehensive Vue UI component styling to your project.
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D unocss-preset-unovue unocss
 ```
+
 ```bash [npm]
 npm install -D unocss-preset-unovue unocss
 ```
+
 ```bash [yarn]
 yarn add -D unocss-preset-unovue unocss
 ```
+
 ```bash [bun]
 bun add -D unocss-preset-unovue unocss
 ```
+
 :::
 
 ## Configuration
@@ -98,12 +103,8 @@ presetUnoVue({
 <button class="btn btn-primary">Primary Button</button>
 
 <!-- Using Radix colors from Reka UI -->
-<div class="bg-slate-3 text-slate-11">
-  Content with Radix colors
-</div>
+<div class="bg-slate-3 text-slate-11">Content with Radix colors</div>
 
 <!-- Using animations from Reka UI -->
-<div class="animate-accordion-down">
-  Animated content
-</div>
+<div class="animate-accordion-down">Animated content</div>
 ```

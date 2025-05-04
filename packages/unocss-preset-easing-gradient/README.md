@@ -9,6 +9,7 @@ A UnoCSS preset that maps utility numbers directly to pixel values (e.g., `p-4` 
 - 🔧 Easy Integration – Plug-and-play with any UnoCSS project.
 
 ## Usage
+
 ```shell
 pnpm i -D unocss-preset-scale-px
 ```

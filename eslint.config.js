@@ -5,6 +5,7 @@ export default antfu(
   {
     type: 'lib',
     pnpm: true,
+    formatters: true,
     ignores: ['**/tests/cases/**/**'],
   },
 )

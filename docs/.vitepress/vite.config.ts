@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
@@ -8,12 +8,20 @@ import { defineConfig } from 'vite'
 import Tsconfig from 'vite-tsconfig-paths'
 import { groupIconVitePlugin as GroupIconVitePlugin } from 'vitepress-plugin-group-icons'
 
+const here = dirname(fileURLToPath(import.meta.url))
+const localPresets = [
+  'unocss-preset-onmax',
+  'unocss-preset-scale-px',
+  'unocss-preset-reka-ui',
+  'unocss-preset-easing-gradient',
+  'unocss-preset-unovue',
+  'unocss-preset-fluid-sizing',
+]
+const pkg = (name: string) => resolve(here, '../../packages', name, 'src')
+
 export default defineConfig({
   resolve: {
-    alias: {
-      'unocss-preset-onmax': resolve(__dirname, '../packages/unocss-preset-onmax/src/'),
-      'unocss-preset-scale-px': resolve(__dirname, '../packages/unocss-preset-scale-px/src/'),
-    },
+    alias: Object.fromEntries(localPresets.map(n => [n, pkg(n)])),
   },
   plugins: [
     Tsconfig({

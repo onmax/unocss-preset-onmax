@@ -26,93 +26,93 @@ const isDisabled = ref(false)
 
 ### State Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-open` | `[data-state="open"]` | Element is in open state |
-| `reka-closed` | `[data-state="closed"]` | Element is in closed state |
-| `reka-on` | `[data-state="on"]` | Element is in "on" state (e.g., toggle) |
-| `reka-off` | `[data-state="off"]` | Element is in "off" state (e.g., toggle) |
-| `reka-expanded` | `[data-state="expanded"]` or `[data-expanded]` | Element is expanded |
-| `reka-collapsed` | `[data-state="collapsed"]` or `:not([data-expanded])` | Element is collapsed |
-| `reka-active` | `[data-state="active"]` | Element is active |
-| `reka-inactive` | `:not([data-state="active"])` | Element is inactive |
+| Variant          | Matches Element                                       | Description                              |
+| ---------------- | ----------------------------------------------------- | ---------------------------------------- |
+| `reka-open`      | `[data-state="open"]`                                 | Element is in open state                 |
+| `reka-closed`    | `[data-state="closed"]`                               | Element is in closed state               |
+| `reka-on`        | `[data-state="on"]`                                   | Element is in "on" state (e.g., toggle)  |
+| `reka-off`       | `[data-state="off"]`                                  | Element is in "off" state (e.g., toggle) |
+| `reka-expanded`  | `[data-state="expanded"]` or `[data-expanded]`        | Element is expanded                      |
+| `reka-collapsed` | `[data-state="collapsed"]` or `:not([data-expanded])` | Element is collapsed                     |
+| `reka-active`    | `[data-state="active"]`                               | Element is active                        |
+| `reka-inactive`  | `:not([data-state="active"])`                         | Element is inactive                      |
 
 ### Orientation and Position Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
+| Variant           | Matches Element                   | Description                         |
+| ----------------- | --------------------------------- | ----------------------------------- |
 | `reka-horizontal` | `[data-orientation="horizontal"]` | Element with horizontal orientation |
-| `reka-vertical` | `[data-orientation="vertical"]` | Element with vertical orientation |
-| `reka-top` | `[data-side="top"]` | Element positioned at the top |
-| `reka-right` | `[data-side="right"]` | Element positioned at the right |
-| `reka-bottom` | `[data-side="bottom"]` | Element positioned at the bottom |
-| `reka-left` | `[data-side="left"]` | Element positioned at the left |
+| `reka-vertical`   | `[data-orientation="vertical"]`   | Element with vertical orientation   |
+| `reka-top`        | `[data-side="top"]`               | Element positioned at the top       |
+| `reka-right`      | `[data-side="right"]`             | Element positioned at the right     |
+| `reka-bottom`     | `[data-side="bottom"]`            | Element positioned at the bottom    |
+| `reka-left`       | `[data-side="left"]`              | Element positioned at the left      |
 
 ### Interactive State Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-disabled` | `[data-disabled]` | Element is disabled |
-| `reka-enabled` | `:not([data-disabled])` | Element is enabled |
-| `reka-pressed` | `[data-pressed]` | Element is pressed |
-| `reka-not-pressed` | `:not([data-pressed])` | Element is not pressed |
-| `reka-focused` | `[data-focus]` or `[data-focused]` | Element has focus |
-| `reka-not-focused` | `:not([data-focus])` or `:not([data-focused])` | Element does not have focus |
-| `reka-readonly` | `[data-readonly]` | Element is readonly |
-| `reka-not-readonly` | `:not([data-readonly])` | Element is not readonly |
+| Variant             | Matches Element                                | Description                 |
+| ------------------- | ---------------------------------------------- | --------------------------- |
+| `reka-disabled`     | `[data-disabled]`                              | Element is disabled         |
+| `reka-enabled`      | `:not([data-disabled])`                        | Element is enabled          |
+| `reka-pressed`      | `[data-pressed]`                               | Element is pressed          |
+| `reka-not-pressed`  | `:not([data-pressed])`                         | Element is not pressed      |
+| `reka-focused`      | `[data-focus]` or `[data-focused]`             | Element has focus           |
+| `reka-not-focused`  | `:not([data-focus])` or `:not([data-focused])` | Element does not have focus |
+| `reka-readonly`     | `[data-readonly]`                              | Element is readonly         |
+| `reka-not-readonly` | `:not([data-readonly])`                        | Element is not readonly     |
 
 ### Selection State Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-selected` | `[data-selected]` | Element is selected |
-| `reka-not-selected` | `:not([data-selected])` | Element is not selected |
-| `reka-highlighted` | `[data-highlighted]` | Element is highlighted |
+| Variant                | Matches Element            | Description                |
+| ---------------------- | -------------------------- | -------------------------- |
+| `reka-selected`        | `[data-selected]`          | Element is selected        |
+| `reka-not-selected`    | `:not([data-selected])`    | Element is not selected    |
+| `reka-highlighted`     | `[data-highlighted]`       | Element is highlighted     |
 | `reka-not-highlighted` | `:not([data-highlighted])` | Element is not highlighted |
-| `reka-checked` | `[data-state="checked"]` | Element is checked |
+| `reka-checked`         | `[data-state="checked"]`   | Element is checked         |
 
 ### Validation State Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-invalid` | `[data-invalid]` | Element has invalid input |
-| `reka-valid` | `:not([data-invalid])` | Element has valid input |
-| `reka-complete` | `[data-complete]` | Element is complete |
-| `reka-incomplete` | `:not([data-complete])` | Element is incomplete |
+| Variant           | Matches Element         | Description               |
+| ----------------- | ----------------------- | ------------------------- |
+| `reka-invalid`    | `[data-invalid]`        | Element has invalid input |
+| `reka-valid`      | `:not([data-invalid])`  | Element has valid input   |
+| `reka-complete`   | `[data-complete]`       | Element is complete       |
+| `reka-incomplete` | `:not([data-complete])` | Element is incomplete     |
 
 ### Content State Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-empty` | `[data-empty]` | Element is empty |
-| `reka-not-empty` | `:not([data-empty])` | Element is not empty |
-| `reka-placeholder` | `[data-placeholder]` | Element is showing placeholder |
+| Variant                | Matches Element            | Description                        |
+| ---------------------- | -------------------------- | ---------------------------------- |
+| `reka-empty`           | `[data-empty]`             | Element is empty                   |
+| `reka-not-empty`       | `:not([data-empty])`       | Element is not empty               |
+| `reka-placeholder`     | `[data-placeholder]`       | Element is showing placeholder     |
 | `reka-not-placeholder` | `:not([data-placeholder])` | Element is not showing placeholder |
 
 ### Visibility and Availability Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-hidden` | `[data-hidden]` | Element is hidden |
-| `reka-not-hidden` | `:not([data-hidden])` | Element is not hidden |
+| Variant             | Matches Element                | Description             |
+| ------------------- | ------------------------------ | ----------------------- |
+| `reka-hidden`       | `[data-hidden]`                | Element is hidden       |
+| `reka-not-hidden`   | `:not([data-hidden])`          | Element is not hidden   |
 | `reka-fully-hidden` | `[data-hidden="fully-hidden"]` | Element is fully hidden |
-| `reka-unavailable` | `[data-unavailable]` | Element is unavailable |
-| `reka-available` | `:not([data-unavailable])` | Element is available |
+| `reka-unavailable`  | `[data-unavailable]`           | Element is unavailable  |
+| `reka-available`    | `:not([data-unavailable])`     | Element is available    |
 
 ### Alignment Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-align-start` | `[data-align="start"]` | Element is aligned to start |
-| `reka-align-end` | `[data-align="end"]` | Element is aligned to end |
+| Variant             | Matches Element         | Description                  |
+| ------------------- | ----------------------- | ---------------------------- |
+| `reka-align-start`  | `[data-align="start"]`  | Element is aligned to start  |
+| `reka-align-end`    | `[data-align="end"]`    | Element is aligned to end    |
 | `reka-align-center` | `[data-align="center"]` | Element is aligned to center |
 
 ### Special Case Variants
 
-| Variant | Matches Element | Description |
-|---------|----------------|-------------|
-| `reka-linear` | `[data-linear]` | Element has linear behavior |
-| `reka-non-linear` | `:not([data-linear])` | Element has non-linear behavior |
+| Variant              | Matches Element          | Description                                    |
+| -------------------- | ------------------------ | ---------------------------------------------- |
+| `reka-linear`        | `[data-linear]`          | Element has linear behavior                    |
+| `reka-non-linear`    | `:not([data-linear])`    | Element has non-linear behavior                |
 | `reka-indent-{0-10}` | `[data-indent="{0-10}"]` | Element with specific indentation level (0-10) |
 
 ## Vue Usage Examples

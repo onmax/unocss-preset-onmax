@@ -19,9 +19,9 @@ Fluid sizing uses the CSS `clamp()` function to create values that automatically
 ```css
 /* Example of what the preset generates */
 padding: clamp(
-  32px, /* Minimum value at smallest viewport */
-  calc(32px + (48 - 32) * ((100vw - 320px) / (1920 - 320))), /* Fluid calculation */
-  48px /* Maximum value at largest viewport */
+  32px,
+  /* Minimum value at smallest viewport */ calc(32px + (48 - 32) * ((100vw - 320px) / (1920 - 320))),
+  /* Fluid calculation */ 48px /* Maximum value at largest viewport */
 );
 ```
 
@@ -30,6 +30,7 @@ This ensures your elements scale proportionally across all screen sizes without 
 ### Resources
 
 Learn more about Fluid Sizing in CSS:
+
 - [Fluid Typography](https://css-tricks.com/snippets/css/fluid-typography/)
 - [Modern Fluid Typography Using CSS Clamp](https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/)
 

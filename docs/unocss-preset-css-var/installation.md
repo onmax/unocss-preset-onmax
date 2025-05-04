@@ -3,18 +3,23 @@
 Once you have UnoCSS set up, you can install the `unocss-preset-css-var` package to start using CSS variable utilities.
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D unocss-preset-css-var unocss
 ```
+
 ```bash [npm]
 npm install -D unocss-preset-css-var unocss
 ```
+
 ```bash [yarn]
 yarn add -D unocss-preset-css-var unocss
 ```
+
 ```bash [bun]
 bun add -D unocss-preset-css-var unocss
 ```
+
 :::
 
 ## Configuration

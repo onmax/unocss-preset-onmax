@@ -6,19 +6,19 @@ The Reka UI preset includes a set of pre-configured animations designed specific
 
 ### Accordion Animations
 
-| Animation Class | Effect |
-|----------------|--------|
-| `animate-accordion-down` | Animates height from 0 to auto when opening |
-| `animate-accordion-up` | Animates height from auto to 0 when closing |
-| `animate-accordion` | Combined shortcut that applies both animations based on state |
+| Animation Class          | Effect                                                        |
+| ------------------------ | ------------------------------------------------------------- |
+| `animate-accordion-down` | Animates height from 0 to auto when opening                   |
+| `animate-accordion-up`   | Animates height from auto to 0 when closing                   |
+| `animate-accordion`      | Combined shortcut that applies both animations based on state |
 
 ### Collapsible Animations
 
-| Animation Class | Effect |
-|----------------|--------|
-| `animate-collapsible-down` | Animates height from 0 to auto when opening |
-| `animate-collapsible-up` | Animates height from auto to 0 when closing |
-| `animate-collapsible` | Combined shortcut that applies both animations based on state |
+| Animation Class            | Effect                                                        |
+| -------------------------- | ------------------------------------------------------------- |
+| `animate-collapsible-down` | Animates height from 0 to auto when opening                   |
+| `animate-collapsible-up`   | Animates height from auto to 0 when closing                   |
+| `animate-collapsible`      | Combined shortcut that applies both animations based on state |
 
 ## Basic Usage in Vue
 

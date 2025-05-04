@@ -8,74 +8,74 @@ All utilities follow the pattern `f-{utility}` and can be combined with modifier
 
 ### Spacing Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-m` | `margin` |
-| `f-mx` | `margin-left`, `margin-right` |
-| `f-my` | `margin-top`, `margin-bottom` |
-| `f-mt` | `margin-top` |
-| `f-mr` | `margin-right` |
-| `f-mb` | `margin-bottom` |
-| `f-ml` | `margin-left` |
-| `f-p` | `padding` |
-| `f-px` | `padding-left`, `padding-right` |
-| `f-py` | `padding-top`, `padding-bottom` |
-| `f-pt` | `padding-top` |
-| `f-pr` | `padding-right` |
-| `f-pb` | `padding-bottom` |
-| `f-pl` | `padding-left` |
+| Utility | CSS Properties                  |
+| ------- | ------------------------------- |
+| `f-m`   | `margin`                        |
+| `f-mx`  | `margin-left`, `margin-right`   |
+| `f-my`  | `margin-top`, `margin-bottom`   |
+| `f-mt`  | `margin-top`                    |
+| `f-mr`  | `margin-right`                  |
+| `f-mb`  | `margin-bottom`                 |
+| `f-ml`  | `margin-left`                   |
+| `f-p`   | `padding`                       |
+| `f-px`  | `padding-left`, `padding-right` |
+| `f-py`  | `padding-top`, `padding-bottom` |
+| `f-pt`  | `padding-top`                   |
+| `f-pr`  | `padding-right`                 |
+| `f-pb`  | `padding-bottom`                |
+| `f-pl`  | `padding-left`                  |
 
 ### Sizing Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-w` | `width` |
-| `f-h` | `height` |
-| `f-size` | `width`, `height` |
-| `f-min-w` | `min-width` |
-| `f-min-h` | `min-height` |
+| Utility      | CSS Properties            |
+| ------------ | ------------------------- |
+| `f-w`        | `width`                   |
+| `f-h`        | `height`                  |
+| `f-size`     | `width`, `height`         |
+| `f-min-w`    | `min-width`               |
+| `f-min-h`    | `min-height`              |
 | `f-min-size` | `min-width`, `min-height` |
-| `f-max-w` | `max-width` |
-| `f-max-h` | `max-height` |
+| `f-max-w`    | `max-width`               |
+| `f-max-h`    | `max-height`              |
 | `f-max-size` | `max-width`, `max-height` |
 
 ### Positioning Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-top` or `f-t` | `top` |
-| `f-right` or `f-r` | `right` |
-| `f-bottom` or `f-b` | `bottom` |
-| `f-left` or `f-l` | `left` |
+| Utility             | CSS Properties |
+| ------------------- | -------------- |
+| `f-top` or `f-t`    | `top`          |
+| `f-right` or `f-r`  | `right`        |
+| `f-bottom` or `f-b` | `bottom`       |
+| `f-left` or `f-l`   | `left`         |
 
 ### Layout Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-gap` or `f-flex-gap` | `gap` |
-| `f-gap-x` or `f-flex-gap-x` | `column-gap` |
-| `f-gap-y` or `f-flex-gap-y` | `row-gap` |
+| Utility                     | CSS Properties |
+| --------------------------- | -------------- |
+| `f-gap` or `f-flex-gap`     | `gap`          |
+| `f-gap-x` or `f-flex-gap-x` | `column-gap`   |
+| `f-gap-y` or `f-flex-gap-y` | `row-gap`      |
 
 ### Typography Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-text` | `font-size` |
-| `f-leading` | `line-height` |
+| Utility      | CSS Properties   |
+| ------------ | ---------------- |
+| `f-text`     | `font-size`      |
+| `f-leading`  | `line-height`    |
 | `f-tracking` | `letter-spacing` |
 
 ### Other Utilities
 
-| Utility | CSS Properties |
-|---------|---------------|
-| `f-rounded` | `border-radius` |
-| `f-shadow` | `box-shadow` |
-| `f-ring` | `--un-ring-width` |
-| `f-ring-offset` | `--un-ring-offset-width` |
-| `f-translate` | `--un-translate-x`, `--un-translate-y` |
-| `f-translate-x` | `--un-translate-x` |
-| `f-translate-y` | `--un-translate-y` |
-| `f-translate-z` | `--un-translate-z` |
+| Utility         | CSS Properties                         |
+| --------------- | -------------------------------------- |
+| `f-rounded`     | `border-radius`                        |
+| `f-shadow`      | `box-shadow`                           |
+| `f-ring`        | `--un-ring-width`                      |
+| `f-ring-offset` | `--un-ring-offset-width`               |
+| `f-translate`   | `--un-translate-x`, `--un-translate-y` |
+| `f-translate-x` | `--un-translate-x`                     |
+| `f-translate-y` | `--un-translate-y`                     |
+| `f-translate-z` | `--un-translate-z`                     |
 
 ## Modifiers
 

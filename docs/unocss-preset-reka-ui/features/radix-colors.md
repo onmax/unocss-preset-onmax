@@ -18,6 +18,7 @@ The preset includes all Radix UI color scales:
 - **Special**: `black`, `white`
 
 Each color provides 12 shades, where:
+
 - Step 1-2: Background/subtle backgrounds
 - Step 3-5: UI element backgrounds
 - Step 6-8: Borders, separators
@@ -45,9 +46,7 @@ Radix Colors automatically switch between light and dark variants based on the c
 ```html
 <!-- Light mode: blue-3 bg with blue-11 text -->
 <!-- Dark mode: blue-11 bg with blue-1 text -->
-<div class="bg-blue-3 text-blue-11 dark:bg-blue-11 dark:text-blue-1">
-  Automatically adapts to dark mode
-</div>
+<div class="bg-blue-3 text-blue-11 dark:bg-blue-11 dark:text-blue-1">Automatically adapts to dark mode</div>
 ```
 
 ### Alpha (Transparent) Colors
@@ -107,19 +106,13 @@ For accessible UI, consider these typical combinations:
 
 ```html
 <!-- Primary button -->
-<button class="bg-blue-9 text-white hover:bg-blue-10">
-  Primary Button
-</button>
+<button class="bg-blue-9 text-white hover:bg-blue-10">Primary Button</button>
 
 <!-- Secondary button -->
-<button class="bg-slate-3 text-slate-11 hover:bg-slate-4">
-  Secondary Button
-</button>
+<button class="bg-slate-3 text-slate-11 hover:bg-slate-4">Secondary Button</button>
 
 <!-- Card with border -->
-<div class="bg-slate-1 border border-slate-6 text-slate-12">
-  Card content
-</div>
+<div class="bg-slate-1 border border-slate-6 text-slate-12">Card content</div>
 
 <!-- Status indicator -->
 <span class="text-green-11">Success</span>
@@ -145,12 +138,7 @@ To create a consistent theme using Radix Colors, consider creating a UI color st
 
 ```html
 <!-- Define semantic color usage -->
-<html class="
-  bg-slate-1
-  text-slate-12
-  dark:bg-slate-12
-  dark:text-slate-1
-">
+<html class="bg-slate-1 text-slate-12 dark:bg-slate-12 dark:text-slate-1">
   <body>
     <header class="border-b border-slate-6 dark:border-slate-6">
       <nav class="bg-slate-2 dark:bg-slate-11">...</nav>

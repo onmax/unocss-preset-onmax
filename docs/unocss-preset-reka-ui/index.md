@@ -5,6 +5,7 @@ The Reka UI preset brings powerful UI styling capabilities to UnoCSS, optimized 
 ## Key Features
 
 ### 🎨 Radix Colors Integration
+
 Access the [Radix Colors](https://www.radix-ui.com/colors) system directly in UnoCSS - a beautiful, accessible color system with built-in light and dark mode support.
 
 ```vue
@@ -16,6 +17,7 @@ Access the [Radix Colors](https://www.radix-ui.com/colors) system directly in Un
 ```
 
 ### 🔄 Custom UI Variants
+
 Use the powerful `reka-` variants that target common Vue component states like `open`, `closed`, `disabled`, and many more - perfect for interactive Vue components.
 
 ```vue
@@ -27,6 +29,7 @@ Use the powerful `reka-` variants that target common Vue component states like `
 ```
 
 ### ✨ UI Animations
+
 Add smooth accordion and collapsible animations with zero effort using the built-in animation utilities, perfect for Vue transitions.
 
 ```vue

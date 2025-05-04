@@ -17,6 +17,7 @@ UnoCSS preset for fluid sizing with UnoCSS philosophy in mind. A modern approach
 </div>
 
 ## Key Features
+
 - 🔥 **Highly customizable** through simple utility classes
 - 📏 Support for **container queries** with `f-{utility}-container`
 - 💅 Well-tested **default theme** with common size scales

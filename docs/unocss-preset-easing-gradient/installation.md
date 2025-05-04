@@ -3,18 +3,23 @@
 Once you have UnoCSS set up, you can install the `unocss-preset-easing-gradient` package to start using easing gradient utilities.
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D unocss-preset-easing-gradient unocss
 ```
+
 ```bash [npm]
 npm install -D unocss-preset-easing-gradient unocss
 ```
+
 ```bash [yarn]
 yarn add -D unocss-preset-easing-gradient unocss
 ```
+
 ```bash [bun]
 bun add -D unocss-preset-easing-gradient unocss
 ```
+
 :::
 
 ## Configuration

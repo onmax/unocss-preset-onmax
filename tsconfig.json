@@ -5,11 +5,13 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "unocss-preset-css-var": ["./packages/unocss-preset-css-var/src/index.ts"],
-      "unocss-preset-scale-px": ["./packages/unocss-preset-scale-px/src/index.ts"],
+      "unocss-preset-css-var": ["./packages/unocss-preset-css-var/src/"],
+      "unocss-preset-scale-px": ["./packages/unocss-preset-scale-px/src/"],
       "unocss-preset-easing-gradient": ["./packages/unocss-preset-easing-gradient/src/index.ts"],
-      "unocss-preset-fluid-sizing": ["./packages/unocss-preset-fluid-sizing/src/index.ts"],
-      "unocss-preset-onmax": ["./packages/unocss-preset-onmax/src/index.ts"]
+      "unocss-preset-easing-gradient/*": ["./packages/unocss-preset-easing-gradient/src/*"],
+      "unocss-preset-reka-ui": ["./packages/unocss-preset-reka-ui/src/"],
+      "unocss-preset-fluid-sizing": ["./packages/unocss-preset-fluid-sizing/src/"],
+      "unocss-preset-onmax": ["./packages/unocss-preset-onmax/src/"]
     },
     "resolveJsonModule": true,
     "strict": true,
@@ -18,5 +20,19 @@
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "packages/**/*.d.ts",
+    "packages/**/*.d.mts",
+    "packages/**/*.ts",
+    "packages/**/*.mts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "docs/**/*.ts",
+    "docs/**/*.mts",
+    "docs/**/*.vue",
+    "docs/**/.vitepress/**/*.ts",
+    "docs/**/.vitepress/**/*.mts",
+    "docs/**/.vitepress/**/*.vue"
+  ]
 }

@@ -5,7 +5,7 @@ A set of preset that I use for my projects.
 ## TODO
 
 - [ ] Create home screen
-- [X] Deploy in GitHub Pages
+- [x] Deploy in GitHub Pages
 - [ ] Update this readme
 - [ ] Release a sync version for all subpackages
 

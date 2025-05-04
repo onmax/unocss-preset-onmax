@@ -13,6 +13,7 @@ The UnoVue preset combines multiple UI component presets to create a comprehensi
 UnoVue bundles the following presets:
 
 1. **Reka UI**
+
    - Radix Colors support
    - UI animations
    - Custom variants
@@ -26,14 +27,10 @@ UnoVue bundles the following presets:
 
 ```html
 <!-- Using Reka UI features -->
-<div class="bg-slate-3 text-slate-11 dark:bg-slate-12 dark:text-slate-1">
-  Radix Colors with dark mode
-</div>
+<div class="bg-slate-3 text-slate-11 dark:bg-slate-12 dark:text-slate-1">Radix Colors with dark mode</div>
 
 <!-- Using Shadcn UI components -->
-<button class="btn btn-primary">
-  Styled Button
-</button>
+<button class="btn btn-primary">Styled Button</button>
 
 <!-- Combined usage -->
 <div class="card reka-hover:shadow-lg">

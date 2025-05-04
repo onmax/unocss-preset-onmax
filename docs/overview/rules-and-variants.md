@@ -20,8 +20,8 @@ When you want to stack a bunch of elements on top of each other, instead of usin
 
 [Source code](https://github.com/onmax/unocss-preset-onmax/blob/main/packages/unocss-preset-onmax/src/variants.ts)
 
-| Variant | CSS | Description |
-| --- | --- | --- |
-| `hocus:` | `:hover, :focus-visible` | When the element is hovered or focused. |
-| `group-hocus:` | `.group:hover .group:focus-visible` | When the group is hovered or focused. |
-| `inverted:` | `:is([data-inverted], [data-inverted] *) ${s}` | When the element or any of its ancestors has a `data-inverted` attribute. |
+| Variant        | CSS                                            | Description                                                               |
+| -------------- | ---------------------------------------------- | ------------------------------------------------------------------------- |
+| `hocus:`       | `:hover, :focus-visible`                       | When the element is hovered or focused.                                   |
+| `group-hocus:` | `.group:hover .group:focus-visible`            | When the group is hovered or focused.                                     |
+| `inverted:`    | `:is([data-inverted], [data-inverted] *) ${s}` | When the element or any of its ancestors has a `data-inverted` attribute. |

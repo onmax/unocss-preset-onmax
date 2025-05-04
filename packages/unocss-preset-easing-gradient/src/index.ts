@@ -49,6 +49,11 @@ export function presetEasingGradient(_options: PresetEasingGradientOptions = {})
   syntax: "<color>";
   inherits: false;
   initial-value: #000
+}
+@property ${varPrefix}-color-space {
+  syntax: "<custom-ident>";
+  inherits: false;
+  initial-value: in oklch;
 }`
         },
       },
@@ -107,37 +112,41 @@ interface GenerateGradientStopsOptions {
 
 function generateGradient(options: GenerateGradientStopsOptions): Record<string, string> {
   const { easingFn } = options
-  const steps = 4
+  const steps = 8 // Increased number of steps for smoother gradients
+  const fromColor = `var(${varPrefix}-from)`
+  const toColor = `var(${varPrefix}-to)`
 
-  const baseColors: string[] = []
-  for (let i = 0; i <= steps; i++) {
-    const t = easingFn(i / steps)
-    baseColors.push(
-      `color-mix(${colorSpace}, var(${varPrefix}-from), var(${varPrefix}-to) ${Math.round(t * 100)}%)`,
-    )
-  }
-
+  // Create the gradient stops array
   const stops: string[] = []
-  for (let i = 0; i < steps; i++) {
-    const colorA = baseColors[i]
-    const colorB = baseColors[i + 1]
 
-    const stepStart = i / steps
-    const stepEnd = (i + 1) / steps
-    const stepMid = (stepStart + stepEnd) / 2
+  // Generate more granular stops for smoother interpolation
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps
+    const easedT = easingFn(t)
+    const position = `${(t * 100).toFixed(2)}%`
 
-    const stepStartPct = `${(stepStart * 100).toFixed(2)}%`
-    const stepMidPct = `${(stepMid * 100).toFixed(2)}%`
-    const stepEndPct = `${(stepEnd * 100).toFixed(2)}%`
-
-    const midColor = `color-mix(${colorSpace}, ${colorA}, ${colorB} 50%)`
-
-    stops.push(`${colorA} ${stepStartPct}`)
-    stops.push(`${midColor} ${stepMidPct}`)
-    stops.push(`${colorB} ${stepEndPct}`)
+    // Simple blend from from->to colors
+    stops.push(`color-mix(${colorSpace}, ${fromColor}, ${toColor} ${Math.round(easedT * 100)}%) ${position}`)
   }
 
-  const gradientStops = stops.join(', ')
+  // Calculate the final gradient stops
+  // For dramatic easing functions, using too many interpolated points can cause CSS bloat
+  // So we'll select a subset of the stops for the final output
+  const finalStops: string[] = []
+  const keepEveryNth = Math.max(1, Math.floor(stops.length / 12))
+
+  for (let i = 0; i < stops.length; i++) {
+    if (i === 0 || i === stops.length - 1 || i % keepEveryNth === 0) {
+      finalStops.push(stops[i])
+    }
+  }
+
+  // Make sure last stop is included
+  if (finalStops[finalStops.length - 1] !== stops[stops.length - 1]) {
+    finalStops.push(stops[stops.length - 1])
+  }
+
+  const gradientStops = finalStops.join(', ')
 
   return {
     [`${varPrefix}-stops`]: gradientStops,

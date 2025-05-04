@@ -27,6 +27,7 @@ catalog:
   bumpp: ^10.1.0
   defu: ^6.1.4
   eslint: ^9.26.0
+  eslint-plugin-format: ^1.0.1
   floating-vue: ^5.2.2
   lint-staged: ^15.5.1
   nimiq-css: ^1.0.0-beta.20
@@ -34,6 +35,7 @@ catalog:
   pathe: ^2.0.3
   pinia: ^3.0.2
   pnpm: ^10.10.0
+  reka-ui: ^2.2.0
   simple-git-hooks: ^2.13.0
   tsx: ^4.19.4
   typescript: ^5.8.3

@@ -15,7 +15,11 @@
   "keywords": [],
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": "./dist/index.mjs",
+    "./easing": {
+      "types": "./dist/easing.d.mts",
+      "import": "./dist/easing.mjs"
+    }
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",

@@ -3,18 +3,23 @@
 Once you have UnoCSS set up, you can install the `unocss-preset-scale-px` package to start scaling rem units in your utilities.
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D unocss-preset-scale-px unocss
 ```
+
 ```bash [npm]
 npm install -D unocss-preset-scale-px unocss
 ```
+
 ```bash [yarn]
 yarn add -D unocss-preset-scale-px unocss
 ```
+
 ```bash [bun]
 bun add -D unocss-preset-scale-px unocss
 ```
+
 :::
 
 ## Configuration

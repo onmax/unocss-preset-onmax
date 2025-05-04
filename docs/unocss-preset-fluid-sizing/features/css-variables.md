@@ -17,8 +17,10 @@ This will create a CSS variable `--f-myvar` that contains a fluid value that sca
 You can then use this CSS variable in your CSS or inline styles:
 
 ```html
-<div class="f-$myvar f-$myvar-min-8 f-$myvar-max-12"
-     style="padding-block: var(--f-myvar); margin-inline: calc(var(--f-myvar) * 2);">
+<div
+  class="f-$myvar f-$myvar-min-8 f-$myvar-max-12"
+  style="padding-block: var(--f-myvar); margin-inline: calc(var(--f-myvar) * 2)"
+>
   <!-- Uses the --f-myvar variable for both padding and margin (doubled) -->
 </div>
 ```
@@ -39,9 +41,7 @@ You can combine CSS variables with your UnoCSS theme for even more flexibility:
 <!-- Create fluid CSS variables based on theme values -->
 <div class="f-$spacing f-$spacing-min-16 f-$spacing-max-32">
   <!-- Apply the fluid variable to multiple properties -->
-  <div class="m-[var(--f-spacing)] p-[calc(var(--f-spacing)*1.5)]">
-    Styled with fluid spacing
-  </div>
+  <div class="m-[var(--f-spacing)] p-[calc(var(--f-spacing)*1.5)]">Styled with fluid spacing</div>
 </div>
 ```
 
@@ -91,12 +91,15 @@ This gives you access to all the intermediate values in your calculations:
   <!-- Create fluid typography -->
   <div class="f-$type f-$type-min-16 f-$type-max-20">
     <!-- Use both variables in a complex layout -->
-    <div style="
-      padding: var(--f-space);
-      font-size: var(--f-type);
-      grid-gap: calc(var(--f-space) / 2);
-      border-radius: calc(var(--f-space) / 4);
-      box-shadow: 0 calc(var(--f-space) / 8) calc(var(--f-space) / 2) rgba(0,0,0,0.1);">
+    <div
+      style="
+        padding: var(--f-space);
+        font-size: var(--f-type);
+        grid-gap: calc(var(--f-space) / 2);
+        border-radius: calc(var(--f-space) / 4);
+        box-shadow: 0 calc(var(--f-space) / 8) calc(var(--f-space) / 2) rgba(0, 0, 0, 0.1);
+      "
+    >
       Custom fluid component
     </div>
   </div>

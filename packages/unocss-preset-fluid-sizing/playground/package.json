@@ -4,7 +4,7 @@
   "version": "1.0.0-beta.16",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "play": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },

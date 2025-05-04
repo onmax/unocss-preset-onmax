@@ -7,18 +7,23 @@ Before installing the Reka UI preset, make sure you have UnoCSS set up in your p
 ## Install the Package
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D unocss-preset-reka-ui
 ```
+
 ```bash [npm]
 npm install -D unocss-preset-reka-ui
 ```
+
 ```bash [yarn]
 yarn add -D unocss-preset-reka-ui
 ```
+
 ```bash [bun]
 bun add -D unocss-preset-reka-ui
 ```
+
 :::
 
 ## Basic Configuration

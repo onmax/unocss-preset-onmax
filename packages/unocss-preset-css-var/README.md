@@ -9,6 +9,7 @@ A UnoCSS preset that allows you to write CSS variables using classes.
 - 🏗️ Attributify Mode support
 
 ## Usage
+
 ```shell
 pnpm i -D unocss-preset-css-var
 ```

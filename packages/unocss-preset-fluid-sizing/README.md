@@ -19,6 +19,7 @@ Learn about Fluid Sizing in CSS:
 - [Modern Fluid Typography Using CSS Clamp](https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/)
 
 ## Usage
+
 ```shell
 pnpm i -D unocss-preset-fluid-sizing unocss
 ```
