@@ -22,7 +22,6 @@ catalog:
   '@unocss/preset-wind4': ^66.1.0-beta.13
   '@unocss/reset': ^66.1.0-beta.13
   '@unocss/rule-utils': ^66.1.0-beta.13
-  '@vitejs/plugin-vue': ^5.2.1
   '@vueuse/core': ^13.1.0
   bumpp: ^10.1.0
   defu: ^6.1.4
