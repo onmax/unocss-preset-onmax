@@ -11,7 +11,8 @@
       "unocss-preset-easing-gradient/*": ["./packages/unocss-preset-easing-gradient/src/*"],
       "unocss-preset-reka-ui": ["./packages/unocss-preset-reka-ui/src/"],
       "unocss-preset-fluid-sizing": ["./packages/unocss-preset-fluid-sizing/src/"],
-      "unocss-preset-onmax": ["./packages/unocss-preset-onmax/src/"]
+      "unocss-preset-onmax": ["./packages/unocss-preset-onmax/src/"],
+      "unocss-preset-unovue": ["./packages/unocss-preset-unovue/src/"]
     },
     "resolveJsonModule": true,
     "strict": true,
