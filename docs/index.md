@@ -21,12 +21,12 @@ UnoCSS Preset Onmax combines these powerful presets:
 - **[Wind4](https://unocss.dev/presets/wind4)**: Modern utilities based on Tailwind CSS v4
 - **[Attributify](https://unocss.dev/presets/attributify)**: Use attributes for applying utility classes
 - **[Animations](https://unocss-preset-animations.aelita.me/)**: Add beautiful animations easily
-- **[CSS Variables](/presets/unocss-preset-css-var/)**: Better management of CSS variables
-- **[Fluid Sizing](/presets/unocss-preset-fluid-sizing/)**: Responsive sizing with fluid typography
-- **[Easing Gradient](/presets/unocss-preset-easing-gradient/)**: Create smooth, natural gradients
-- **[Scale PX](/presets/unocss-preset-scale-px/)**: Work with pixels that output as relative units
-- **[Reka UI](/presets/unocss-preset-reka-ui/)**: Component-friendly utilities with color integration
-- **[UnoVue](/presets/unocss-preset-unovue/)**: Helpers for Vue-based projects
+- **[CSS Variables](/unocss-preset-css-var/)**: Better management of CSS variables
+- **[Fluid Sizing](/unocss-preset-fluid-sizing/)**: Responsive sizing with fluid typography
+- **[Easing Gradient](/unocss-preset-easing-gradient/)**: Create smooth, natural gradients
+- **[Scale PX](/unocss-preset-scale-px/)**: Work with pixels that output as relative units
+- **[Reka UI](/unocss-preset-reka-ui/)**: Component-friendly utilities with color integration
+- **[UnoVue](/unocss-preset-unovue/)**: Helpers for Vue-based projects
 
 ## Quick Example
 
@@ -61,4 +61,4 @@ export default defineConfig({
 })
 ```
 
-Ready to get started? Head over to the [Installation](/installation/) guide for more details.
+Ready to get started? Head over to the [Installation](/installation/index) guide for more details.

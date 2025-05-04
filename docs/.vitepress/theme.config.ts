@@ -84,7 +84,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
           label: 'Playground',
           items: [
             { text: 'Generator', link: '/unocss-preset-easing-gradient/generator', icon: 'i-tabler:adjustments' },
-            { text: 'Interactive Playground', link: '/unocss-preset-easing-gradient/playground', icon: 'i-tabler:ball-basketball' },
+            { text: 'Interactive Playground', link: playgrounds.easingGradient, icon: 'i-tabler:ball-basketball' },
           ],
         },
         {

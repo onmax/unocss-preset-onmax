@@ -66,4 +66,4 @@ export default defineConfig({
 })
 ```
 
-Check out the [installation guide](/unocss-preset-reka-ui/installation/) for detailed setup instructions, or explore the features sections to learn more about each capability.
+Check out the [installation guide](/unocss-preset-reka-ui/installation) for detailed setup instructions, or explore the features sections to learn more about each capability.

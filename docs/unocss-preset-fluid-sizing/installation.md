@@ -88,4 +88,4 @@ export default defineConfig({
 
 :::
 
-These are just a few examples of how to use the preset. For more details, check out the [Utilities](/unocss-preset-fluid-sizing/utilities/) and [Theme](/unocss-preset-fluid-sizing/theme/) sections.
+These are just a few examples of how to use the preset. For more details, check out the [Utilities](/unocss-preset-fluid-sizing/features/utilities) and [Theme](/unocss-preset-fluid-sizing/features/theme) sections.

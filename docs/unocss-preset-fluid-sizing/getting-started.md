@@ -107,4 +107,4 @@ Here's a practical example of fluid sizing in action:
 </div>
 ```
 
-Ready to explore more? Check out the [API Configuration](/unocss-preset-fluid-sizing/api/configuration/) or learn about the [available utilities](/unocss-preset-fluid-sizing/features/utilities/).
+Ready to explore more? Check out the [API Configuration](/unocss-preset-fluid-sizing/api/configuration) or learn about the [available utilities](/unocss-preset-fluid-sizing/features/utilities).

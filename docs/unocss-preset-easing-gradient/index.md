@@ -35,4 +35,4 @@ The Easing Gradient preset adds utilities for creating smooth, perceptually unif
 
 Traditional linear gradients in CSS create uniform color transitions that can sometimes appear unnatural to the human eye. Easing gradients use mathematical functions to create non-linear color interpolation that better matches human perception, resulting in smoother, more pleasing gradients.
 
-Check out our [usage guides](/unocss-preset-easing-gradient/usage/) for more examples, or try the [interactive generator](/unocss-preset-easing-gradient/generator/) to experiment with different configurations.
+Check out our [usage guides](/unocss-preset-easing-gradient/usage) for more examples, or try the [interactive generator](/unocss-preset-easing-gradient/generator) to experiment with different configurations.

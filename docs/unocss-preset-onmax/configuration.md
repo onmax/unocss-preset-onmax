@@ -104,12 +104,12 @@ For detailed information about configuring each individual preset, refer to thei
 - [Wind4 Configuration](https://unocss.dev/presets/wind4)
 - [Attributify Configuration](https://unocss.dev/presets/attributify)
 - [Animations Configuration](https://unocss-preset-animations.aelita.me/)
-- [CSS Variables Configuration](/presets/unocss-preset-css-var/)
-- [Fluid Sizing Configuration](/presets/unocss-preset-fluid-sizing/)
-- [Easing Gradient Configuration](/presets/unocss-preset-easing-gradient/)
-- [Scale PX Configuration](/presets/unocss-preset-scale-px/)
-- [Reka UI Configuration](/presets/unocss-preset-reka-ui/)
-- [UnoVue Configuration](/presets/unocss-preset-unovue/)
+- [CSS Variables Configuration](/unocss-preset-css-var/)
+- [Fluid Sizing Configuration](/unocss-preset-fluid-sizing/)
+- [Easing Gradient Configuration](/unocss-preset-easing-gradient/)
+- [Scale PX Configuration](/unocss-preset-scale-px/)
+- [Reka UI Configuration](/unocss-preset-reka-ui/)
+- [UnoVue Configuration](/unocss-preset-unovue/)
 
 ## Full Example
 

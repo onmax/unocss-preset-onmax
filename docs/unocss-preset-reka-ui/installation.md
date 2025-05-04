@@ -138,6 +138,6 @@ presetRekaUI({
 
 Now that you've installed and configured the Reka UI preset, check out these resources:
 
-- [Radix Colors Guide](/unocss-preset-reka-ui/features/radix-colors/) - Learn how to use the color system
-- [Variants System](/unocss-preset-reka-ui/features/variants/) - Discover all available variants
-- [Animations](/unocss-preset-reka-ui/features/animations/) - See how to use the animation utilities
+- [Radix Colors Guide](/unocss-preset-reka-ui/features/radix-colors) - Learn how to use the color system
+- [Variants System](/unocss-preset-reka-ui/features/variants) - Discover all available variants
+- [Animations](/unocss-preset-reka-ui/features/animations) - See how to use the animation utilities

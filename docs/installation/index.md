@@ -80,5 +80,5 @@ export default defineConfig({
 
 ## What's Next
 
-- Learn about the [rules and variants](/rules-and-variants/) included in this preset
-- Explore the [presets](/presets/) that come bundled with UnoCSS Preset Onmax
+- Learn about the [rules and variants](/unocss-preset-onmax/rules-and-variants) included in this preset
+- Explore the [presets](/unocss-preset-onmax/presets) that come bundled with UnoCSS Preset Onmax

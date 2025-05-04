@@ -24,4 +24,4 @@ UnoCSS preset for fluid sizing with UnoCSS philosophy in mind. A modern approach
 - 🚀 **Attributify mode** compatibility for cleaner markup
 - 🧩 **CSS variables** support for complex calculations
 
-Ready to dive deeper? Check out the [Getting Started](/unocss-preset-fluid-sizing/getting-started/) guide to learn more!
+Ready to dive deeper? Check out the [Getting Started](/unocss-preset-fluid-sizing/getting-started) guide to learn more!

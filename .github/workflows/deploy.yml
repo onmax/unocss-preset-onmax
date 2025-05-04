@@ -40,10 +40,11 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: pnpm i
+      - run: pnpm i -g @antfu/ni
+      - run: nci
       - name: Build with VitePress
         run: pnpm run docs:build
       - name: Upload artifact
