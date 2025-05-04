@@ -1,8 +1,6 @@
 packages:
-  - playground
   - docs
-  - packages/**/*
-  - examples/*
+  - packages/*
 patchedDependencies:
   '@nolebase/vitepress-plugin-git-changelog': patches/@nolebase__vitepress-plugin-git-changelog.patch
 catalog:
