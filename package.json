@@ -35,6 +35,7 @@
     "unbuild": "catalog:",
     "unocss-preset-css-var": "workspace:*",
     "unocss-preset-scale-px": "workspace:*",
+    "unocss-preset-unovue": "workspace:*",
     "vite": "catalog:",
     "vitest": "catalog:",
     "vue-tsc": "catalog:"

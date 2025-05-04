@@ -19,7 +19,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
           items: [
             { text: 'Introduction', link: '/', icon: 'i-tabler:home' },
             { text: 'Installation', link: '/installation', icon: 'i-tabler:download' },
-            { text: 'Rules and variants', link: '/rules-and-variants/', icon: 'i-tabler:code' },
+            { text: 'Rules and variants', link: '/rules-and-variants', icon: 'i-tabler:code' },
             { text: 'Presets', link: '/presets', icon: 'i-tabler:palette' },
           ],
         },
@@ -35,18 +35,18 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-fluid-sizing/', icon: 'i-tabler:home' },
-            { text: 'Getting Started', link: '/unocss-preset-fluid-sizing/getting-started/', icon: 'i-tabler:rocket' },
-            { text: 'Installation', link: '/unocss-preset-fluid-sizing/installation/', icon: 'i-tabler:download' },
+            { text: 'Getting Started', link: '/unocss-preset-fluid-sizing/getting-started', icon: 'i-tabler:rocket' },
+            { text: 'Installation', link: '/unocss-preset-fluid-sizing/installation', icon: 'i-tabler:download' },
             { text: 'Playground', link: playgrounds.fluidSizing, icon: 'i-tabler:ball-basketball' },
-            { text: 'API Configuration', link: '/unocss-preset-fluid-sizing/api/configuration/', icon: 'i-tabler:settings' },
+            { text: 'API Configuration', link: '/unocss-preset-fluid-sizing/api/configuration', icon: 'i-tabler:settings' },
           ],
         },
         {
           label: 'Features',
           items: [
-            { text: 'Utilities', link: '/unocss-preset-fluid-sizing/features/utilities/', icon: 'i-tabler:tools' },
-            { text: 'Theme', link: '/unocss-preset-fluid-sizing/features/theme/', icon: 'i-tabler:color-swatch' },
-            { text: 'CSS Variables', link: '/unocss-preset-fluid-sizing/features/css-variables/', icon: 'i-tabler:variable' },
+            { text: 'Utilities', link: '/unocss-preset-fluid-sizing/features/utilities', icon: 'i-tabler:tools' },
+            { text: 'Theme', link: '/unocss-preset-fluid-sizing/features/theme', icon: 'i-tabler:color-swatch' },
+            { text: 'CSS Variables', link: '/unocss-preset-fluid-sizing/features/css-variables', icon: 'i-tabler:variable' },
           ],
         },
       ],
@@ -61,7 +61,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-css-var/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/unocss-preset-css-var/installation/', icon: 'i-tabler:download' },
+            { text: 'Installation', link: '/unocss-preset-css-var/installation', icon: 'i-tabler:download' },
           ],
         },
       ],
@@ -76,21 +76,21 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-easing-gradient/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/unocss-preset-easing-gradient/installation/', icon: 'i-tabler:download' },
-            { text: 'Usage Guide', link: '/unocss-preset-easing-gradient/usage/', icon: 'i-tabler:book' },
+            { text: 'Installation', link: '/unocss-preset-easing-gradient/installation', icon: 'i-tabler:download' },
+            { text: 'Usage Guide', link: '/unocss-preset-easing-gradient/usage', icon: 'i-tabler:book' },
           ],
         },
         {
           label: 'Playground',
           items: [
-            { text: 'Generator', link: '/unocss-preset-easing-gradient/generator/', icon: 'i-tabler:adjustments' },
-            { text: 'Interactive Playground', link: '/unocss-preset-easing-gradient/playground/', icon: 'i-tabler:ball-basketball' },
+            { text: 'Generator', link: '/unocss-preset-easing-gradient/generator', icon: 'i-tabler:adjustments' },
+            { text: 'Interactive Playground', link: '/unocss-preset-easing-gradient/playground', icon: 'i-tabler:ball-basketball' },
           ],
         },
         {
           label: 'Technical',
           items: [
-            { text: 'Implementation Details', link: '/unocss-preset-easing-gradient/technical-implementation/', icon: 'i-tabler:code' },
+            { text: 'Implementation Details', link: '/unocss-preset-easing-gradient/technical-implementation', icon: 'i-tabler:code' },
           ],
         },
       ],
@@ -105,7 +105,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-scale-px/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/unocss-preset-scale-px/installation/', icon: 'i-tabler:download' },
+            { text: 'Installation', link: '/unocss-preset-scale-px/installation', icon: 'i-tabler:download' },
           ],
         },
       ],
@@ -120,21 +120,21 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-reka-ui/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/unocss-preset-reka-ui/installation/', icon: 'i-tabler:download' },
+            { text: 'Installation', link: '/unocss-preset-reka-ui/installation', icon: 'i-tabler:download' },
           ],
         },
         {
           label: 'Features',
           items: [
-            { text: 'Radix Colors', link: '/unocss-preset-reka-ui/features/radix-colors/', icon: 'i-tabler:palette' },
-            { text: 'Variants System', link: '/unocss-preset-reka-ui/features/variants/', icon: 'i-tabler:selector' },
-            { text: 'Animations', link: '/unocss-preset-reka-ui/features/animations/', icon: 'i-tabler:animation' },
+            { text: 'Radix Colors', link: '/unocss-preset-reka-ui/features/radix-colors', icon: 'i-tabler:palette' },
+            { text: 'Variants System', link: '/unocss-preset-reka-ui/features/variants', icon: 'i-tabler:selector' },
+            { text: 'Animations', link: '/unocss-preset-reka-ui/features/animations', icon: 'i-tabler:animation' },
           ],
         },
         {
           label: 'Examples',
           items: [
-            { text: 'Component Examples', link: '/unocss-preset-reka-ui/examples/', icon: 'i-tabler:components' },
+            { text: 'Component Examples', link: '/unocss-preset-reka-ui/examples', icon: 'i-tabler:components' },
           ],
         },
       ],
@@ -149,7 +149,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Introduction', link: '/unocss-preset-unovue/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/unocss-preset-unovue/installation/', icon: 'i-tabler:download' },
+            { text: 'Installation', link: '/unocss-preset-unovue/installation', icon: 'i-tabler:download' },
           ],
         },
       ],
