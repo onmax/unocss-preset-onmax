@@ -45,5 +45,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "patchedDependencies": {
+    "@nolebase/vitepress-plugin-git-changelog": "patches/@nolebase__vitepress-plugin-git-changelog.patch"
   }
 }
