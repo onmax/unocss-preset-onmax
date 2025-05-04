@@ -83,6 +83,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
             { text: 'Introduction', link: '/unocss-preset-easing-gradient/', icon: 'i-tabler:home' },
             { text: 'Installation', link: '/unocss-preset-easing-gradient/installation/', icon: 'i-tabler:download' },
             { text: 'Playground', link: '/unocss-preset-easing-gradient/playground/', icon: 'i-tabler:ball-basketball' },
+            { text: 'Technical implementation', link: '/unocss-preset-easing-gradient/technical-implementation', icon: 'i-tabler:code' },
           ],
         },
       ],
