@@ -22,7 +22,7 @@ export function getVariants(prefix: string): Variant[] {
     dataVariant(prefix, 'expanded', '[data-expanded]'),
     dataVariant(prefix, 'collapsed', ':not([data-expanded])'),
     dataVariant(prefix, 'active', '[data-state="active"]'),
-    dataVariant(prefix, 'inactive', ':not([data-state="active"])'),
+    dataVariant(prefix, 'inactive', '[data-state="inactive"]'),
 
     // Orientation and Position
     dataVariant(prefix, 'horizontal', '[data-orientation="horizontal"]'),
