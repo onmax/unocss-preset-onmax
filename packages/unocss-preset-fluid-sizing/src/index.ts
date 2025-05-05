@@ -1,5 +1,4 @@
 import type { Preset, Rule } from '@unocss/core'
-import { definePreset } from '@unocss/core'
 import { defu } from 'defu'
 import { theme } from './theme'
 import { fluidSizeUtilities } from './utilities'
@@ -386,7 +385,7 @@ class PresetConfig {
   }
 }
 
-export const presetFluidSizing = definePreset((options: PresetFluidSizingOptions = {}) => {
+export function presetFluidSizing(options: PresetFluidSizingOptions = {}): Preset {
   // Create a local configuration instance for this preset
   const config = new PresetConfig(options)
 
@@ -433,4 +432,4 @@ export const presetFluidSizing = definePreset((options: PresetFluidSizingOptions
     rules,
     shortcuts,
   }
-})
+}
