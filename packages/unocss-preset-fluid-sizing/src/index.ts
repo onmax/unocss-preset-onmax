@@ -1,4 +1,4 @@
-import type { DynamicRule, Preset } from '@unocss/core'
+import type { Preset, Rule } from '@unocss/core'
 import { definePreset } from '@unocss/core'
 import { defu } from 'defu'
 import { theme } from './theme'
@@ -72,6 +72,12 @@ export interface PresetFluidSizingOptions {
    * @default false
    */
   attributify?: boolean
+
+  /**
+   * Enable theme shortcuts generation
+   * @default true
+   */
+  themeShortcuts?: boolean
 }
 
 export const defaultFluidSizingOptions = {
@@ -84,47 +90,343 @@ export const defaultFluidSizingOptions = {
   utilities: [],
   attributify: false,
   baseUnit: unitToNumberMap[Unit.px],
+  themeShortcuts: true,
 }
 
-const globalConfig = { ...defaultFluidSizingOptions }
+// Default value for CSS vars
+const defaultValue = 16
 
-export const presetFluidSizing = definePreset((_options: PresetFluidSizingOptions = {}) => {
+function toKebabCase(str: string): string {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+}
+
+// Cache for regex patterns to avoid recompilation
+const regexCache = new Map<string, RegExp>()
+function getRegExp(pattern: string): RegExp {
+  if (!regexCache.has(pattern)) {
+    regexCache.set(pattern, new RegExp(pattern))
+  }
+  return regexCache.get(pattern)!
+}
+
+// Memoized utilities for getting CSS variable names and expressions
+const cssVarNamesCache = new Map<string, string>()
+const cssVarExpressionsCache = new Map<string, string>()
+
+/**
+ * Configuration class to hold preset-specific state
+ */
+class PresetConfig {
+  prefix: string
+  minContainerWidth: number
+  maxContainerWidth: number
+  baseUnit: string
+  expandCSSVariables: boolean
+  cssVars: Record<string, any>
+
+  constructor(options: Partial<PresetFluidSizingOptions>) {
+    const opts = defu(options, defaultFluidSizingOptions)
+    this.prefix = opts.prefix
+    this.minContainerWidth = opts.minContainerWidth
+    this.maxContainerWidth = opts.maxContainerWidth
+    this.baseUnit = unitToNumberMap[opts.defaultBaseUnit as keyof typeof unitToNumberMap]
+    this.expandCSSVariables = !!opts.expandCSSVariables
+
+    // Initialize CSS vars with the current config
+    this.cssVars = {
+      max: defaultValue,
+      min: defaultValue,
+      maxContainer: this.maxContainerWidth,
+      minContainer: this.minContainerWidth,
+      unit: this.baseUnit,
+      rangeWidth: undefined,
+      factor: undefined,
+      rangeSize: undefined,
+      fluid: undefined,
+      size: undefined,
+      container: '100vw',
+    }
+  }
+
+  // Get the CSS variable name for a utility and variable
+  getCSSVarName(variable?: string, utility?: string): string {
+    const cacheKey = `${utility || ''}-${variable || ''}`
+    if (!cssVarNamesCache.has(cacheKey)) {
+      const name = `--${this.prefix}${utility?.replace('$', '')}${variable ? `-${toKebabCase(variable)}` : ''}`
+      cssVarNamesCache.set(cacheKey, name)
+    }
+    return cssVarNamesCache.get(cacheKey)!
+  }
+
+  // Get the CSS variable expression
+  getCSSVar(variable: string, utility?: string): string {
+    const cacheKey = `var-${utility || ''}-${variable}`
+    if (!cssVarExpressionsCache.has(cacheKey)) {
+      const varName = this.getCSSVarName(variable, utility)
+      const defaultVal = this.cssVars[variable] ? `, ${this.cssVars[variable]}` : ''
+      cssVarExpressionsCache.set(cacheKey, `var(${varName}${defaultVal})`)
+    }
+    return cssVarExpressionsCache.get(cacheKey)!
+  }
+
+  // Get both CSS var name and expression
+  getCSSVars(variable: string, utility?: string): [string, string] {
+    return [this.getCSSVarName(variable, utility), this.getCSSVar(variable, utility)]
+  }
+
+  // Generate fluid CSS for a utility
+  getFluidCSS(options: {
+    utility: string
+    properties: string[]
+    expandCSSVariables?: boolean
+    minSize?: string
+    minSizeC?: string
+    maxSize?: string
+    maxSizeC?: string
+  }): Record<string, string> {
+    const utility = options.utility.replaceAll('$', '')
+    const {
+      properties,
+      minSize = this.getCSSVar('min', utility),
+      maxSize = this.getCSSVar('max', utility),
+      maxSizeC = this.getCSSVar('maxContainer', utility),
+      minSizeC = this.getCSSVar('minContainer', utility),
+      expandCSSVariables = this.expandCSSVariables,
+    } = options
+
+    const containerVar = this.getCSSVar('container', utility)
+    const unitVar = this.getCSSVar('unit', utility)
+
+    const css: Record<string, string> = {}
+    let value: string = ''
+
+    if (expandCSSVariables) {
+      const [rangeWidthVar, rangeWidthVarName] = this.getCSSVars('rangeWidth', utility)
+      const [factorVar, factorVarName] = this.getCSSVars('factor', utility)
+      const [rangeSizeVar, rangeSizeVarName] = this.getCSSVars('rangeSize', utility)
+      const [fluidVar, fluidVarName] = this.getCSSVars('fluid', utility)
+      const [sizeVar, sizeVarName] = this.getCSSVars('size', utility)
+
+      css[rangeWidthVarName] = `calc(${maxSizeC} - ${minSizeC})`
+      css[factorVarName] = `calc((${containerVar} - (${unitVar} * ${minSizeC})) / ${rangeWidthVar})`
+      css[rangeSizeVarName] = `calc(${maxSize} - ${minSize})`
+      css[fluidVarName] = `calc(${unitVar} * ${minSize} + ${rangeSizeVar} * ${factorVar})`
+      const clamp = `clamp(calc(${unitVar} * ${minSize}), ${fluidVar}, calc(${unitVar} * ${maxSize}))`
+      css[sizeVarName] = clamp
+      value = `${sizeVar} `
+    }
+    else {
+      const calcKey = `fluid-calc-${utility}`
+      if (!cssVarExpressionsCache.has(calcKey)) {
+        const fluid = `calc(${unitVar} * ${minSize} + (${maxSize} - ${minSize}) * (${containerVar} - (${unitVar} * ${minSizeC})) / (${maxSizeC} - ${minSizeC}))`
+        const minValue = `calc(${unitVar} * ${minSize})`
+        const maxValue = `calc(${unitVar} * ${maxSize})`
+        cssVarExpressionsCache.set(calcKey, `clamp(${minValue}, ${fluid}, ${maxValue})`)
+      }
+      value = cssVarExpressionsCache.get(calcKey)!
+    }
+
+    properties.forEach(p => css[p] = value)
+    return css
+  }
+
+  // Make rules factory that works for both normal and CSS var utilities
+  makeRulesFactory(isCSSVar: boolean = false) {
+    return (utility: string, cssProperties: string[] = []): Rule<object>[] => {
+      const rules: Rule<object>[] = []
+
+      // For CSS vars we need a special regex pattern
+      const reUtilityBase = isCSSVar
+        ? `${this.prefix}\\$(\\w+)`
+        : `${this.prefix}${utility}`
+
+      // Helper for adding dynamic rules
+      const addRule = (pattern: string, handler: (match: string[]) => Record<string, string> | undefined, autocomplete?: string): void => {
+        const regex = getRegExp(`^${pattern}$`)
+        rules.push([
+          regex,
+          handler,
+          autocomplete ? { autocomplete } : undefined,
+        ])
+      }
+
+      if (isCSSVar) {
+        // CSS var rules with dynamic utility capture
+        addRule(`${reUtilityBase}-min-(\\d+)`, ([_, utility, minSize]) => ({
+          [this.getCSSVarName('min', utility)]: minSize,
+        }), `${this.prefix}$<name>-min-<num>`)
+
+        addRule(`${reUtilityBase}-min-container-(\\d+)`, ([_, utility, minContainerWidth]) => ({
+          [this.getCSSVarName('minContainer', utility)]: minContainerWidth,
+        }), `${this.prefix}$<name>-min-container-<num>`)
+
+        addRule(`${reUtilityBase}-max-(\\d+)`, ([_, utility, maxSize]) => ({
+          [this.getCSSVarName('max', utility)]: maxSize,
+        }), `${this.prefix}$<name>-max-<num>`)
+
+        addRule(`${reUtilityBase}-max-container-(\\d+)`, ([_, utility, maxContainerWidth]) => ({
+          [this.getCSSVarName('maxContainer', utility)]: maxContainerWidth,
+        }), `${this.prefix}$<name>-max-container-<num>`)
+
+        addRule(`${reUtilityBase}`, (matches) => {
+          if (matches.length !== 2 || matches.includes(undefined as any))
+            return
+          const properties = [this.getCSSVarName('', matches[1])]
+          return this.getFluidCSS({ utility: matches[1], properties })
+        }, reUtilityBase)
+
+        addRule(`${reUtilityBase}-base-(${units})`, ([_, utility, newUnit]) => ({
+          [this.getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap),
+        }))
+
+        addRule(`${reUtilityBase}-container`, ([_, utility]) => ({
+          [this.getCSSVarName('container', utility)]: '100cqw',
+        }))
+      }
+      else {
+        // Standard rules with fixed utility name
+        addRule(`${reUtilityBase}-min-(\\d+)`, ([_, minSize]) => ({
+          [this.getCSSVarName('min', utility)]: minSize,
+        }), `${reUtilityBase}-min-<num>`)
+
+        addRule(`${reUtilityBase}-min-container-(\\d+)`, ([_, minContainerWidth]) => ({
+          [this.getCSSVarName('minContainer', utility)]: minContainerWidth,
+        }), `${reUtilityBase}-min-container-<num>`)
+
+        addRule(`${reUtilityBase}-max-(\\d+)`, ([_, maxSize]) => ({
+          [this.getCSSVarName('max', utility)]: maxSize,
+        }), `${reUtilityBase}-max-<num>`)
+
+        addRule(`${reUtilityBase}-max-container-(\\d+)`, ([_, maxContainerWidth]) => ({
+          [this.getCSSVarName('maxContainer', utility)]: maxContainerWidth,
+        }), `${reUtilityBase}-max-container-<num>`)
+
+        addRule(`${reUtilityBase}`, (matches) => {
+          if (matches.length !== 1 || matches.includes(undefined as any))
+            return
+          return this.getFluidCSS({ utility, properties: cssProperties })
+        }, reUtilityBase)
+
+        addRule(`${reUtilityBase}-base-(${units})`, ([_, newUnit]) => ({
+          [this.getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap),
+        }), `${reUtilityBase}-base-<unit>`)
+
+        addRule(`${reUtilityBase}-container`, () => ({
+          [this.getCSSVarName('container', 'undefined')]: '100cqw',
+        }))
+      }
+
+      return rules
+    }
+  }
+
+  // Get shortcuts for the given utilities
+  getShortcuts(
+    utilities: string[],
+    options: { attributify: boolean, disableTheme: boolean, themeShortcuts?: boolean },
+  ): Preset['shortcuts'] {
+    const { attributify, disableTheme, themeShortcuts = true } = options
+    const shortcuts: Preset['shortcuts'] = []
+
+    // Add basic utility shortcuts
+    for (const utility of utilities) {
+      shortcuts.push([
+        getRegExp(`^${this.prefix}${utility}-(\\d+)/(\\d+)$`),
+        ([, min, max]) => `${this.prefix}${utility} ${this.prefix}${utility}-min-${min} ${this.prefix}${utility}-max-${max}`,
+        { autocomplete: `${this.prefix}${utility}-<num>/<num>` },
+      ] as const)
+    }
+
+    // Skip theme shortcuts if disabled or not requested
+    if (disableTheme || !themeShortcuts) {
+      return shortcuts
+    }
+
+    const getPrefixAttribute = (utility: string): string =>
+      `${utility}-${this.prefix.endsWith('-') ? this.prefix.slice(0, -1) : this.prefix}`
+
+    // Add font size theme shortcuts
+    for (const [name, [min, max]] of Object.entries(theme.fontSize)) {
+      shortcuts.push([`${this.prefix}text-${name}`, `${this.prefix}text-${min}/${max}`])
+      if (attributify) {
+        shortcuts.push([
+          `${getPrefixAttribute('text')}-${name}`,
+          `${this.prefix}text-${min}/${max}`,
+          { autocomplete: [`${getPrefixAttribute('text')}-${name}`, 'f-lg'] },
+        ])
+      }
+    }
+
+    // Add border radius theme shortcuts
+    for (const [name, [min, max]] of Object.entries(theme.borderRadius)) {
+      shortcuts.push([`${this.prefix}rounded-${name}`, `${this.prefix}rounded-${min}/${max}`])
+      if (attributify) {
+        shortcuts.push([
+          `${getPrefixAttribute('rounded')}-${name}`,
+          `${this.prefix}rounded-${min}/${max}`,
+        ])
+      }
+    }
+
+    // Add spacing shortcuts for other utilities
+    const ignoredProperties = ['text', 'rounded']
+    for (const [name, [min, max]] of Object.entries(theme.spacing)) {
+      for (const utility of utilities.filter(u => !ignoredProperties.includes(u))) {
+        shortcuts.push([`${this.prefix}${utility}-${name}`, `${this.prefix}${utility}-${min}/${max}`])
+        if (attributify) {
+          shortcuts.push([
+            `${getPrefixAttribute(utility)}-${name}`,
+            `${this.prefix}${utility}-${min}/${max}`,
+          ])
+        }
+      }
+    }
+
+    return shortcuts
+  }
+}
+
+export const presetFluidSizing = definePreset((options: PresetFluidSizingOptions = {}) => {
+  // Create a local configuration instance for this preset
+  const config = new PresetConfig(options)
+
+  // Get options with defaults applied
   const {
-    prefix,
-    maxContainerWidth,
-    minContainerWidth,
-    defaultBaseUnit,
-    expandCSSVariables,
     disableTheme = false,
     utilities: userUtilities = [],
     attributify = false,
-  } = defu(_options, defaultFluidSizingOptions)
+    themeShortcuts = true,
+  } = defu(options, defaultFluidSizingOptions)
 
-  globalConfig.prefix = prefix
-  globalConfig.maxContainerWidth = maxContainerWidth
-  globalConfig.minContainerWidth = minContainerWidth
-  globalConfig.baseUnit = unitToNumberMap[defaultBaseUnit as keyof typeof unitToNumberMap]
-  globalConfig.expandCSSVariables = expandCSSVariables
+  // More efficiently merge utilities using a Set for O(1) lookups
+  const userUtilityNames = new Set(userUtilities.map(u => u[0]))
+  const mergedUtilities = [
+    ...userUtilities,
+    ...fluidSizeUtilities.filter(([name]) => !userUtilityNames.has(name)),
+  ]
 
-  // in case of conflict in utilities, use the user's utilities
-  const mergedFluidSizeUtilities = userUtilities
-  const userUtilitiesName = userUtilities.map(u => u[0])
-  for (const [utility, properties] of fluidSizeUtilities.filter(u => !userUtilitiesName.includes(u[0]))) {
-    mergedFluidSizeUtilities.push([utility, properties])
-  }
-  const mergedFluidSizeUtilitiesName = mergedFluidSizeUtilities.map(u => u[0])
+  // Create rule factories
+  const getRules = config.makeRulesFactory(false)
+  const getCSSVarRules = config.makeRulesFactory(true)
 
-  const rules: Preset['rules'] = mergedFluidSizeUtilities
-    .map(([utility, properties]) => getRules(utility, properties))
-    .filter((rule): rule is NonNullable<typeof rule> => rule !== undefined)
-    .flat(1)
+  // Generate all rules
+  const rules: Rule<object>[] = []
 
-  const cssVarRules = getCSSVarRules()
-  if (cssVarRules) {
-    rules.push(...cssVarRules)
+  // Add utility-specific rules
+  for (const [utility, properties] of mergedUtilities) {
+    rules.push(...getRules(utility, properties))
   }
 
-  const shortcuts: Preset['shortcuts'] = getShortcuts(mergedFluidSizeUtilitiesName, { attributify, disableTheme })
+  // Add CSS var rules
+  rules.push(...getCSSVarRules('', []))
+
+  // Generate shortcuts
+  const utilityNames = mergedUtilities.map(u => u[0])
+  const shortcuts = config.getShortcuts(utilityNames, {
+    attributify,
+    disableTheme,
+    themeShortcuts,
+  })
 
   return {
     name: 'unocss-preset-fluid-sizing',
@@ -132,258 +434,3 @@ export const presetFluidSizing = definePreset((_options: PresetFluidSizingOption
     shortcuts,
   }
 })
-
-const defaultValue = 16
-
-const cssVars = {
-  max: defaultValue,
-  min: defaultValue,
-  get maxContainer() { return globalConfig.maxContainerWidth },
-  get minContainer() { return globalConfig.minContainerWidth },
-  get unit() { return globalConfig.baseUnit },
-  rangeWidth: undefined,
-  factor: undefined,
-  rangeSize: undefined,
-  fluid: undefined,
-  size: undefined,
-  container: '100vw',
-}
-
-function toKebabCase(str: string): string {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
-}
-
-function getCSSVarName(variable?: keyof typeof cssVars | string, utility?: string): string {
-  return `--${globalConfig.prefix}${utility?.replace('$', '')}${variable ? `-${toKebabCase(variable)}` : ''}`
-}
-
-function getCSSVar(variable: keyof typeof cssVars, utility?: string): string {
-  return `var(${getCSSVarName(variable, utility)}${cssVars[variable] ? `, ${cssVars[variable]}` : ''})`
-}
-
-function getCSSVars(variable: keyof typeof cssVars, utility?: string): [string, string] {
-  return [getCSSVarName(variable, utility), getCSSVar(variable, utility)]
-}
-
-interface FluidCSS {
-  utility: string
-  properties: string[]
-  expandCSSVariables?: boolean
-  minSize?: string
-  minSizeC?: string
-  maxSize?: string
-  maxSizeC?: string
-}
-
-function getFluidCSS(options: FluidCSS): Record<string, string> {
-  const utility = options.utility.replaceAll('$', '')
-  const {
-    properties,
-    minSize = getCSSVar('min', utility),
-    maxSize = getCSSVar('max', utility),
-    maxSizeC = getCSSVar('maxContainer', utility),
-    minSizeC = getCSSVar('minContainer', utility),
-    expandCSSVariables = globalConfig.expandCSSVariables,
-  } = options
-
-  const containerVar = getCSSVar('container', utility)
-  const unitVar = getCSSVar('unit', utility)
-
-  const css: Record<any, string> = {}
-  let value: string = ''
-
-  if (expandCSSVariables) {
-    const [rangeWidthVar, rangeWidthVarName] = getCSSVars('rangeWidth', utility)
-    const [factorVar, factorVarName] = getCSSVars('factor', utility)
-    const [rangeSizeVar, rangeSizeVarName] = getCSSVars('rangeSize', utility)
-    const [fluidVar, fluidVarName] = getCSSVars('fluid', utility)
-    const [sizeVar, sizeVarName] = getCSSVars('size', utility)
-    css[rangeWidthVarName] = `calc(${maxSizeC} - ${minSizeC})`
-    css[factorVarName] = `calc((${containerVar} - (${unitVar} * ${minSizeC})) / ${rangeWidthVar})`
-    css[rangeSizeVarName] = `calc(${maxSize} - ${minSize})`
-    css[fluidVarName] = `calc(${unitVar} * ${minSize} + ${rangeSizeVar} * ${factorVar})`
-    const clamp = `clamp(calc(${unitVar} * ${minSize}), ${fluidVar}, calc(${unitVar} * ${maxSize}))`
-    css[sizeVarName] = clamp
-    value = `${sizeVar} `
-  }
-  else {
-    const fluid = `calc(${unitVar} * ${minSize} + (${maxSize} - ${minSize}) * (${containerVar} - (${unitVar} * ${minSizeC})) / (${maxSizeC} - ${minSizeC}))`
-    const minValue = `calc(${unitVar} * ${minSize})`
-    const maxValue = `calc(${unitVar} * ${maxSize})`
-    value = `clamp(${minValue}, ${fluid}, ${maxValue})`
-  }
-
-  properties.forEach(p => css[p] = value)
-  return css
-}
-
-function getRules(utility: string, cssProperties: string[] = [], reUtility = `${globalConfig.prefix}${utility}`): Preset['rules'] {
-  const rules: Preset['rules'] = []
-
-  // min-<number>
-  rules.push([
-    new RegExp(`^${reUtility}-min-(\\d+)$`),
-    ([_, minSize]) => {
-      return { [getCSSVarName('min', utility)]: minSize }
-    },
-    { autocomplete: `${reUtility}-min-<num>` },
-  ] satisfies DynamicRule)
-
-  // min-container-<container-width>
-  rules.push([
-    new RegExp(`^${reUtility}-min-container-(\\d+)$`),
-    ([_, userMinContainerWidth]) => {
-      return { [getCSSVarName('minContainer', utility)]: userMinContainerWidth }
-    },
-
-    { autocomplete: `${reUtility}-min-container-<num>` },
-  ] satisfies DynamicRule)
-
-  // max-<number>
-  rules.push([
-    new RegExp(`^${reUtility}-max-(\\d+)$`),
-    ([_, maxSize]) => {
-      return { [getCSSVarName('max', utility)]: maxSize }
-    },
-    { autocomplete: `${reUtility}-max-<num>` },
-  ] satisfies DynamicRule)
-
-  // max-container-<container-width>
-  rules.push([
-    new RegExp(`^${reUtility}-max-container-(\\d+)$`),
-    ([_, userMaxContainerWidth]) => {
-      return { [getCSSVarName('maxContainer', utility)]: userMaxContainerWidth }
-    },
-    { autocomplete: `${reUtility}-max-container-<num>` },
-  ] satisfies DynamicRule)
-
-  rules.push([
-    new RegExp(`^${reUtility}$`),
-    (matches) => {
-      if (matches.length !== 1 || matches.includes(undefined as any))
-        return
-      return getFluidCSS({ utility, properties: cssProperties })
-    },
-    { autocomplete: reUtility },
-  ])
-
-  // Support rePrefix-base-<number>
-  rules.push([
-    new RegExp(`^${reUtility}-base-(${units})$`),
-    ([_, newUnit]) => ({ [getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap) }),
-    { autocomplete: `${reUtility}-base-<unit>` },
-  ])
-
-  // Use cqw instead of vw
-  rules.push([new RegExp(`^${reUtility}-container$`), ([_, _group, utility]) => ({ [getCSSVarName('container', utility)]: '100cqw' })])
-
-  return rules
-}
-
-function getCSSVarRules(): Preset['rules'] {
-  const rules: Preset['rules'] = []
-  const reUtility = `${globalConfig.prefix}\\$(\\w+)`
-
-  // min-<number>
-  rules.push([
-    new RegExp(`^${reUtility}-min-(\\d+)$`),
-    ([_, utility, minSize]) => {
-      return { [getCSSVarName('min', utility)]: minSize }
-    },
-    { autocomplete: `${reUtility}-min-<num>` },
-  ] satisfies DynamicRule)
-
-  // min-container-<container-width>
-  rules.push([
-    new RegExp(`^${reUtility}-min-container-(\\d+)$`),
-    ([_, utility, userMinContainerWidth]) => {
-      return { [getCSSVarName('minContainer', utility)]: userMinContainerWidth }
-    },
-    { autocomplete: `${reUtility}-min-container-<num>` },
-  ] satisfies DynamicRule)
-
-  // max-<number>
-  rules.push([
-    new RegExp(`^${reUtility}-max-(\\d+)$`),
-    ([_, utility, maxSize]) => {
-      return { [getCSSVarName('max', utility)]: maxSize }
-    },
-    { autocomplete: `${reUtility}-max-<num>` },
-  ] satisfies DynamicRule)
-
-  // max-container-<container-width>
-  rules.push([
-    new RegExp(`^${reUtility}-max-container-(\\d+)$`),
-    ([_, utility, userMaxContainerWidth]) => {
-      return { [getCSSVarName('maxContainer', utility)]: userMaxContainerWidth }
-    },
-    { autocomplete: `${reUtility}-max-container-<num>` },
-  ] satisfies DynamicRule)
-
-  rules.push([
-    new RegExp(`^${reUtility}$`),
-    (matches) => {
-      if (matches.length !== 2 || matches.includes(undefined as any))
-        return
-      const properties = [getCSSVarName('', matches[1])]
-      return getFluidCSS({ utility: matches[1], properties })
-    },
-    { autocomplete: reUtility },
-  ])
-
-  // Support rePrefix-base-<number>
-  rules.push([new RegExp(`^${reUtility}-base-(${units})$`), ([_, utility, newUnit]) => ({ [getCSSVarName('unit', utility)]: unitToNumber(newUnit as keyof typeof unitToNumberMap) })])
-
-  // Use cqw instead of vw
-  rules.push([new RegExp(`^${reUtility}-container$`), ([_, _group, utility]) => ({ [getCSSVarName('container', utility)]: '100cqw' })])
-
-  return rules
-}
-
-/**
- * Get shortcuts for the user's utilities
- * 1. Shortcut for `utility-min/max` becomes: `utility utility-min-X utility-max-X`
- * 2. Shortcut for `text-2xs` becomes: `text-min/max`. The values are taken from the theme.
- * 3. Shortcut for `rounded-2xs` becomes: `rounded-min/max`. The values are taken from the theme.
- * 4. Shortcut for the rest of utilities becomes: `utility-min/max`. The values are taken from the theme.
- */
-function getShortcuts(utilities: string[], { attributify, disableTheme }: Pick<PresetFluidSizingOptions, 'attributify' | 'disableTheme'>): Preset['shortcuts'] {
-  const prefix = globalConfig.prefix
-
-  const shortcuts: Preset['shortcuts'] = utilities.map(utility => [
-    new RegExp(`^${prefix}${utility}-(\\d+)/(\\d+)$`),
-    ([, min, max]) => `${prefix}${utility} ${prefix}${utility}-min-${min} ${prefix}${utility}-max-${max}`,
-    { autocomplete: `${prefix}${utility}-<num>/<num>` },
-  ] as const)
-
-  if (!disableTheme) {
-    const getPrefixAttribute = (utility: string): string => `${utility}-${prefix.endsWith('-') ? prefix.slice(0, -1) : prefix}`
-    for (const [name, [min, max]] of Object.entries(theme.fontSize)) {
-      shortcuts.push([`${prefix}text-${name}`, `${prefix}text-${min}/${max}`])
-      if (attributify) {
-        shortcuts.push([
-          `${getPrefixAttribute('text')}-${name}`,
-          `${prefix}text-${min}/${max}`,
-          { autocomplete: [`${getPrefixAttribute('text')}-${name}`, 'f-lg'] },
-        ])
-      }
-    }
-
-    for (const [name, [min, max]] of Object.entries(theme.borderRadius)) {
-      shortcuts.push([`${prefix}rounded-${name}`, `${prefix}rounded-${min}/${max}`])
-      if (attributify)
-        shortcuts.push([`${getPrefixAttribute('rounded')}-${name}`, `${prefix}rounded-${min}/${max}`])
-    }
-
-    const ignoredProperties = ['text', 'rounded']
-    for (const [name, [min, max]] of Object.entries(theme.spacing)) {
-      for (const utility of utilities.filter(u => !ignoredProperties.includes(u))) {
-        shortcuts.push([`${prefix}${utility}-${name}`, `${prefix}${utility}-${min}/${max}`])
-        if (attributify)
-          shortcuts.push([`${getPrefixAttribute(utility)}-${name}`, `${prefix}${utility}-${min}/${max}`])
-      }
-    }
-  }
-
-  return shortcuts
-}
