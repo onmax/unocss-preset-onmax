@@ -10,7 +10,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
   modules: [
     {
       text: 'Preset Onmax',
-      subpath: '',
+      subpath: 'unocss-preset-onmax',
       defaultPageLink: '/unocss-preset-onmax/',
       icon: 'i-custom:preset-onmax',
       description: 'Opinionated UnoCSS setup',
