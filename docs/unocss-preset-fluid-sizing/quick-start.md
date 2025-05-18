@@ -35,29 +35,15 @@ export default defineConfig({
   presets: [
     // other presets...
     presetFluidSizing({
-      // optional configuration
       prefix: 'f-', // default prefix
       minContainerWidth: 320, // default min viewport
       maxContainerWidth: 1920, // default max viewport
-      // More options
     }),
   ],
 })
 ```
 
 ### Basic Usage
-
-```html
-<!-- Using the built-in theme shortcuts -->
-<div class="f-p-2xs f-text-xl" />
-
-<!-- Using explicit utilities -->
-<div class="f-p f-p-min-32 f-p-max-48" />
-<div class="f-text f-text-min-8 f-text-max-12" />
-
-<!-- Shorthand syntax -->
-<div class="f-p-32/48 f-text-8/12" />
-```
 
 :::code-group
 

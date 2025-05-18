@@ -1,6 +1,6 @@
 import type { NimiqVitepressThemeConfig } from 'nimiq-vitepress-theme/types.js'
 
-const playgrounds = {
+export const playgrounds = {
   fluidSizing: 'https://unocss.dev/play/#html=DwEwlgbgBAxg9gOwC4EMwIKYCcoDMC0ADgB74A2A5nkQJ74DOAtgHwBQUUwAFgIx4C8AIiQZiSfAGYATAHoALAA5BeROIBGcMiGYBVBHADCAZSNQAYmQCuYEFCNgAXuioAFMihoUscSwhDAZXjYOYEJ2DmpGcWJ6cI4CQnwYuKg1CnwYGhQEfABWAAYU%2Bi4UEDgAdyEmWCycnnz8wRSfJDJ0DCEpKAA-KDhcXHoMcXwuzOz8OQamiOpvXxAMEHIKFJExIXGchQbIkBmoYIjAQrIoACUMekcMKBofHDVvcqGccvQy8qgkOCghm9wrDZfo5nFB0FAUDAkGBEABCcIBQhsBHgaAEKIrI4hLhdXBCdbiKTEMjKXCqfAaLTMAAqXAwjBuOmhbWhlygAAojPTstCYFAAHIoBn0ACUARxyNmoEg1ESlEi0XofUsrXam1q%2BAAbLs%2BN1Sfh5n4lpiUiF4ItUuktqNdglSDEoIQ6BI5j4jctKMwEisAuaMFiIqEFaMYgHZrSwEqNMQoCUlcA-V6iD6ZImoOUuGAYFwoBRIGyAdZbIRSuAEFRcN5GFBpCQvnBTRFFCQAHSNxEBgKoyWB1HB4mRNRJJXexi2FptTDqiba-JQXX6w2LD0UMOcP2WjIaqS2oj2pVOySuhbGz3o6JkQfD2X4Me%2BuCLHtSwjBon0NccAxwRhqdq2JB0gyUAqmALJgJcABc64Pv655JGQ96PhyjAoFgeY5N8hAigANI2ZowUmP7Doh-rIah6EUnASDfIwOHQY%2Bo7%2BKmBEciWIBlhQIrtjISIpF2kBPpwfYTmqgjWrO849IubrLis1AEiGl5wWON5MGuCYwZu1o7nOdrXoeLoEEup6rgQClEkpyZMCRgkhLxsyzBYRZfDQhBwF4KCEFwNDpmAAH0bB%2BDmcSNkQn4jqlqCbwAXhAVJok1nMY%2B3H2YGMjdgi6UCaw-EQGwQA&config=JYWwDg9gTgLgBAbwFBzgEwKYDNgDsMDCEuOA5gDQpxhQYDOGMAgjDFMAEYCuMwWAnpVQ16jAJIBjYnSHVaDGAHU8aAMyUAvnCxQIIOAHIuuCBLp0DSUJFiI5omADEANl2BoAysABeeUnC0dPUNjU3MAWhEFcKxXd3C6Hz9LJAwADxt4TCwAQy5nLOw8QmIyAApkYXlGOgAuOABtKMZlXDUygEpyewUWNk4ePn5O7uanOM8k3FJOgF1NDqQgA&css=PQKgBA6gTglgLgUzAYwK4Gc4HsC2YDCAyoWABYJQIA0YAhgHYAmYcUD6AZllDhWOqgAOg7nAB0YAGLcwCAB60cggDYIAXGBDAAUKDBi0mXGADe2sGC704AWgDuCGAHNScDQFYADJ4Dc5sAACtMLKAJ5gggCMLPK2ABR2pPBIcsoAlH4WAEa0yADWTlBYqEw2yFjK3Bpw5LxxAOTllVDoYpSMYgAs3vUZ2gC%2BmsBAA&options=N4IgLgTghgdgzgMwPYQLYAkyoDYgFwJTZwCmAvkA&version=66.0.0',
   easingGradient: 'https://unocss.dev/play/#html=DwCwjAfAUCcgdgQxASwEYCcD2AXAtgIwBMARgKYBOAlgHxRgAuAnqWutQCbkB28L5YtQDWM7AHN4AXngQQDBkzLwBEOWmEiAQQA0QDIn3rCunft16AA2mM7IAD0zA84MCGsJgAXntBwAOlAHFkQAdwBfAEpwXEDnEC9ff0I3WHRWOMT4BHZKZA8AVxt4OiUVNXRgmgBGODwRcEDdIJCwyJiKQODuEKiYmiZGNMyc-KKS8orqiNi6FKSo1LRFgGYAFiQwFvae3v7BodGJ1cW1zd3D4-PL69vbnJO7h+2HzYHm0fbo4doRhNbZ97l9fv8QWDYYYACJQAB6AEEkTAAe8Hj1HvEAF5gYHw95wQgAJQAKigRmAhGA5gAVgAHCgwXDATBgJABgAMAgtgAASCwuNQAMiMBBQQPRjEoWGh8Lg-B8QA',
 } as const
@@ -35,10 +35,9 @@ export const themeConfig: NimiqVitepressThemeConfig = {
         {
           items: [
             { text: 'Home', link: '/unocss-preset-fluid-sizing/', icon: 'i-tabler:home' },
-            { text: 'Getting Started', link: '/unocss-preset-fluid-sizing/getting-started', icon: 'i-tabler:rocket' },
-            { text: 'Installation', link: '/unocss-preset-fluid-sizing/installation', icon: 'i-tabler:download' },
+            { text: 'Quick start', link: '/unocss-preset-fluid-sizing/quick-start', icon: 'i-tabler:rocket' },
+            { text: 'How does it work', link: '/unocss-preset-fluid-sizing/how-does-it-work', icon: 'i-tabler:school' },
             { text: 'Playground', link: playgrounds.fluidSizing, icon: 'i-tabler:ball-basketball' },
-            { text: 'API Configuration', link: '/unocss-preset-fluid-sizing/api/configuration', icon: 'i-tabler:settings' },
           ],
         },
         {
@@ -46,7 +45,14 @@ export const themeConfig: NimiqVitepressThemeConfig = {
           items: [
             { text: 'Utilities', link: '/unocss-preset-fluid-sizing/features/utilities', icon: 'i-tabler:tools' },
             { text: 'Theme', link: '/unocss-preset-fluid-sizing/features/theme', icon: 'i-tabler:color-swatch' },
-            { text: 'CSS Variables', link: '/unocss-preset-fluid-sizing/features/css-variables', icon: 'i-tabler:variable' },
+          ],
+        },
+        {
+          label: 'Advanced',
+          items: [
+            { text: 'CSS Variables', link: '/unocss-preset-fluid-sizing/api/css-variables', icon: 'i-tabler:variable' },
+            { text: 'Configuration', link: '/unocss-preset-fluid-sizing/api/configuration', icon: 'i-tabler:tools' },
+            { text: 'Custom Theme', link: '/unocss-preset-fluid-sizing/api/custom-theme', icon: 'i-tabler:brand-abstract' },
           ],
         },
       ],

@@ -1,28 +1,17 @@
-# `unocss-preset-fluid-sizing` configuration
+# Configuration
 
-The UnoCSS fluid sizing preset is designed to be highly customizable, allowing you to tailor it to your specific needs.
+Flexibility in foundation, precision in adaptation.
 
-You can configure the preset by:
+The UnoCSS Fluid Sizing preset offers deep customization options, allowing you to tailor every aspect of fluid scaling to your project's specific needs.
 
-1. Passing options to the `presetFluidSizing` function.
-2. Or modifying the default values in the dom element.
+## Configuration Methods
 
-## Configuration Options
+You can customize this preset in two ways:
 
-The `presetFluidSizing` function accepts the following configuration options:
+1. **Global Configuration**: Set defaults for your entire project in the UnoCSS config
+2. **Per-Element Overrides**: Apply specific settings directly in your HTML for individual elements
 
-| Option               | Type    | Default | Description                                          |
-| -------------------- | ------- | ------- | ---------------------------------------------------- |
-| `minContainerWidth`  | number  | `320`   | Default minimum screen width in pixels               |
-| `maxContainerWidth`  | number  | `1920`  | Default maximum screen width in pixels               |
-| `defaultBaseUnit`    | Unit    | `px`    | Default base unit for all utilities                  |
-| `prefix`             | string  | `f-`    | Prefix for custom properties and utilities           |
-| `expandCSSVariables` | boolean | `false` | Whether to expand CSS variables into component parts |
-| `disableTheme`       | boolean | `false` | Whether to disable the default theme                 |
-| `utilities`          | array   | `[]`    | Additional custom utilities to add                   |
-| `attributify`        | boolean | `false` | Whether to enable attributify mode support           |
-
-### Example Configuration
+## Global Preset Options
 
 ```ts
 // uno.config.ts
@@ -32,62 +21,68 @@ import { presetFluidSizing } from 'unocss-preset-fluid-sizing'
 export default defineConfig({
   presets: [
     presetFluidSizing({
-      minContainerWidth: 375,
-      maxContainerWidth: 1600,
-      defaultBaseUnit: 'rem',
-      prefix: 'fluid-',
-      expandCSSVariables: true,
-      attributify: true
+      // Viewport breakpoints for fluid scaling
+      minContainerWidth: 375, // Default: 320px
+      maxContainerWidth: 1600, // Default: 1920px
+
+      // Default unit system
+      defaultBaseUnit: 'rem', // Default: 'px'
+
+      // Prefix customization
+      prefix: 'fluid-', // Default: 'f-'
+
+      // Advanced options
+      expandCSSVariables: true, // Default: false
+      disableTheme: false, // Default: false
+
+      // Add custom properties or override existing ones
+      utilities: [
+        ['custom-property', ['--my-custom-property']],
+        ['grid-cols', ['grid-template-columns']],
+      ],
+
+      // Enable attributify mode
+      attributify: true // Default: false
     }),
   ],
 })
 ```
 
-## One-time Configuration in the DOM
+## Per-Element Overrides
 
-You can override the default configuration values for specific utilities directly in your HTML classes:
+Need to customize a specific element? You can override the global settings directly in your HTML:
 
-### Utility-specific Configurations
+### Utility-specific Configuration Classes
 
-| Utility Class                         | Description                                                                  |
-| ------------------------------------- | ---------------------------------------------------------------------------- |
-| `f-${utility}-min-${value}`           | Sets the minimum value for the utility                                       |
-| `f-${utility}-max-${value}`           | Sets the maximum value for the utility                                       |
-| `f-${utility}-min-container-${value}` | Sets the minimum container width for this specific utility                   |
-| `f-${utility}-max-container-${value}` | Sets the maximum container width for this specific utility                   |
-| `f-${utility}-base-${unit}`           | Sets the base unit for this utility (px, rem, em, vw, vh, vmin, vmax, fr, %) |
-| `f-${utility}-container`              | Uses container width (100cqw) instead of viewport width (100vw)              |
+| Class                                 | Purpose                                            | Example                    |
+| ------------------------------------- | -------------------------------------------------- | -------------------------- |
+| `f-${utility}-min-${value}`           | Set min value                                      | `f-p-min-16`               |
+| `f-${utility}-max-${value}`           | Set max value                                      | `f-m-max-48`               |
+| `f-${utility}-min-container-${value}` | Override min container width                       | `f-text-min-container-480` |
+| `f-${utility}-max-container-${value}` | Override max container width                       | `f-gap-max-container-1440` |
+| `f-${utility}-base-${unit}`           | Change unit (px, rem, em, vw, vh, vmin, vmax...)   | `f-w-base-rem`             |
+| `f-${utility}-container`              | Use container queries (100cqw) instead of viewport | `f-p-container`            |
+| `f-${utility}-${min}/${max}`          | Shorthand for min/max values                       | `f-p-16/32`                |
 
-### Example Usage in HTML
+### Real-World Examples
 
 ```html
-<!-- Override min/max values for padding -->
-<div class="f-p-min-20 f-p-max-60">Custom padding scaling from 20px to 60px</div>
+<!-- Custom padding that scales from 20px to 60px -->
+<div class="f-p-min-20 f-p-max-60">Precisely controlled padding</div>
 
-<!-- Override container width points for margin -->
-<div class="f-m-min-container-480 f-m-max-container-1200">Custom margin scaling between 480px and 1200px viewports</div>
+<!-- Margin that scales between specific viewport widths -->
+<div class="f-m-min-container-480 f-m-max-container-1200">Custom breakpoint scaling</div>
 
-<!-- Change the unit for a specific utility -->
-<div class="f-text-base-rem">Font size will be calculated in rem units</div>
+<!-- Font size in rem units -->
+<div class="f-text-base-rem">Accessibility-friendly text</div>
 
-<!-- Use container queries instead of viewport width -->
-<div class="f-gap-container">Gap will scale based on container width rather than viewport width</div>
+<!-- Container-relative scaling -->
+<section class="f-gap-container">
+  <div>I scale based on my container, not the viewport</div>
+</section>
 
-<!-- Shorthand for min/max values -->
-<div class="f-p-20/40">Padding scaling from 20px to 40px</div>
+<!-- Shorthand notation -->
+<div class="f-p-20/40">Concise fluid padding (20px to 40px)</div>
 ```
 
-## Customizing Utilities
-
-You can add your own custom utilities by using the `utilities` configuration option:
-
-```ts
-presetFluidSizing({
-  utilities: [
-    ['custom-property', ['--my-custom-property']],
-    ['grid-cols', ['grid-template-columns']],
-  ]
-})
-```
-
-This would allow you to use utilities like `f-custom-property` and `f-grid-cols` with all the fluid sizing features.
+These per-element overrides give you pixel-perfect control when you need to diverge from your global settings for specific design elements.
