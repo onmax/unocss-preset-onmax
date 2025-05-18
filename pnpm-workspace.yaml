@@ -27,8 +27,8 @@ catalog:
   eslint-plugin-format: ^1.0.1
   floating-vue: ^5.2.2
   lint-staged: ^16.0.0
-  nimiq-css: ^1.0.0-beta.23
-  nimiq-vitepress-theme: ^1.0.0-beta.23
+  nimiq-css: ^1.0.0-beta.25
+  nimiq-vitepress-theme: ^1.0.0-beta.25
   pathe: ^2.0.3
   pinia: ^3.0.2
   pnpm: ^10.11.0

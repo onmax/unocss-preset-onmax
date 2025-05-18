@@ -11,16 +11,16 @@ export const themeConfig: NimiqVitepressThemeConfig = {
     {
       text: 'Preset Onmax',
       subpath: '',
-      defaultPageLink: '/',
+      defaultPageLink: '/unocss-preset-onmax/',
       icon: 'i-custom:preset-onmax',
       description: 'Opinionated UnoCSS setup',
       sidebar: [
         {
           items: [
-            { text: 'Introduction', link: '/', icon: 'i-tabler:home' },
-            { text: 'Installation', link: '/installation', icon: 'i-tabler:download' },
-            { text: 'Rules and variants', link: '/rules-and-variants', icon: 'i-tabler:code' },
-            { text: 'Presets', link: '/presets', icon: 'i-tabler:palette' },
+            { text: 'Introduction', link: '/unocss-preset-onmax/', icon: 'i-tabler:home' },
+            { text: 'Installation', link: '/unocss-preset-onmax/installation', icon: 'i-tabler:download' },
+            { text: 'Rules and variants', link: '/unocss-preset-onmax/rules-and-variants', icon: 'i-tabler:code' },
+            { text: 'Presets', link: '/unocss-preset-onmax/presets', icon: 'i-tabler:palette' },
           ],
         },
       ],
