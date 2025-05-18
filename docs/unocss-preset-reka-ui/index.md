@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS Reka UI Preset
 
 The Reka UI preset brings powerful UI styling capabilities to UnoCSS, optimized specifically for Vue.js applications. It makes it easier to build modern, accessible, and beautiful Vue interfaces by combining three essential features: Radix Colors integration, specialized UI variants, and pre-configured animations.
+
+<Badges pkg="unocss-preset-reka-ui" />
 
 ## Key Features
 

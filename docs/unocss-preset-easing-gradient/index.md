@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS Easing Gradient Preset
 
 The Easing Gradient preset adds utilities for creating smooth, perceptually uniform color gradients using easing functions. Traditional linear gradients often appear to have a visual "band" in the middle, but easing gradients create a more natural transition between colors.
+
+<Badges pkg="unocss-preset-easing-gradient" />
 
 ## Features
 

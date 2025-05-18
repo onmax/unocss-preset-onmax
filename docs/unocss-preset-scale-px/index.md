@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS Scale PX Preset
 
 The Scale PX preset provides functionality to scale `rem` units in your UnoCSS utilities. This preset is particularly useful for creating more precise sizing in your designs by scaling down rem values by a factor of 4.
+
+<Badges pkg="unocss-preset-scale-px" />
 
 ## Features
 

@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS UnoVue Preset
 
 The UnoVue preset combines multiple UI component presets to create a comprehensive styling solution for Vue applications. It integrates the Reka UI preset and Shadcn UI preset into a cohesive system, giving you access to a wide range of UI utilities and components.
+
+<Badges pkg="unocss-preset-unovue" />
 
 ## Features
 

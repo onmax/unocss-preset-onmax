@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS Preset Onmax
 
 UnoCSS Preset Onmax is a comprehensive preset that bundles multiple useful presets into a single package with sensible defaults. It's designed to provide an opinionated setup that works well for most projects right out of the box.
+
+<Badges pkg="unocss-preset-onmax" />
 
 ## Key Features
 

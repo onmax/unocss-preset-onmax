@@ -13,7 +13,7 @@ import { presetScalePx } from 'unocss-preset-scale-px'
 
 export default defineConfig({
   content: {
-    filesystem: ['./vitepress/theme/components/**/*.vue', '**/*.md', '!**/node_modules/**', './.vitepress/theme.config.ts'],
+    filesystem: ['./vitepress/theme/components/**/*.vue', '**/**/*.md', '!**/node_modules/**', './.vitepress/theme.config.ts'],
   },
   blocklist: [
     'container',

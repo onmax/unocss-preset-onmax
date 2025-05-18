@@ -50,11 +50,9 @@ const itemsOnmax = computed(() => {
 
 # Onmax Preset for UnoCSS
 
-Hand-crafted by <a href="https://github.com/onmax" target="_blank" un-text-inherit flex="inline items-baseline gap-6" px-4 rounded-4 h-max py-4><span i-custom:preset-onmax rounded-8 mx-0 size-28 translate-y-8 inline-block />@onmax</a> to fill the gaps in UnoCSS.
+Presets hand-crafted by <a href="https://github.com/onmax" target="_blank" un-text-inherit flex="inline items-baseline gap-6" px-4 rounded-4 h-max py-4><span i-custom:preset-onmax rounded-8 mx-0 size-28 translate-y-8 inline-block />@onmax</a> to fill the gaps in UnoCSS.
 
-Six battle-tested extensions that solve real CSS pain points—pick one or install them all.
-
-Every preset here was designed and refined by @onmax to close gaps in UnoCSS and give you cleaner, more predictable utilities—use them individually or grab the full suite in a single import.
+Battle-tested extensions that improve your UnoCSS experience with clean, easy and predictable utilities in mind.
 
 <NqGrid :cards="items"  />
 

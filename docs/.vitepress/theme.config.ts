@@ -34,7 +34,7 @@ export const themeConfig: NimiqVitepressThemeConfig = {
       sidebar: [
         {
           items: [
-            { text: 'Introduction', link: '/unocss-preset-fluid-sizing/', icon: 'i-tabler:home' },
+            { text: 'Home', link: '/unocss-preset-fluid-sizing/', icon: 'i-tabler:home' },
             { text: 'Getting Started', link: '/unocss-preset-fluid-sizing/getting-started', icon: 'i-tabler:rocket' },
             { text: 'Installation', link: '/unocss-preset-fluid-sizing/installation', icon: 'i-tabler:download' },
             { text: 'Playground', link: playgrounds.fluidSizing, icon: 'i-tabler:ball-basketball' },

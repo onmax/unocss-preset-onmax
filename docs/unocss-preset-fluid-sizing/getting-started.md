@@ -4,7 +4,12 @@ UnoCSS Fluid Sizing is a powerful preset that allows you to create responsive de
 
 ## Overview
 
-![UnoCSS Fluid Sizing Overview](/assets/images/fluid-sizing-overview.svg)
+<figure>
+
+![A simple clamp() graph showing 16px ↔ 48px between 320px and 1920px](/assets/images/fluid-sizing-overview.svg)
+
+  <figcaption>Fluid padding from 16px to 48px as the viewport grows.</figcaption>
+</figure>
 
 The diagram above shows how fluid sizing works:
 

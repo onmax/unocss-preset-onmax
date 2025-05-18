@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import Badges from '../.vitepress/theme/components/Badges.vue'
+</script>
+
 # UnoCSS CSS Variables Preset
 
 The CSS Variables preset allows you to easily define and use CSS custom properties (variables) in your UnoCSS classes. This preset makes it easy to set and manage CSS variables with the UnoCSS utility-first approach.
+
+<Badges pkg="unocss-preset-css-var" />
 
 ## Features
 
