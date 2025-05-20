@@ -410,7 +410,7 @@ export function reset(): Preflight<Theme> {
       themeTracking('defaults', ['monoFont', 'featureSettings'])
       themeTracking('defaults', ['monoFont', 'variationSettings'])
 
-      return `@layer nq-reset { ${compressCSS(resetCSS, generator.config.envMode === 'dev')} }`
+      return `@layer tw-reset { ${compressCSS(resetCSS, generator.config.envMode === 'dev')} }`
     },
     layer: LAYER_PREFLIGHTS,
   }
