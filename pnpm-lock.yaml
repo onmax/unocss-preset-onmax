@@ -73,11 +73,11 @@ catalogs:
       specifier: ^16.0.0
       version: 16.0.0
     nimiq-css:
-      specifier: ^1.0.0-beta.28
-      version: 1.0.0-beta.28
+      specifier: ^1.0.0-beta.30
+      version: 1.0.0-beta.30
     nimiq-vitepress-theme:
-      specifier: ^1.0.0-beta.28
-      version: 1.0.0-beta.28
+      specifier: ^1.0.0-beta.30
+      version: 1.0.0-beta.30
     pathe:
       specifier: ^2.0.3
       version: 2.0.3
@@ -211,7 +211,7 @@ importers:
     dependencies:
       nimiq-css:
         specifier: 'catalog:'
-        version: 1.0.0-beta.28(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
+        version: 1.0.0-beta.30(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
       reka-ui:
         specifier: 'catalog:'
         version: 2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
@@ -245,7 +245,7 @@ importers:
         version: 5.2.2(vue@3.5.14(typescript@5.8.3))
       nimiq-vitepress-theme:
         specifier: 'catalog:'
-        version: 1.0.0-beta.28(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
+        version: 1.0.0-beta.30(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
       pinia:
         specifier: 'catalog:'
         version: 3.0.2(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
@@ -891,6 +891,9 @@ packages:
 
   '@iconify-json/vscode-icons@1.2.20':
     resolution: {integrity: sha512-xuWqr/SrckUoFi6kpSH/NrNGK+CuZ8LNnBY8qkRdkQvHmhirXvwsLfTKHoFndTsOlxfsHahlOLVCCb523kdqMA==}
+
+  '@iconify-json/vscode-icons@1.2.21':
+    resolution: {integrity: sha512-velkIWAZRxvM9VuhkVeD6obyw0UXjTFk7lqcaxIzY+X7lXx2+yX2MoMbIwgpH3PbgqjvymS/SujBb4aWYcfmhw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2973,15 +2976,15 @@ packages:
     engines: {node: '>= 4.4.x'}
     hasBin: true
 
-  nimiq-css@1.0.0-beta.28:
-    resolution: {integrity: sha512-Cfu8Z8iXtgKmGao2JXCyUyXNGG/yhmAKM4F2tR7sA0tqKiJbFizb8yKswRsAB15DY5HodtO5U6kgG+7Ilcdtsw==}
-    engines: {node: '>=14'}
+  nimiq-css@1.0.0-beta.30:
+    resolution: {integrity: sha512-LSywLDLzYDRt+Kcm0kU8NbGesgPCzBBmEb813FUYQBKBerodK2U0Mfscecg7yMRtf5ukgTHLT6g9YXehTqVNYA==}
+    engines: {node: '>=18'}
 
-  nimiq-icons@1.0.0-beta.28:
-    resolution: {integrity: sha512-dXp6uUZOBVyJGC1BXf5kMqLrD4vfd6dXnTqeyx3YsHQoG0U/tO97EMLZWXrpYM/gWqmlyT6hbtpprgHcfR1GJg==}
+  nimiq-icons@1.0.0-beta.30:
+    resolution: {integrity: sha512-Z6TJS6/l//zSRPCMbkWodpS4yvXNJRQlmMOR0LTlkouIrX3X5m+5YC5rp7zIRdw8iGx6Q2m0MNCZjNjMUpfNKg==}
 
-  nimiq-vitepress-theme@1.0.0-beta.28:
-    resolution: {integrity: sha512-0IahoFzTLNfiadNMiPKfhy6vlSOorN6rtrcoSSnAiI0u+NOYd+1eaOUbxY5dC3QrxhaXBlI7+BGmxYDKkKGWhg==}
+  nimiq-vitepress-theme@1.0.0-beta.30:
+    resolution: {integrity: sha512-11AT0HJRMK3/V+IjlXkwJqgDXDQX+j5fgGeoEERptyozW8dcDyHmP2PfYfjOX1HJb6Rq1VnKX6lKvHG2IknURQ==}
     peerDependencies:
       vitepress: ^1.5.0 || ^2.0.0-alpha.3
 
@@ -4552,6 +4555,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/vscode-icons@1.2.20':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/vscode-icons@1.2.21':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -7086,12 +7093,12 @@ snapshots:
       sax: 1.4.1
     optional: true
 
-  nimiq-css@1.0.0-beta.28(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3)):
+  nimiq-css@1.0.0-beta.30(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3)):
     dependencies:
       '@iconify/utils': 2.3.0
       '@unocss/preset-web-fonts': 66.1.2
-      '@unocss/reset': 66.1.2
-      nimiq-icons: 1.0.0-beta.28
+      '@unocss/preset-wind4': 66.1.2
+      nimiq-icons: 1.0.0-beta.30
       ts-cssjson: 3.0.1
       unocss: 66.1.2(postcss@8.5.3)(vite@6.3.4(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(tsx@4.19.4)(yaml@2.8.0))(vue@3.5.14(typescript@5.8.3))
     transitivePeerDependencies:
@@ -7101,19 +7108,19 @@ snapshots:
       - vite
       - vue
 
-  nimiq-icons@1.0.0-beta.28:
+  nimiq-icons@1.0.0-beta.30:
     dependencies:
       '@iconify/types': 2.0.0
 
-  nimiq-vitepress-theme@1.0.0-beta.28(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)):
+  nimiq-vitepress-theme@1.0.0-beta.30(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
       '@iconify-json/tabler': 1.2.18
-      '@iconify-json/vscode-icons': 1.2.20
+      '@iconify-json/vscode-icons': 1.2.21
       '@nolebase/vitepress-plugin-git-changelog': 2.17.0(patch_hash=0190b14c758432c0ff4a36276c870d9391018f50ae5455ca3baddd91c8ee1a6e)(typescript@5.8.3)(vitepress@2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0))
       '@vueuse/core': 13.2.0(vue@3.5.14(typescript@5.8.3))
       mark.js: 8.11.1
       minisearch: 7.1.2
-      nimiq-icons: 1.0.0-beta.28
+      nimiq-icons: 1.0.0-beta.30
       reka-ui: 2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
       vaul-vue: 0.4.1(reka-ui@2.2.1(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3))
       vitepress: 2.0.0-alpha.5(@algolia/client-search@5.24.0)(@types/node@22.15.19)(jiti@2.4.2)(less@4.3.0)(postcss@8.5.3)(search-insights@2.17.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)
