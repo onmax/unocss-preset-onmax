@@ -5,11 +5,9 @@ import { presetNimiq } from 'nimiq-css/unocss'
 import {
   defineConfig,
   presetIcons,
-  presetWind3,
   transformerDirectives,
 } from 'unocss'
 import { presetOnmax } from 'unocss-preset-onmax'
-import { presetScalePx } from 'unocss-preset-scale-px'
 
 export default defineConfig({
   content: {
@@ -19,14 +17,13 @@ export default defineConfig({
     'container',
   ],
   presets: [
-    presetWind3(),
-    presetOnmax({ presets: { wind4: false } }),
+    presetOnmax(),
     presetNimiq({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
+      reset: false,
     }),
-    presetScalePx(),
     presetIcons({
       collections: {
         ...createExternalPackageIconLoader('@iconify-json/tabler'),

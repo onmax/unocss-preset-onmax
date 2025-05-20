@@ -15,6 +15,7 @@ import { defaultCSSVarOptions, presetCSSVar } from 'unocss-preset-css-var'
 import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
 import { defaultUnoVueOptions, presetUnoVue } from 'unocss-preset-unovue'
+import { reset } from './reset'
 import { variants } from './variants'
 
 export interface PresetOnmaxOptions {
@@ -89,20 +90,19 @@ interface DefaultPresetsOptions {
 }
 
 interface DefaultOptions {
-  baseFontSize: string
   presets: DefaultPresetsOptions
 }
 
 const defaultOptions: DefaultOptions = {
-  baseFontSize: '0.0625rem',
   presets: {
     wind4: {
       preflights: {
+        reset: false,
         theme: {
-          process: createRemToPxProcessor(),
+          process: createRemToPxProcessor(4),
         },
       },
-      postprocess: [createRemToPxProcessor()],
+      postprocess: [createRemToPxProcessor(4)],
       attributifyPseudo: true,
     },
     attributify: {},
@@ -116,7 +116,6 @@ const defaultOptions: DefaultOptions = {
 
 export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   const {
-    baseFontSize,
     presets: {
       wind4: wind4Options,
       attributify: attributifyOptions,
@@ -129,10 +128,10 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   } = defu(options, defaultOptions)
   const presets: Preset[] = []
   const theme: Theme = {}
-
+  const preflights: Preset['preflights'] = []
   if (wind4Options !== false) {
     presets.push(presetWind4(wind4Options))
-    theme.spacing = { DEFAULT: baseFontSize }
+    preflights.push(reset())
   }
 
   if (attributifyOptions !== false)
@@ -182,6 +181,7 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     presets,
     theme,
     variants,
+    preflights,
     rules,
     transformers: [
       transformerDirectives(),
