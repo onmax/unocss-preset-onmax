@@ -342,6 +342,9 @@ importers:
       unocss-preset-fluid-sizing:
         specifier: workspace:*
         version: link:../unocss-preset-fluid-sizing
+      unocss-preset-scale-px:
+        specifier: workspace:*
+        version: link:../unocss-preset-scale-px
       unocss-preset-unovue:
         specifier: workspace:*
         version: link:../unocss-preset-unovue
