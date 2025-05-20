@@ -4,17 +4,17 @@ changelog: false
 
 features:
   - title: 💧 Fluid Sizing
-    description: "`clamp()` under the hood, no breakpoints needed"
+    description: "<code>clamp()</code> under the hood, no breakpoints needed"
     span: 'half'
   - title: 💅 Built-in Theme
-    description: "`f-p-lg`, `f-text-xl` and friends"
+    description: "<code>f-p-lg</code>, <code>f-text-xl</code> and friends"
     span: 'half'
   - title: 🏗️ Fine-tune at Utility Level
-    description: "Override min/max, switch to `100cqw`, change units"
+    description: "Override min/max, switch to <code>100cqw</code>, change units"
   - title: 🤪 Attributify-friendly
-    description: '<div f-p="8/16" f-text="sm/lg" />'
+    description: '<code style="line-height: 1">&lt;div f-p="4/8" text="center f-sm" /&gt;</code>'
   - title: 🧩 CSS-variable mode
-    description: "Export into `--f-myvar` and reuse"
+    description: "Export into <code>--f-myvar</code> and reuse"
 ---
 
 <script setup lang="ts">
