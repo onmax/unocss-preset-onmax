@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-onmax",
   "type": "module",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "packageManager": "pnpm@10.6.3",
   "description": "UnoCSS Preset that contains all my UnoCSS preferences",
   "author": "onmax",
@@ -33,6 +33,7 @@
     "@unocss/core": "catalog:",
     "@unocss/preset-attributify": "catalog:",
     "@unocss/preset-mini": "catalog:",
+    "@unocss/preset-wind4": "catalog:",
     "@unocss/rule-utils": "catalog:",
     "defu": "catalog:",
     "pathe": "catalog:",
@@ -42,8 +43,5 @@
     "unocss-preset-easing-gradient": "workspace:*",
     "unocss-preset-fluid-sizing": "workspace:*",
     "unocss-preset-unovue": "workspace:*"
-  },
-  "devDependencies": {
-    "@unocss/preset-wind4": "catalog:"
   }
 }
