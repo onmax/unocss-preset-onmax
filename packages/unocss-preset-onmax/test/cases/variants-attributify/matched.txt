@@ -4,4 +4,3 @@ bg-gray-100
 [text-green=""]
 [bg-gray-100=""]
 [group-hocus:text-purple=""]
-[nth-3:bg-pink=""]

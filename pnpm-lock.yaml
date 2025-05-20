@@ -48,9 +48,6 @@ catalogs:
     '@unocss/preset-wind4':
       specifier: ^66.1.2
       version: 66.1.2
-    '@unocss/reset':
-      specifier: ^66.1.2
-      version: 66.1.2
     '@unocss/rule-utils':
       specifier: ^66.1.2
       version: 66.1.2
@@ -240,9 +237,6 @@ importers:
       '@unocss/preset-mini':
         specifier: 'catalog:'
         version: 66.1.2
-      '@unocss/reset':
-        specifier: 'catalog:'
-        version: 66.1.2
       '@vueuse/core':
         specifier: 'catalog:'
         version: 13.2.0(vue@3.5.14(typescript@5.8.3))
@@ -363,6 +357,10 @@ importers:
       unocss-preset-unovue:
         specifier: workspace:*
         version: link:../unocss-preset-unovue
+    devDependencies:
+      '@unocss/preset-wind4':
+        specifier: 'catalog:'
+        version: 66.1.2
 
   packages/unocss-preset-reka-ui:
     dependencies:

@@ -18,7 +18,6 @@
     "@shikijs/vitepress-twoslash": "catalog:",
     "@unocss/core": "catalog:",
     "@unocss/preset-mini": "catalog:",
-    "@unocss/reset": "catalog:",
     "@vueuse/core": "catalog:",
     "floating-vue": "catalog:",
     "nimiq-vitepress-theme": "catalog:",

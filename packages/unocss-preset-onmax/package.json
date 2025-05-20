@@ -42,5 +42,8 @@
     "unocss-preset-easing-gradient": "workspace:*",
     "unocss-preset-fluid-sizing": "workspace:*",
     "unocss-preset-unovue": "workspace:*"
+  },
+  "devDependencies": {
+    "@unocss/preset-wind4": "catalog:"
   }
 }

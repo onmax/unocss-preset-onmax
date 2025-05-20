@@ -7,6 +7,7 @@ import type { PresetUnoVueOptions } from 'unocss-preset-unovue'
 import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
+import { createRemToPxProcessor } from '@unocss/preset-wind4/utils'
 import { defu } from 'defu'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
 import { presetAnimations } from 'unocss-preset-animations'
@@ -95,7 +96,15 @@ interface DefaultOptions {
 const defaultOptions: DefaultOptions = {
   baseFontSize: '0.0625rem',
   presets: {
-    wind4: { attributifyPseudo: true },
+    wind4: {
+      preflights: {
+        theme: {
+          process: createRemToPxProcessor(),
+        },
+      },
+      postprocess: [createRemToPxProcessor()],
+      attributifyPseudo: true,
+    },
     attributify: {},
     animations: {},
     cssVar: defu({}, defaultCSSVarOptions),

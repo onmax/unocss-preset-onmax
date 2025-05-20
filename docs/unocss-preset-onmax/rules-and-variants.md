@@ -73,7 +73,7 @@ Similar to the standard `group-hover:` variant, the `group-hocus:` variant allow
 </div>
 ```
 
-### Nth-Child Variant
+<!-- ### Nth-Child Variant
 
 The `nth-*:` variant provides a convenient way to target specific children within a container using CSS's `nth-child` selector.
 
@@ -90,7 +90,7 @@ You can use any valid CSS nth-child selector pattern:
 
 - Simple numbers: `nth-1:`, `nth-2:`, etc.
 - Even/odd: `nth-[2n]:`, `nth-[odd]:`
-- Formulas: `nth-[3n+1]:`, `nth-[n+4]:`
+- Formulas: `nth-[3n+1]:`, `nth-[n+4]:` -->
 
 ## Combining with Other Variants
 

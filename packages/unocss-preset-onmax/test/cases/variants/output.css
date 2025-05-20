@@ -4,7 +4,6 @@
 /* layer: default */
 :where(.group,[group]):hover .group-hocus\:text-purple, :where(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in oklch, var(--colors-purple-DEFAULT) var(--un-text-opacity), transparent);}
 .hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in oklch, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
-.nth-\[2n\]\:text-red>*:nth-child(2n){color:color-mix(in oklch, var(--colors-red-DEFAULT) var(--un-text-opacity), transparent);}
 .text-blue{color:color-mix(in oklch, var(--colors-blue-DEFAULT) var(--un-text-opacity), transparent);}
 .p-4{padding:calc(var(--spacing) * 4);}
 .bg-gray-100{background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}

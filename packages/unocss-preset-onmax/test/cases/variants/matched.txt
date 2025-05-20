@@ -3,4 +3,3 @@ text-blue
 bg-gray-100
 hocus:text-green
 group-hocus:text-purple
-nth-[2n]:text-red

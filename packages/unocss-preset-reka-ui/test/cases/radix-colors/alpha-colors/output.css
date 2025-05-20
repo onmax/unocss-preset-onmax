@@ -1,6 +1,6 @@
 /* layer: cssvar-property */
 @property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
-@property --un-outline-color-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-outline-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-shadow-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 /* layer: default */
@@ -8,7 +8,7 @@
 .text-green10{color:color-mix(in oklch, var(--colors-green-10) var(--un-text-opacity), transparent);}
 .text-mauve11{color:color-mix(in oklch, var(--colors-mauve-11) var(--un-text-opacity), transparent);}
 .hover\:text-green9:hover{color:color-mix(in oklch, var(--colors-green-9) var(--un-text-opacity), transparent);}
-.outline-grass8{outline-color:color-mix(in oklch, var(--colors-grass-8) var(--un-outline-color-opacity), transparent);}
+.outline-grass8{outline-color:color-mix(in oklch, var(--colors-grass-8) var(--un-outline-opacity), transparent);}
 .bg-black5{background-color:color-mix(in oklch, var(--colors-black-5) var(--un-bg-opacity), transparent);}
 .bg-grass4{background-color:color-mix(in oklch, var(--colors-grass-4) var(--un-bg-opacity), transparent);}
 .bg-green11{background-color:color-mix(in oklch, var(--colors-green-11) var(--un-bg-opacity), transparent);}
