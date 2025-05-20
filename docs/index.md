@@ -56,8 +56,6 @@ Battle-tested extensions that improve your UnoCSS experience with clean, easy an
 
 <NqGrid :cards="items"  />
 
-<div rounded-8 size-32 bg-pink />
-
 ---
 
 ## Want everything at once?
