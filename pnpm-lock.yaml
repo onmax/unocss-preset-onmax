@@ -315,6 +315,9 @@ importers:
       '@unocss/preset-mini':
         specifier: 'catalog:'
         version: 66.1.2
+      '@unocss/preset-wind4':
+        specifier: 'catalog:'
+        version: 66.1.2
       '@unocss/rule-utils':
         specifier: 'catalog:'
         version: 66.1.2
@@ -342,10 +345,6 @@ importers:
       unocss-preset-unovue:
         specifier: workspace:*
         version: link:../unocss-preset-unovue
-    devDependencies:
-      '@unocss/preset-wind4':
-        specifier: 'catalog:'
-        version: 66.1.2
 
   packages/unocss-preset-reka-ui:
     dependencies:
