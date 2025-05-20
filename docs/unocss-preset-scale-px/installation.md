@@ -54,3 +54,11 @@ After adding the preset to your configuration, all rem values in your utilities 
 ```
 
 This scaling creates a more precise sizing system while still maintaining the flexibility of rem units.
+
+# How it Works
+
+The Scale PX preset changes how rem values are processed in your UnoCSS utilities. When enabled, all rem values in your utilities are scaled by dividing them by 4. This means:
+
+- `1rem` becomes `0.25rem`
+- `2rem` becomes `0.5rem`
+- `4rem` becomes `1rem`
