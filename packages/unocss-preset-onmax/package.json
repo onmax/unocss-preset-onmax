@@ -42,6 +42,7 @@
     "unocss-preset-css-var": "workspace:*",
     "unocss-preset-easing-gradient": "workspace:*",
     "unocss-preset-fluid-sizing": "workspace:*",
+    "unocss-preset-scale-px": "workspace:*",
     "unocss-preset-unovue": "workspace:*"
   }
 }

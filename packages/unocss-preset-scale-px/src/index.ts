@@ -3,17 +3,17 @@ import { definePreset } from '@unocss/core'
 export interface PresetScalePxOptions {
 }
 
+export const defaultScalePxOptions: PresetScalePxOptions = {
+}
+
 const remRE = /(-?[.\d]+)rem/g
 
 /**
- * Convert rem to px. If you are using `presetWind4`, you should not use this preset.
+ * Convert rem to px
  */
 export const presetScalePx = definePreset((_options: PresetScalePxOptions = {}) => {
   return {
     name: 'unocss-preset-scale-px',
-    theme: {
-      spacing: { DEFAULT: '0.0625rem' },
-    },
     postprocess: (util) => {
       if (!util.entries || typeof util.entries.forEach !== 'function')
         return

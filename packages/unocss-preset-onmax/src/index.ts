@@ -3,6 +3,7 @@ import type { PresetAnimationsOptions } from 'unocss-preset-animations'
 import type { PresetCSSVarOptions } from 'unocss-preset-css-var'
 import type { PresetEasingGradientOptions } from 'unocss-preset-easing-gradient'
 import type { PresetFluidSizingOptions } from 'unocss-preset-fluid-sizing'
+import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
 import type { PresetUnoVueOptions } from 'unocss-preset-unovue'
 import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
@@ -14,6 +15,7 @@ import { presetAnimations } from 'unocss-preset-animations'
 import { defaultCSSVarOptions, presetCSSVar } from 'unocss-preset-css-var'
 import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
+import { defaultScalePxOptions, presetScalePx } from 'unocss-preset-scale-px'
 import { defaultUnoVueOptions, presetUnoVue } from 'unocss-preset-unovue'
 import { reset } from './reset'
 import { variants } from './variants'
@@ -73,6 +75,11 @@ export interface PresetOnmaxOptions {
      */
     unoVue?: PresetUnoVueOptions | false
 
+    /**
+     * @default {}
+     */
+    scalePx?: PresetScalePxOptions | false
+
   }
 }
 
@@ -87,6 +94,7 @@ interface DefaultPresetsOptions {
   fluidSizing: PresetFluidSizingOptions
   easingGradient: PresetEasingGradientOptions
   unoVue: PresetUnoVueOptions
+  scalePx: PresetScalePxOptions
 }
 
 interface DefaultOptions {
@@ -111,6 +119,7 @@ const defaultOptions: DefaultOptions = {
     fluidSizing: defu({ attributify: true }, defaultFluidSizingOptions),
     easingGradient: defu({}, defaultEasingGradientsOptions),
     unoVue: defu({ shadcn: false }, defaultUnoVueOptions),
+    scalePx: defu({}, defaultScalePxOptions),
   },
 }
 
@@ -124,6 +133,7 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
       fluidSizing: fluidSizingOptions,
       easingGradient: easingGradientOptions,
       unoVue: unoVueOptions,
+      scalePx: scalePxOptions,
     },
   } = defu(options, defaultOptions)
   const presets: Preset[] = []
@@ -151,6 +161,9 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
 
   if (unoVueOptions !== false)
     presets.push(presetUnoVue(unoVueOptions))
+
+  if (scalePxOptions !== false)
+    presets.push(presetScalePx(scalePxOptions))
 
   const rules: Preset['rules'] = [
     [
