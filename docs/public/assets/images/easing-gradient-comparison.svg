@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Linear gradient - standard -->
+    <linearGradient id="standardGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    
+    <!-- Easing gradient - simulated with multiple stops -->
+    <linearGradient id="easingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="20%" stop-color="#5B67F3" />
+      <stop offset="50%" stop-color="#7D4BF0" />
+      <stop offset="80%" stop-color="#9850F5" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#333333">Gradient Comparison</text>
+  
+  <!-- Standard Linear Gradient -->
+  <rect x="50" y="80" width="300" height="150" rx="8" fill="url(#standardGradient)" />
+  <text x="200" y="260" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#333333">Standard Linear Gradient</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">Notice the visual "band" in the middle</text>
+  
+  <!-- Easing Gradient -->
+  <rect x="450" y="80" width="300" height="150" rx="8" fill="url(#easingGradient)" />
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#333333">Easing Gradient</text>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">Perceptually balanced transition</text>
+  
+  <!-- Arrow -->
+  <line x1="400" y1="155" x2="400" y2="155" stroke="#333333" stroke-width="2" />
+  <polygon points="400,155 385,140 415,140" fill="#333333" />
+</svg>

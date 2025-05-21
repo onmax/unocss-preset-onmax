@@ -1,41 +1,72 @@
-# UnoCSS Preset Scale PX
+# UnoCSS Preset Easing Gradient
 
-A UnoCSS preset that maps utility numbers directly to pixel values (e.g., `p-4` → `0.25rem(4px)`).
+A UnoCSS preset for creating beautiful, perceptually balanced gradients with easing functions.
 
 ## Features
 
-- 📏 1:1 Scaling – Utility numbers map directly to pixel values (e.g., `p-4` → `0.25rem(4px)`).
-- ⚡ Consistent Sizing – Simplifies spacing and sizing with predictable values.
-- 🔧 Easy Integration – Plug-and-play with any UnoCSS project.
+- 🎭 Easing Functions – Create natural transitions using `ease`, `ease-in-out`, and more
+- 🖌️ Multiple Shapes – Linear, radial, conic, and elliptical gradients
+- 🎨 Color Spaces – Control interpolation with `oklch`, `srgb`, and other color spaces
+- ⚡ Animatable Gradients – Smooth animations with `@property` CSS features
+- 🎛️ Fine-Tune Controls – Custom steps, bezier curves, and detailed positioning
 
-## Usage
+## Installation
 
 ```shell
-pnpm i -D unocss-preset-scale-px
+pnpm add -D unocss-preset-easing-gradient unocss
 ```
+
+## Configuration
 
 ```ts
 // uno.config.ts
 import { defineConfig } from 'unocss'
-import { presetScalePx } from 'unocss-preset-scale-px'
+import { presetEasingGradient } from 'unocss-preset-easing-gradient'
 
 export default defineConfig({
   presets: [
-    // ...
-    presetScalePx(),
+    // other presets...
+    presetEasingGradient({
+      // optional: add custom easing functions
+      customFunctions: {
+        myCustomEasing: t => t * t * (3 - 2 * t),
+      },
+      // optional: change default number of steps (default is 4)
+      defaultSteps: 6,
+    }),
   ],
 })
 ```
 
+## Basic Usage
+
+```html
+<!-- Basic easing gradient -->
+<div class="bg-gradient-fn-ease fn-from-blue-500 fn-to-purple-500 fn-to-r"></div>
+
+<!-- Using a different easing function -->
+<div class="bg-gradient-fn-ease-in-out fn-from-green-400 fn-to-teal-500 fn-to-b"></div>
+
+<!-- Custom steps -->
+<div class="bg-gradient-fn-ease/8 fn-from-rose-400 fn-to-pink-600 fn-to-r"></div>
+
+<!-- Different shapes -->
+<div class="bg-gradient-fn-ease fn-from-fuchsia-400 fn-to-purple-600 fn-radial"></div>
+```
+
+## Documentation
+
+For full documentation, examples, and interactive tools, visit the [official documentation](https://onmax.github.io/unocss-preset-onmax/unocss-preset-easing-gradient/).
+
 ## Playground
 
-You can open the [Unocss Playground](https://unocss.dev/play/#html=DwEwlgbgBAxgNgQwM5ILwCIAOBaALFAcwRwGYA6AVnQD4AoYAenAmqA&config=JYWwDg9gTgLgBAbwFBzgEwKYDNgDsMDCEuOA5gDQpxhQYDOGMAqrhJapjvgAq0MyUAvnCxQIIOAHIArqwDGdOpKRI5xOvFogASgFE4AXjgB6ABQBaAPwBtAHQAdNAF0A1AEotx0irW4N1PkYAZTkAQwAbDG4AD0N0bDwowJhTUwB9CDAYYHU4hEE3QwA%2BRCpaGGkoXFLUVFxQkAwALilZCAU6cxp6RnM6MMiu6Ml2WsgNGnb6OhbTaWzwwoMS5Fra4Cw4UwBCeeBw2wxcGChgejgAHwu4GABPMAwITb2Do5OzulssaF1QuQALODbAxGSRYWRybLESRuKhrVDlSq4FTwuAvQ7HU70SxfH5-f6pYBLFZw%2BG%2BfwANwi0gwcWA1gAjE5SWsNls7g8nnAqeEaYYQVINKdcKRJHAAGTiuBaPS2GD0FI8mluWGo1mMpxxJUYWy0MDhP4YUwy3TkLZpM1gBnEuAAAwAJAgrSY4AAWQRaW2q%2BEFUmCUaCJC%2BpAYaKQWDxLChaTheCcRJEEjAUimVYBHowGZwazdfgsCCmNyW5IhCJRaKF5kFIA&css=PQKgBA6gTglgLgUzAYwK4Gc4HsC2YDCAyoWABYJQIA0YAhgHYAmYcUD6AZllDhWOqgAOg7nAB0YAGLcwCAB60cggDYIAXGBDAAUKDBi0mXGADe2sGC704AWgDuCGAHNScDQFYADJ4Dc5sAACtMLKAJ5gggCMLPK2ABR2pPBIcsoAlH4WAEa0yADWTlBYqEw2yFjK3Bpw5LxxAOTllVDoYpSMYgAs3vUZ2gC%2BmsBAA&options=N4IgLgTghgdgzgMwPYQLYAkyoDYgFwJTZwCmAvkA&version=65.4.0)
+Try out the preset in the [UnoCSS Playground](https://unocss.dev/play/#html=DwCwjAfAUCcgdgQxASwEYCcD2AXAtgIwBMARgKYBOAlgHxRgAuAnqWutQCbkB28L5YtQDWM7AHN4AXngQQDBkzLwBEOWmEiAQQA0QDIn3rCunft16AA2mM7IAD0zA84MCGsJgAXntBwAOlAHFkQAdwBfAEpwXEDnEC9ff0I3WHRWOMT4BHZKZA8AVxt4OiUVNXRgmgBGODwRcEDdIJCwyJiKQODuEKiYmiZGNMyc-KKS8orqiNi6FKSo1LRFgGYAFiQwFvae3v7BodGJ1cW1zd3D4-PL69vbnJO7h+2HzYHm0fbo4doRhNbZ97l9fv8QWDYYYACJQAB6AEEkTAAe8Hj1HvEAF5gYHw95wQgAJQAKigRmAhGA5gAVgAHCgwXDATBgJABgAMAgtgAASCwuNQAMiMBBQQPRjEoWGh8Lg-B8QA)
 
-## Migration
+## Browser Support
 
-If you have already a project, I recommend you to use [codemod.sh](./scripts/codemod.sh) to migrate your utilities.
+This preset uses modern CSS features that may not be supported in all browsers:
 
-## Credits
+- `color-mix()` function
+- CSS `@property` rule
 
-- [unocss](https://github.com/unocss/unocss)
-- [preset-starter](https://github.com/unocss-community/unocss-preset-starter)
+Make sure to check browser compatibility or provide fallbacks when using in production.

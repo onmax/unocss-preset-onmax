@@ -9,4 +9,8 @@ export const variants: Variant[] = [
   variantMatcher('group-hocus', ({ selector }) => ({
     selector: `:where(.group,[group]):hover ${selector}, :where(.group,[group]):focus-visible ${selector}`,
   })),
+
+  variantMatcher('group-has-focus-visible', ({ selector }) => ({
+    selector: `:where(.group,[group]):has(:focus-visible) ${selector}`,
+  })),
 ]
