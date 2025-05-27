@@ -1,6 +1,6 @@
 import type { Preset } from '@unocss/core'
 
-interface Colors {
+export interface Colors {
   [key: string]: [string, string] | { light: string, dark: string } | Colors | string | `light-dark(${string}, ${string})`
 }
 
@@ -37,17 +37,10 @@ export interface PresetLightDarkOptions {
    * Prefix for the rules
    */
   prefix?: string
-
-  /**
-   * Whether to extend the theme or replace it.
-   *
-   * @default false
-   */
-  extendTheme?: boolean
 }
 
 export function presetLightDark(options: PresetLightDarkOptions): Preset {
-  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer, prefix, extendTheme = false } = options
+  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer, prefix } = options
   const parsedColors = parseColors(colorsInput)
 
   return {
@@ -58,11 +51,8 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
         layer,
       },
     ],
-    theme: {
-      colors: extendTheme ? undefined : parsedColors,
-    },
     extendTheme: () => ({
-      colors: extendTheme ? parseColors : undefined,
+      colors: parsedColors,
     }),
     rules: [
       [`${prefix}light`, { 'color-scheme': 'light' }, { layer }],
