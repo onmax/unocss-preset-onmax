@@ -1,0 +1,17 @@
+/* layer: cssvar-property */
+@property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-space-y-reverse{syntax:"*";inherits:false;initial-value:0;}
+/* layer: default */
+.text-3xl{font-size:var(--text-3xl-fontSize);line-height:var(--un-leading, var(--text-3xl-lineHeight));}
+.text-white{color:color-mix(in oklch, var(--colors-white) var(--un-text-opacity), transparent);}
+.font-bold{--un-font-weight:var(--fontWeight-bold);font-weight:var(--fontWeight-bold);}
+.p-4{padding:calc(var(--spacing) * 4);}
+.p-6{padding:calc(var(--spacing) * 6);}
+.rounded{border-radius:var(--radius-DEFAULT);}
+.rounded-md{border-radius:var(--radius-md);}
+.bg-primary{background-color:color-mix(in oklch, var(--colors-primary) var(--un-bg-opacity), transparent);}
+.bg-secondary{background-color:color-mix(in oklch, var(--colors-secondary) var(--un-bg-opacity), transparent);}
+.space-y-4>:not(:last-child){--un-space-y-reverse:0;margin-block-start: calc(calc(var(--spacing) * 4) * var(--un-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--un-space-y-reverse)));}
+.light{color-scheme:light;}
+.dark{color-scheme:dark;}

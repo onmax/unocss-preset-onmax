@@ -1,0 +1,12 @@
+light
+dark
+space-y-4
+p-4
+p-6
+rounded-md
+rounded
+font-bold
+bg-primary
+text-white
+bg-secondary
+text-3xl

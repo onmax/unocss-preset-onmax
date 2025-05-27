@@ -10,3 +10,7 @@
 .light .light\:bg-accent{background-color:color-mix(in oklch, var(--colors-accent) var(--un-bg-opacity), transparent);}
 .bg-primary,
 .dark .dark\:bg-primary{background-color:color-mix(in oklch, var(--colors-primary) var(--un-bg-opacity), transparent);}
+.light{color-scheme:light;}
+.dark{color-scheme:dark;}
+.only-light{color-scheme:only light;}
+.only-dark{color-scheme:only dark;}

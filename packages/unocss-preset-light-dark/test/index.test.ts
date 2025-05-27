@@ -34,5 +34,6 @@ describe('cases', () => {
     await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(baseFolder, 'matched.txt'))
     await expect(css).toMatchFileSnapshot(resolve(baseFolder, 'output.css'))
   }
+  it('basic', async () => checkCase('./cases/basic'))
   it('media', async () => checkCase('./cases/media'))
 })

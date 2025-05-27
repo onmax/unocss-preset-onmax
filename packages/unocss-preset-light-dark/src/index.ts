@@ -37,10 +37,16 @@ export interface PresetLightDarkOptions {
    * Prefix for the rules
    */
   prefix?: string
+
+  /**
+   * Whether to extend the colors in the theme or replace them.
+   * @default true
+   */
+  extendColors?: boolean
 }
 
 export function presetLightDark(options: PresetLightDarkOptions): Preset {
-  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer, prefix } = options
+  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer, prefix = '', extendColors = true } = options
   const parsedColors = parseColors(colorsInput)
 
   return {
@@ -51,9 +57,13 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
         layer,
       },
     ],
-    extendTheme: () => ({
-      colors: parsedColors,
-    }),
+    extendTheme: (theme) => {
+      // @ts-expect-error we don't know the exact structure of theme.colors
+      theme.colors = extendColors
+        // @ts-expect-error we don't know the exact structure of theme.colors
+        ? { ...theme.colors, ...parsedColors }
+        : parsedColors
+    },
     rules: [
       [`${prefix}light`, { 'color-scheme': 'light' }, { layer }],
       [`${prefix}dark`, { 'color-scheme': 'dark' }, { layer }],

@@ -1,3 +1,7 @@
+light
+dark
+only-light
+only-dark
 bg-primary
 text-secondary
 border-accent
