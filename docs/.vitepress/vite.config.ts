@@ -36,13 +36,15 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       extensions: ['vue', 'md'],
     }),
-    UnoCSS(
-      fileURLToPath(new URL('./uno.config.ts', import.meta.url)),
-    ),
+    UnoCSS({
+      configFile: fileURLToPath(new URL('./uno.config.ts', import.meta.url)),
+    }),
     GroupIconVitePlugin(),
 
     NimiqVitepressVitePlugin({
-      repoURL: 'https://github.com/nimi/developer-center',
+      gitChangelog: {
+        repoURL: 'https://github.com/nimi/developer-center',
+      },
     }),
   ],
   ssr: {
