@@ -1,0 +1,7 @@
+bg-primary
+text-secondary
+border-accent
+bg-accent
+dark:bg-primary
+dark:text-secondary
+light:bg-accent

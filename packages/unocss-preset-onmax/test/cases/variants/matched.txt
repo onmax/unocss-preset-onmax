@@ -1,5 +1,9 @@
 p-4
 text-blue
 bg-gray-100
+focus-visible
+has-focus-visible
+group-has-focus-visible:text-orange
 hocus:text-green
 group-hocus:text-purple
+[has-focus-visible=""]
