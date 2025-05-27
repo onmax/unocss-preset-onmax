@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createGenerator } from 'unocss'
+import { createGenerator, presetWind4 } from 'unocss'
 import { describe, expect, it } from 'vitest'
 import { presetLightDark } from '../src'
 
@@ -20,7 +20,7 @@ it('presetLightDark basic', async () => {
 describe('cases', () => {
   async function checkCase(_baseFolder: string) {
     const uno = await createGenerator({
-      presets: [presetLightDark({
+      presets: [presetWind4(), presetLightDark({
         colors: {
           primary: ['#3b82f6', '#1d4ed8'],
           secondary: { light: '#10b981', dark: '#059669' },

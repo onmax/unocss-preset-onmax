@@ -1,7 +1,7 @@
 import type { Preset } from '@unocss/core'
 
 interface Colors {
-  [key: string]: [string, string] | { light: string, dark: string } | Colors | `light-dark(${string}, ${string})`
+  [key: string]: [string, string] | { light: string, dark: string } | Colors | string | `light-dark(${string}, ${string})`
 }
 
 export interface PresetLightDarkOptions {
@@ -32,16 +32,22 @@ export interface PresetLightDarkOptions {
    * Layer of colors to be used in the preset.
    */
   layer?: string
-}
 
-export const defaultLightDarkOptions: Partial<PresetLightDarkOptions> = {
-  dark: 'media',
-  light: 'media',
-  colorScheme: 'light dark',
+  /**
+   * Prefix for the rules
+   */
+  prefix?: string
+
+  /**
+   * Whether to extend the theme or replace it.
+   *
+   * @default false
+   */
+  extendTheme?: boolean
 }
 
 export function presetLightDark(options: PresetLightDarkOptions): Preset {
-  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer } = options
+  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer, prefix, extendTheme = false } = options
   const parsedColors = parseColors(colorsInput)
 
   return {
@@ -53,15 +59,18 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
       },
     ],
     theme: {
-      colors: parsedColors,
+      colors: extendTheme ? undefined : parsedColors,
     },
+    extendTheme: () => ({
+      colors: extendTheme ? parseColors : undefined,
+    }),
     rules: [
-      ['light', { 'color-scheme': 'light' }, { layer }],
-      ['dark', { 'color-scheme': 'dark' }, { layer }],
-      ['only-light', { 'color-scheme': 'only light' }, { layer }],
-      ['only-dark', { 'color-scheme': 'only dark' }, { layer }],
-      ['light-dark', { 'color-scheme': 'light dark' }, { layer }],
-      ['dark-light', { 'color-scheme': 'dark light' }, { layer }],
+      [`${prefix}light`, { 'color-scheme': 'light' }, { layer }],
+      [`${prefix}dark`, { 'color-scheme': 'dark' }, { layer }],
+      [`${prefix}only-light`, { 'color-scheme': 'only light' }, { layer }],
+      [`${prefix}only-dark`, { 'color-scheme': 'only dark' }, { layer }],
+      [`${prefix}light-dark`, { 'color-scheme': 'light dark' }, { layer }],
+      [`${prefix}dark-light`, { 'color-scheme': 'dark light' }, { layer }],
     ],
     variants: [
       (matcher) => {
@@ -129,6 +138,9 @@ function parseColors(colors: Colors): ParsedColors {
     else if (typeof value === 'object') {
       // Nested colors object, recurse
       parsed[key] = parseColors(value)
+    }
+    else {
+      parsed[key] = value as ParsedColors
     }
   }
   return parsed
