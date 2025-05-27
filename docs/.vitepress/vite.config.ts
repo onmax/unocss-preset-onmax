@@ -43,7 +43,7 @@ export default defineConfig({
 
     NimiqVitepressVitePlugin({
       gitChangelog: {
-        repoURL: 'https://github.com/nimi/developer-center',
+        repoURL: 'https://github.com/onmax/unocss-preset-onmax',
       },
     }),
   ],
