@@ -17,7 +17,6 @@ import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-pres
 import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
 import { defaultScalePxOptions, presetScalePx } from 'unocss-preset-scale-px'
 import { defaultUnoVueOptions, presetUnoVue } from 'unocss-preset-unovue'
-import { reset } from './reset'
 import { variants } from './variants'
 
 export interface PresetOnmaxOptions {
@@ -105,7 +104,6 @@ const defaultOptions: DefaultOptions = {
   presets: {
     wind4: {
       preflights: {
-        reset: false,
         theme: {
           process: createRemToPxProcessor(4),
         },
@@ -138,11 +136,15 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   } = defu(options, defaultOptions)
   const presets: Preset[] = []
   const theme: Theme = {}
-  const preflights: Preset['preflights'] = []
-  if (wind4Options !== false) {
+  const preflights: Preset['preflights'] = [
+    {
+      getCSS: () => `@layer preflights, theme, utilities;`,
+      layer: 'layers',
+    },
+  ]
+
+  if (wind4Options !== false)
     presets.push(presetWind4(wind4Options))
-    preflights.push(reset())
-  }
 
   if (attributifyOptions !== false)
     presets.push(presetAttributify(attributifyOptions))
@@ -201,6 +203,7 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     ],
     layers: {
       onmax: -1,
+      layers: -1000,
     },
     outputToCssLayers: true,
   } satisfies Preset

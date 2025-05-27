@@ -1,0 +1,34 @@
+{
+  "name": "unocss-preset-light-dark",
+  "type": "module",
+  "version": "1.0.0-beta.25",
+  "description": "A Unocss preset to support themes with light-dark function",
+  "author": "onmax",
+  "license": "MIT",
+  "homepage": "https://github.com/onmax/unocss-preset-onmax#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/unocss-preset-onmax.git"
+  },
+  "bugs": "https://github.com/onmax/unocss-preset-onmax/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "prepublishOnly": "nr build",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@unocss/core": "catalog:"
+  }
+}

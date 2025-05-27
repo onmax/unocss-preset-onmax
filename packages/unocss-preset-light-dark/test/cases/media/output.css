@@ -1,0 +1,5 @@
+/* layer: default */
+.light{color-scheme:light;}
+.dark{color-scheme:dark;}
+.only-light{color-scheme:only light;}
+.only-dark{color-scheme:only dark;}

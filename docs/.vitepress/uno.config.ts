@@ -28,4 +28,6 @@ export default defineConfig({
       },
     }),
   ],
+  outputToCssLayers: true,
+
 })

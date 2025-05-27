@@ -1,0 +1,4 @@
+light
+dark
+only-light
+only-dark
