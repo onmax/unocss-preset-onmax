@@ -1,6 +1,5 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 import { NimiqVitepressVitePlugin } from 'nimiq-vitepress-theme/vite'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -42,10 +41,9 @@ export default defineConfig({
     ),
     GroupIconVitePlugin(),
 
-    GitChangelog({
+    NimiqVitepressVitePlugin({
       repoURL: 'https://github.com/nimi/developer-center',
     }),
-    NimiqVitepressVitePlugin(),
   ],
   ssr: {
     noExternal: [

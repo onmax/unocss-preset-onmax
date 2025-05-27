@@ -27,6 +27,11 @@ export interface PresetLightDarkOptions {
    * @default 'light dark'
    */
   colorScheme?: 'light' | 'dark' | 'only light' | 'only dark' | 'light dark' | 'dark light'
+
+  /**
+   * Layer of colors to be used in the preset.
+   */
+  layer?: string
 }
 
 export const defaultLightDarkOptions: Partial<PresetLightDarkOptions> = {
@@ -36,7 +41,7 @@ export const defaultLightDarkOptions: Partial<PresetLightDarkOptions> = {
 }
 
 export function presetLightDark(options: PresetLightDarkOptions): Preset {
-  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark' } = options
+  const { colors: colorsInput, dark = 'media', light = 'media', colorScheme = 'light dark', layer } = options
   const parsedColors = parseColors(colorsInput)
 
   return {
@@ -44,18 +49,19 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
     preflights: [
       {
         getCSS: () => `:root { color-scheme: ${colorScheme}; }`,
+        layer,
       },
     ],
     theme: {
       colors: parsedColors,
     },
     rules: [
-      ['light', { 'color-scheme': 'light' }],
-      ['dark', { 'color-scheme': 'dark' }],
-      ['only-light', { 'color-scheme': 'only light' }],
-      ['only-dark', { 'color-scheme': 'only dark' }],
-      ['light-dark', { 'color-scheme': 'light dark' }],
-      ['dark-light', { 'color-scheme': 'dark light' }],
+      ['light', { 'color-scheme': 'light' }, { layer }],
+      ['dark', { 'color-scheme': 'dark' }, { layer }],
+      ['only-light', { 'color-scheme': 'only light' }, { layer }],
+      ['only-dark', { 'color-scheme': 'only dark' }, { layer }],
+      ['light-dark', { 'color-scheme': 'light dark' }, { layer }],
+      ['dark-light', { 'color-scheme': 'dark light' }, { layer }],
     ],
     variants: [
       (matcher) => {
@@ -64,6 +70,7 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
         const selector = matcher.slice(5)
         return {
           matcher: selector,
+          layer,
           selector: (s) => {
             if (dark === 'class')
               return `.dark${s}`
@@ -79,6 +86,7 @@ export function presetLightDark(options: PresetLightDarkOptions): Preset {
         const selector = matcher.slice(6)
         return {
           matcher: selector,
+          layer,
           selector: (s) => {
             if (light === 'class')
               return `.light${s}`

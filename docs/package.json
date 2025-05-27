@@ -14,7 +14,6 @@
     "@iconify-json/logos": "catalog:",
     "@iconify-json/tabler": "catalog:",
     "@iconify/utils": "catalog:",
-    "@nolebase/vitepress-plugin-git-changelog": "catalog:",
     "@shikijs/vitepress-twoslash": "catalog:",
     "@unocss/core": "catalog:",
     "@unocss/preset-mini": "catalog:",
