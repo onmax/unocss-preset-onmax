@@ -18,7 +18,6 @@ export default defineConfig({
       utilities: true,
       typography: true,
       attributifyUtilities: true,
-      reset: false,
     }),
     presetIcons({
       collections: {
