@@ -10,7 +10,7 @@ catalog:
   '@iconify/utils': ^2.3.0
   '@radix-ui/colors': ^3.0.0
   '@shikijs/vitepress-twoslash': ^3.4.2
-  '@types/node': ^22.15.21
+  '@types/node': ^22.15.23
   '@unocss/core': ^66.1.2
   '@unocss/preset-attributify': ^66.1.2
   '@unocss/preset-mini': ^66.1.2
@@ -22,13 +22,13 @@ catalog:
   eslint: ^9.27.0
   eslint-plugin-format: ^1.0.1
   floating-vue: ^5.2.2
-  lint-staged: ^16.0.0
-  nimiq-css: ^1.0.0-beta.41
-  nimiq-vitepress-theme: ^1.0.0-beta.41
+  lint-staged: ^16.1.0
+  nimiq-css: ^1.0.0-beta.45
+  nimiq-vitepress-theme: ^1.0.0-beta.45
   pathe: ^2.0.3
   pinia: ^3.0.2
   pnpm: ^10.11.0
-  reka-ui: ^2.2.1
+  reka-ui: ^2.3.0
   simple-git-hooks: ^2.13.0
   tsx: ^4.19.4
   typescript: ^5.8.3
