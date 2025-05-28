@@ -34,8 +34,8 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:",
-    "@unocss/preset-mini": "catalog:",
-    "unocss": "catalog:"
+    "@unocss/core": "catalog:style",
+    "@unocss/preset-mini": "catalog:style",
+    "unocss": "catalog:style"
   }
 }

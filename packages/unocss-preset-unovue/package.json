@@ -29,13 +29,13 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@radix-ui/colors": "catalog:",
-    "@unocss/core": "catalog:",
-    "@unocss/preset-wind4": "catalog:",
-    "@unocss/rule-utils": "catalog:",
-    "defu": "catalog:",
-    "unocss": "catalog:",
+    "@radix-ui/colors": "catalog:prod",
+    "@unocss/core": "catalog:style",
+    "@unocss/preset-wind4": "catalog:style",
+    "@unocss/rule-utils": "catalog:style",
+    "defu": "catalog:utils",
+    "unocss": "catalog:style",
     "unocss-preset-reka-ui": "workspace:*",
-    "unocss-preset-shadcn": "catalog:"
+    "unocss-preset-shadcn": "catalog:style"
   }
 }

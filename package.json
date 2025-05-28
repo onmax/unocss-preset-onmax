@@ -17,28 +17,29 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "unocss": "catalog:"
+    "unocss": "catalog:style"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "catalog:",
-    "@antfu/ni": "catalog:",
-    "@antfu/utils": "catalog:",
-    "@types/node": "catalog:",
-    "bumpp": "catalog:",
-    "eslint": "catalog:",
-    "eslint-plugin-format": "catalog:",
-    "lint-staged": "catalog:",
-    "pnpm": "catalog:",
-    "simple-git-hooks": "catalog:",
-    "tsx": "catalog:",
-    "typescript": "catalog:",
-    "unbuild": "catalog:",
+    "@antfu/eslint-config": "catalog:lint",
+    "@antfu/ni": "catalog:dev",
+    "@antfu/utils": "catalog:dev",
+    "@types/node": "catalog:types",
+    "bumpp": "catalog:cli",
+    "eslint": "catalog:lint",
+    "eslint-plugin-format": "catalog:lint",
+    "lint-staged": "catalog:lint",
+    "pncat": "catalog:cli",
+    "pnpm": "catalog:dev",
+    "simple-git-hooks": "catalog:lint",
+    "tsx": "catalog:script",
+    "typescript": "catalog:dev",
+    "unbuild": "catalog:build",
     "unocss-preset-css-var": "workspace:*",
     "unocss-preset-scale-px": "workspace:*",
     "unocss-preset-unovue": "workspace:*",
-    "vite": "catalog:",
-    "vitest": "catalog:",
-    "vue-tsc": "catalog:"
+    "vite": "catalog:build",
+    "vitest": "catalog:test",
+    "vue-tsc": "catalog:dev"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

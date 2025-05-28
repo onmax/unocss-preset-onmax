@@ -29,7 +29,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:",
-    "unocss": "catalog:"
+    "@unocss/core": "catalog:style",
+    "unocss": "catalog:style"
   }
 }

@@ -39,7 +39,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:",
-    "defu": "catalog:"
+    "@unocss/core": "catalog:style",
+    "defu": "catalog:utils"
   }
 }

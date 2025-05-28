@@ -29,6 +29,6 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:"
+    "@unocss/core": "catalog:style"
   }
 }

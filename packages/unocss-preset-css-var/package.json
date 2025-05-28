@@ -29,8 +29,8 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@unocss/core": "catalog:",
-    "@unocss/rule-utils": "catalog:",
-    "unocss": "catalog:"
+    "@unocss/core": "catalog:style",
+    "@unocss/rule-utils": "catalog:style",
+    "unocss": "catalog:style"
   }
 }
