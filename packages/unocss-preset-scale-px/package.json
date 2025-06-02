@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-scale-px",
   "type": "module",
-  "version": "1.0.0-beta.32",
+  "version": "1.0.0-beta.33",
   "description": "UnoCSS Preset to map utilities numbers directly to pixel values",
   "author": "onmax",
   "license": "MIT",
