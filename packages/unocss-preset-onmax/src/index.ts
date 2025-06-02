@@ -137,12 +137,7 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   } = defu(options, defaultOptions)
   const presets: Preset[] = []
   const theme: Theme = {}
-  const preflights: Preset['preflights'] = [
-    {
-      getCSS: () => `@layer preflights, theme, utilities;`,
-      layer: 'layers',
-    },
-  ]
+  const preflights: Preset['preflights'] = []
 
   if (wind4Options !== false)
     presets.push(presetWind4(wind4Options))
@@ -202,10 +197,6 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     transformers: [
       transformerDirectives(),
     ],
-    layers: {
-      onmax: -1,
-      layers: -1000,
-    },
     outputToCssLayers: true,
   } satisfies Preset
 })
