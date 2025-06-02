@@ -4,7 +4,7 @@ packages:
 catalogs:
   build:
     '@shikijs/vitepress-twoslash': ^3.4.2
-    nimiq-vitepress-theme: ^1.0.0-beta.47
+    nimiq-vitepress-theme: ^1.0.0-beta.50
     unbuild: ^3.5.0
     unplugin-vue-components: ^28.7.0
     vite: ^6.3.5
@@ -24,37 +24,38 @@ catalogs:
   frontend:
     pinia: ^3.0.2
     reka-ui: ^2.3.0
-    vue: ^3.5.15
+    vue: ^3.5.16
   icons:
     '@iconify-json/logos': ^1.2.4
     '@iconify-json/tabler': ^1.2.18
     '@iconify/utils': ^2.3.0
   lint:
     '@antfu/eslint-config': ^4.13.2
-    eslint: ^9.27.0
+    eslint: ^9.28.0
     eslint-plugin-format: ^1.0.1
+    eslint-plugin-pnpm-catalogs: ^0.1.0
     lint-staged: ^16.1.0
     simple-git-hooks: ^2.13.0
   node:
     pathe: ^2.0.3
   prod:
     '@radix-ui/colors': ^3.0.0
-    nimiq-css: ^1.0.0-beta.47
+    nimiq-css: ^1.0.0-beta.50
   script:
     tsx: ^4.19.4
   style:
-    '@unocss/core': ^66.1.2
-    '@unocss/preset-attributify': ^66.1.2
-    '@unocss/preset-mini': ^66.1.2
-    '@unocss/preset-wind4': ^66.1.2
-    '@unocss/rule-utils': ^66.1.2
-    unocss: ^66.1.2
+    '@unocss/core': ^66.1.3
+    '@unocss/preset-attributify': ^66.1.3
+    '@unocss/preset-mini': ^66.1.3
+    '@unocss/preset-wind4': ^66.1.3
+    '@unocss/rule-utils': ^66.1.3
+    unocss: ^66.1.3
     unocss-preset-animations: ^1.2.1
     unocss-preset-shadcn: ^0.5.0
   test:
     vitest: ^3.1.4
   types:
-    '@types/node': ^22.15.23
+    '@types/node': ^22.15.29
   utils:
     '@vueuse/core': ^13.3.0
     defu: ^6.1.4

@@ -27,6 +27,7 @@
     "bumpp": "catalog:cli",
     "eslint": "catalog:lint",
     "eslint-plugin-format": "catalog:lint",
+    "eslint-plugin-pnpm-catalogs": "catalog:lint",
     "lint-staged": "catalog:lint",
     "pncat": "catalog:cli",
     "pnpm": "catalog:dev",

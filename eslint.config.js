@@ -1,5 +1,6 @@
 // @ts-check
 import antfu from '@antfu/eslint-config'
+import pnpmCatalogs from 'eslint-plugin-pnpm-catalogs'
 
 export default antfu(
   {
@@ -7,5 +8,6 @@ export default antfu(
     pnpm: true,
     formatters: true,
     ignores: ['**/test/cases/**/**'],
+    plugins: [pnpmCatalogs],
   },
 )
