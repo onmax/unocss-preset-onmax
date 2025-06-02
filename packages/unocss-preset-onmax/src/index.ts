@@ -107,6 +107,7 @@ const defaultOptions: DefaultOptions = {
         theme: {
           process: createRemToPxProcessor(4),
         },
+        reset: true,
       },
       postprocess: [createRemToPxProcessor(4)],
       attributifyPseudo: true,
