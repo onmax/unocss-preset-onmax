@@ -174,10 +174,10 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
           'grid-template-rows': '1fr',
         }
         yield {
-          [symbols.selector]: selector => `${selector} > *`,
+          [symbols.selector]: selector => `:where(${selector} > *)`,
           'grid-area': '1 / 1',
-          'align-self': 'center',
           'justify-self': 'center',
+          'align-self': 'center',
         }
       },
       {
