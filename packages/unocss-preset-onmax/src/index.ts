@@ -197,6 +197,5 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     transformers: [
       transformerDirectives(),
     ],
-    outputToCssLayers: true,
   } satisfies Preset
 })
