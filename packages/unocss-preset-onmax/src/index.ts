@@ -8,14 +8,13 @@ import type { PresetUnoVueOptions } from 'unocss-preset-unovue'
 import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
 import { definePreset, symbols } from '@unocss/core'
-import { createRemToPxProcessor } from '@unocss/preset-wind4/utils'
 import { defu } from 'defu'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
 import { presetAnimations } from 'unocss-preset-animations'
 import { defaultCSSVarOptions, presetCSSVar } from 'unocss-preset-css-var'
 import { defaultEasingGradientsOptions, presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { defaultFluidSizingOptions, presetFluidSizing } from 'unocss-preset-fluid-sizing'
-import { defaultScalePxOptions, presetScalePx } from 'unocss-preset-scale-px'
+import { createScalePxProcessor, defaultScalePxOptions, presetScalePx } from 'unocss-preset-scale-px'
 import { defaultUnoVueOptions, presetUnoVue } from 'unocss-preset-unovue'
 import { variants } from './variants'
 
@@ -105,11 +104,11 @@ const defaultOptions: DefaultOptions = {
     wind4: {
       preflights: {
         theme: {
-          process: createRemToPxProcessor(4),
+          process: createScalePxProcessor(),
         },
         reset: true,
       },
-      postprocess: [createRemToPxProcessor(4)],
+      postprocess: [createScalePxProcessor()],
       attributifyPseudo: true,
     },
     attributify: {},
