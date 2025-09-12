@@ -6,7 +6,7 @@ import { variantMatcher } from '@unocss/rule-utils'
 
 function dataVariant(prefix: string, attribute: string, selector: string): Variant {
   return variantMatcher(`${prefix}${attribute}`, input => ({
-    selector: `${selector}${input.selector}, ${selector} ${input.selector}`,
+    selector: `${selector}${input.selector}, ${selector}:not(:has(${selector})) ${input.selector}`,
   }))
 }
 
