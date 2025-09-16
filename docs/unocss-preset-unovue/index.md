@@ -19,7 +19,6 @@ The UnoVue preset combines multiple UI component presets to create a comprehensi
 UnoVue bundles the following presets:
 
 1. **Reka UI**
-
    - Radix Colors support
    - UI animations
    - Custom variants

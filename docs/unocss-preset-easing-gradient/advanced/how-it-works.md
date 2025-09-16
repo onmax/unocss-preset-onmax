@@ -6,7 +6,7 @@ Create perceptually uniform gradients that look more natural to the human eye.
 
 <figure>
 
-![Comparison between linear gradient and easing gradient showing more natural color distribution](/unocss-preset-onmax/assets/images/easing-gradient-comparison.svg)
+![Comparison between linear gradient and easing gradient showing more natural color distribution](/assets/images/easing-gradient-comparison.svg)
 
 <figcaption>Left: Standard linear gradient with uneven color perception. Right: Easing gradient with perceptually balanced transition.</figcaption>
 </figure>

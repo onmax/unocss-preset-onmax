@@ -1,9 +1,9 @@
-/* layer: onmax */
-.stack,
-[stack=""]{width:100%;display:grid;place-content:center;grid-template-columns:1fr;grid-template-rows:1fr;}
-.stack > *,
-[stack=""] > *{grid-area:1 / 1;align-self:center;justify-self:center;}
 /* layer: default */
 .w-max,
 [w-max=""]{width:max-content;}
 [w~="\$this-is-more-important"]{width:var(--this-is-more-important);}
+/* layer: onmax */
+:where(.stack > *),
+:where([stack=""] > *){grid-area:1 / 1;justify-self:center;align-self:center;}
+.stack,
+[stack=""]{width:100%;display:grid;place-content:center;grid-template-columns:1fr;grid-template-rows:1fr;}

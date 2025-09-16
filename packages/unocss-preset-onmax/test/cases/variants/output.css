@@ -1,13 +1,20 @@
-/* layer: cssvar-property */
+/* layer: properties */
 @property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 /* layer: default */
-:where(.group,[group]):hover .group-hocus\:text-purple, :where(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in oklch, var(--colors-purple-DEFAULT) var(--un-text-opacity), transparent);}
-.hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in oklch, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
-.text-blue{color:color-mix(in oklch, var(--colors-blue-DEFAULT) var(--un-text-opacity), transparent);}
-.group:has(:focus-visible) .group-has-focus-visible\:text-orange{color:color-mix(in oklch, var(--colors-orange-DEFAULT) var(--un-text-opacity), transparent);}
+:where(.group,[group]):hover .group-hocus\:text-purple, :where(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in srgb, var(--colors-purple-DEFAULT) var(--un-text-opacity), transparent);}
+.hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in srgb, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
+.text-blue{color:color-mix(in srgb, var(--colors-blue-DEFAULT) var(--un-text-opacity), transparent);}
+.group:has(:focus-visible) .group-has-focus-visible\:text-orange{color:color-mix(in srgb, var(--colors-orange-DEFAULT) var(--un-text-opacity), transparent);}
 .p-4{padding:calc(var(--spacing) * 4);}
-.bg-gray-100{background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
+.bg-gray-100{background-color:color-mix(in srgb, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
 .has-focus-visible:has(:focus),
 [has-focus-visible=""]:has(:focus){visibility:visible;}
 .focus-visible:focus{visibility:visible;}
+@supports (color: color-mix(in lab, red, red)){
+:where(.group,[group]):hover .group-hocus\:text-purple, :where(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in oklab, var(--colors-purple-DEFAULT) var(--un-text-opacity), transparent);}
+.hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in oklab, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
+.text-blue{color:color-mix(in oklab, var(--colors-blue-DEFAULT) var(--un-text-opacity), transparent);}
+.group:has(:focus-visible) .group-has-focus-visible\:text-orange{color:color-mix(in oklab, var(--colors-orange-DEFAULT) var(--un-text-opacity), transparent);}
+.bg-gray-100{background-color:color-mix(in oklab, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
+}

@@ -198,8 +198,8 @@ export const themeConfig: NimiqVitepressThemeConfig = {
     },
   ],
   links: [
-    { icon: 'i-tabler:brand-bluesky', link: 'https://twitter.com/@nimiq' },
-    { icon: 'i-tabler:brand-github', link: 'https://github.com/onmax' },
+    { icon: 'i-tabler:brand-bluesky', link: 'https://twitter.com/@nimiq', label: 'Bluesky' },
+    { icon: 'i-tabler:brand-github', link: 'https://github.com/onmax', label: 'GitHub' },
   ],
   showLastUpdated: false,
   showEditContent: false,

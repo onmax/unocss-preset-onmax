@@ -1,16 +1,25 @@
-/* layer: cssvar-property */
+/* layer: properties */
 @property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-border-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 /* layer: default */
 .dark .dark\:text-secondary,
-.text-secondary{color:color-mix(in oklch, var(--colors-secondary) var(--un-text-opacity), transparent);}
-.border-accent{border-color:color-mix(in oklch, var(--colors-accent) var(--un-border-opacity), transparent);}
+.text-secondary{color:color-mix(in srgb, var(--colors-secondary) var(--un-text-opacity), transparent);}
+.border-accent{border-color:color-mix(in srgb, var(--colors-accent) var(--un-border-opacity), transparent);}
 .bg-accent,
-.light .light\:bg-accent{background-color:color-mix(in oklch, var(--colors-accent) var(--un-bg-opacity), transparent);}
+.light .light\:bg-accent{background-color:color-mix(in srgb, var(--colors-accent) var(--un-bg-opacity), transparent);}
 .bg-primary,
-.dark .dark\:bg-primary{background-color:color-mix(in oklch, var(--colors-primary) var(--un-bg-opacity), transparent);}
+.dark .dark\:bg-primary{background-color:color-mix(in srgb, var(--colors-primary) var(--un-bg-opacity), transparent);}
 .light{color-scheme:light;}
 .dark{color-scheme:dark;}
 .only-light{color-scheme:only light;}
 .only-dark{color-scheme:only dark;}
+@supports (color: color-mix(in lab, red, red)){
+.dark .dark\:text-secondary{color:color-mix(in oklab, var(--colors-secondary) var(--un-text-opacity), transparent);}
+.text-secondary{color:color-mix(in oklab, var(--colors-secondary) var(--un-text-opacity), transparent);}
+.border-accent{border-color:color-mix(in oklab, var(--colors-accent) var(--un-border-opacity), transparent);}
+.bg-accent{background-color:color-mix(in oklab, var(--colors-accent) var(--un-bg-opacity), transparent);}
+.bg-primary{background-color:color-mix(in oklab, var(--colors-primary) var(--un-bg-opacity), transparent);}
+.dark .dark\:bg-primary{background-color:color-mix(in oklab, var(--colors-primary) var(--un-bg-opacity), transparent);}
+.light .light\:bg-accent{background-color:color-mix(in oklab, var(--colors-accent) var(--un-bg-opacity), transparent);}
+}
