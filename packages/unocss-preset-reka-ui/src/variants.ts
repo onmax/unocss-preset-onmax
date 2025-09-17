@@ -5,9 +5,25 @@ import type { Variant } from 'unocss'
 import { variantMatcher } from '@unocss/rule-utils'
 
 function dataVariant(prefix: string, attribute: string, selector: string): Variant {
-  return variantMatcher(`${prefix}${attribute}`, input => ({
-    selector: `${selector}${input.selector}, ${selector}:not(:has(${selector})) ${input.selector}`,
-  }))
+  return variantMatcher(`${prefix}${attribute}`, (input) => {
+    const selectors = [`${selector}${input.selector}`]
+
+    const variantGuards = [`:not(:has(${selector}))`]
+    const attributeMatch = selector.startsWith('[')
+      ? selector.match(/^\[([^=\]]+)/)
+      : null
+
+    if (attributeMatch) {
+      const boundarySelector = `[${attributeMatch[1]}]`
+      variantGuards.push(`:not(:has(${boundarySelector}:not(${selector}) ${input.selector}))`)
+    }
+
+    selectors.push(`${selector}${variantGuards.join('')} ${input.selector}`)
+
+    return {
+      selector: selectors.join(', '),
+    }
+  })
 }
 
 export function getVariants(prefix: string): Variant[] {

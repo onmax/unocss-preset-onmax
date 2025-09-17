@@ -4,7 +4,7 @@ packages:
 catalogs:
   build:
     '@shikijs/vitepress-twoslash': ^3.4.2
-    nimiq-vitepress-theme: ^1.0.0-beta.83
+    nimiq-vitepress-theme: ^1.0.0-beta.84
     unbuild: ^3.6.1
     unplugin-vue-components: ^28.7.0
     vite: ^7.1.5
@@ -40,7 +40,7 @@ catalogs:
     pathe: ^2.0.3
   prod:
     '@radix-ui/colors': ^3.0.0
-    nimiq-css: ^1.0.0-beta.83
+    nimiq-css: ^1.0.0-beta.84
   script:
     tsx: ^4.20.5
   style:

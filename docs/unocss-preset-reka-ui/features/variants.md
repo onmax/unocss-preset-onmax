@@ -6,6 +6,15 @@ The Reka UI preset includes a powerful variants system that makes it easy to sty
 
 The variants system uses a configurable prefix (default: `reka-`) followed by a state identifier to target elements with specific data attributes. This approach provides a clean, declarative way to style elements based on their current state.
 
+### How matching works
+
+Every variant renders two selectors:
+
+- the element itself when it already carries the data attribute (`[data-state="open"].reka-open:bg-slate-4`)
+- any descendant whose nearest ancestor matches the same attribute _with the same value_
+
+The second selector uses `:not(:has())` guards so that only the closest matching ancestor applies the utility. This prevents clashes in nested UIs—like a dropdown inside an open modal—where an outer `[data-state="open"]` should not affect an inner `[data-state="closed"]` element.
+
 ```vue
 <template>
   <button
@@ -15,6 +24,13 @@ The variants system uses a configurable prefix (default: `reka-`) followed by a 
     This button changes style based on its state
   </button>
 </template>
+
+<!-- Nested components keep their own state styling -->
+<div data-state="open" class="rounded-8 reka-open:rounded-b-0">
+  <div data-state="closed" class="rounded-8 reka-open:rounded-b-0">
+    <!-- stays rounded because its closest state is "closed" -->
+  </div>
+</div>
 
 <script setup>
 import { ref } from 'vue'
