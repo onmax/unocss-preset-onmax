@@ -2,7 +2,7 @@
 import { createGenerator } from '@unocss/core'
 import { presetMini } from '@unocss/preset-mini'
 import { computedAsync, useLocalStorage, useStyleTag, createReusableTemplate } from '@vueuse/core'
-import { computed, watch } from 'vue'
+import { computed, watch, ref, onMounted } from 'vue'
 import Tooltip from './Tooltip.vue'
 import { presetEasingGradient } from 'unocss-preset-easing-gradient'
 import { easingFunctions } from 'unocss-preset-easing-gradient/easing'
@@ -44,17 +44,46 @@ const defaultShape = 'linear'
 const defaultPosition = 'center'
 // const defaultLength = '100%'
 
-const fromColor = useLocalStorage('from', defaultFromColor)
-const toColor = useLocalStorage('to', defaultToColor)
-const fromHoverColor = useLocalStorage('from-hover', defaultFromHoverColor)
-const toHoverColor = useLocalStorage('to-hover', defaultToHoverColor)
-const steps = useLocalStorage('steps', defaultSteps)
-const direction = useLocalStorage('direction', defaultDirection)
-const position = useLocalStorage('position', defaultPosition)
-const gradientShape = useLocalStorage('gradient-shape', defaultShape)
+// Use SSR-safe reactive values
+const fromColor = ref(defaultFromColor)
+const toColor = ref(defaultToColor)
+const fromHoverColor = ref(defaultFromHoverColor)
+const toHoverColor = ref(defaultToHoverColor)
+const steps = ref(defaultSteps)
+const direction = ref(defaultDirection)
+const position = ref(defaultPosition)
+const gradientShape = ref(defaultShape)
+const allowHover = ref(true)
 
-// TODO add hover to the logic
-const allowHover = useLocalStorage('allow-hover', true)
+// Initialize from localStorage only on client
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    isClient.value = true
+    fromColor.value = localStorage.getItem('from') || defaultFromColor
+    toColor.value = localStorage.getItem('to') || defaultToColor
+    fromHoverColor.value = localStorage.getItem('from-hover') || defaultFromHoverColor
+    toHoverColor.value = localStorage.getItem('to-hover') || defaultToHoverColor
+    steps.value = Number(localStorage.getItem('steps')) || defaultSteps
+    direction.value = localStorage.getItem('direction') || defaultDirection
+    position.value = localStorage.getItem('position') || defaultPosition
+    gradientShape.value = localStorage.getItem('gradient-shape') || defaultShape
+    allowHover.value = localStorage.getItem('allow-hover') !== 'false'
+    easeFn.value = localStorage.getItem('easing-function') || 'ease'
+  }
+})
+
+// Watch and sync to localStorage
+watch(fromColor, (value) => typeof window !== 'undefined' && localStorage.setItem('from', value))
+watch(toColor, (value) => typeof window !== 'undefined' && localStorage.setItem('to', value))
+watch(fromHoverColor, (value) => typeof window !== 'undefined' && localStorage.setItem('from-hover', value))
+watch(toHoverColor, (value) => typeof window !== 'undefined' && localStorage.setItem('to-hover', value))
+watch(steps, (value) => typeof window !== 'undefined' && localStorage.setItem('steps', String(value)))
+watch(direction, (value) => typeof window !== 'undefined' && localStorage.setItem('direction', value))
+watch(position, (value) => typeof window !== 'undefined' && localStorage.setItem('position', value))
+watch(gradientShape, (value) => typeof window !== 'undefined' && localStorage.setItem('gradient-shape', value))
+watch(allowHover, (value) => typeof window !== 'undefined' && localStorage.setItem('allow-hover', String(value)))
+const easeFn = ref('ease')
+watch(easeFn, (value) => typeof window !== 'undefined' && localStorage.setItem('easing-function', value))
 
 // const length = useLocalStorage('length', defaultLength)
 
@@ -72,7 +101,7 @@ function reset() {
   gradientShape.value = defaultShape
 }
 
-const easeFn = useLocalStorage('easing-function', 'ease')
+const isClient = ref(false)
 
 // Create reusable template for the direction/position selector
 const [DefineSelectorGrid, ReuseSelectorGrid] = createReusableTemplate<{
@@ -111,7 +140,7 @@ const unocssCode = computed(() => {
   
   // Add the from color
   classes.push(`bg-gradient-fn-from-[${fromColor.value}]`);
-  
+
   // Add the to color
   classes.push(`bg-gradient-fn-to-[${toColor.value}]`);
   
@@ -137,14 +166,19 @@ const unocssCode = computed(() => {
 })
 
 // Generate a unique key whenever any user-modifiable value changes
-const generatorKey = computed(() => 
-  `${easeFn.value}-${direction.value}-${position.value}-${fromColor.value}-${toColor.value}-${fromHoverColor.value}-${toHoverColor.value}-${steps.value}-${allowHover.value}-${gradientShape.value}-${Date.now()}`
+const generatorKey = computed(() =>
+  `${easeFn.value}-${direction.value}-${position.value}-${fromColor.value}-${toColor.value}-${fromHoverColor.value}-${toHoverColor.value}-${steps.value}-${allowHover.value}-${gradientShape.value}`
 )
 
 const cssCode = computedAsync(async () => {
+  // Skip during SSR to avoid generating CSS with unresolved reactive values
+  if (typeof window === 'undefined') {
+    return ''
+  }
+
   // Force dependency on generatorKey to ensure reactivity
   const key = generatorKey.value
-  
+
   // Create a fresh generator instance each time to avoid caching issues
   const ctx = await createGenerator({ presets: [presetMini(), presetEasingGradient()] })
   const res = await ctx.generate(unocssCode.value, { preflights: true })
@@ -155,9 +189,14 @@ const cssCode = computedAsync(async () => {
 watch(
   [easeFn, direction, position, fromColor, toColor, fromHoverColor, toHoverColor, steps, allowHover, gradientShape],
   () => {
+    // Skip during SSR
+    if (typeof window === 'undefined') {
+      return
+    }
+
     // Force immediate recalculation when any value changes
     const newClassId = `gradient-${Date.now()}`
-    
+
     // Apply styles with a slight delay to ensure proper DOM update
     setTimeout(() => {
       if (cssCode.value) {
@@ -197,7 +236,7 @@ const directionOptions = [
 </script>
 
 <template>
-  <div grid="~ lg:cols-[auto_1fr] gap-64" w-full class="nq-raw" f-my-lg>
+  <div v-if="isClient" grid="~ lg:cols-[auto_1fr] gap-64" w-full class="nq-raw" f-my-lg>
     <div flex="~ col gap-16">
       <div f-size="256/320" f-rounded-xl outline="~ 1.5 neutral-300" :class="unocssCode" />
       <button ml-auto nq-pill-red @click="reset">
@@ -363,24 +402,23 @@ const directionOptions = [
       </form>
     </div>
 
+    <details class="mt-8">
+      <summary flex="~ gap-32" w-full class="cursor-pointer">
+        <h3 m-0 class="font-semibold">
+          Generated Code
+        </h3>
+      </summary>
+      <div class="p-4">
+        <h4 class="text-sm font-medium">
+          UnoCSS classes
+        </h4>
+        <pre class="w-full max-w-full bg-gray-100 dark:bg-gray-800 rounded p-4 text-xs overflow-auto">{{ unocssCode }}</pre>
+
+        <h4 class="text-sm font-medium mt-4">
+          Generated CSS
+        </h4>
+        <pre class="w-full max-w-full bg-gray-100 dark:bg-gray-800 rounded p-4 text-xs overflow-auto">{{ cssCode }}</pre>
+      </div>
+    </details>
   </div>
-  
-  <details class="mt-8">
-    <summary flex="~ gap-32" w-full class="cursor-pointer">
-      <h3 m-0 class="font-semibold">
-        Generated Code
-      </h3>
-    </summary>
-    <div class="p-4">
-      <h4 class="text-sm font-medium">
-        UnoCSS classes
-      </h4>
-      <pre class="w-full max-w-full bg-gray-100 dark:bg-gray-800 rounded p-4 text-xs overflow-auto">{{ unocssCode }}</pre>
-      
-      <h4 class="text-sm font-medium mt-4">
-        Generated CSS
-      </h4>
-      <pre class="w-full max-w-full bg-gray-100 dark:bg-gray-800 rounded p-4 text-xs overflow-auto">{{ cssCode }}</pre>
-    </div>
-  </details>
 </template>

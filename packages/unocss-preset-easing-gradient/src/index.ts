@@ -100,8 +100,15 @@ export function presetEasingGradient(_options: PresetEasingGradientOptions = {})
         ],
       }],
       [/^(?:bg-gradient-)?fn-(to|from)-(.+)$/, function ([, spot, color], { theme }) {
+        // Skip if color contains template literal syntax (for SSR compatibility)
+        if (color?.includes('${') || color?.includes('}')) {
+          return {}
+        }
         const parsedColor = parseColor(color!, theme)
-        return { [`${varPrefix}-${spot}`]: parsedColor?.color || 'black' }
+        if (!parsedColor) {
+          return {}
+        }
+        return { [`${varPrefix}-${spot}`]: parsedColor.color }
       }, { autocomplete: ['bg-gradient-from-$colors', 'bg-gradient-to-$colors'] }],
       [/^(?:bg-gradient-)?fn-color-space-(srgb|srgb-linear|display-p3|oklch|a98-rgb|prophoto-rgb|rec2020|xyz)$/, ([, colorSpace]) => {
         return { [`${varPrefix}-color-space`]: `in ${colorSpace}` }
