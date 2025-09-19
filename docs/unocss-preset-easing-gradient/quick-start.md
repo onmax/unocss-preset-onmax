@@ -6,11 +6,11 @@ Once you have UnoCSS set up, you can install the `unocss## Explore Features
 
 This preset offers extensive customization options:
 
-- **[Utilities](/unocss-preset-easing-gradient/utilities)** - Complete reference of all available utilities
-- **[Examples](/unocss-preset-easing-gradient/examples)** - See real-world usage examples
+- **[Utilities](/unocss-preset-easing-gradient/usage/utilities)** - Complete reference of all available utilities
+- **[Examples](/unocss-preset-easing-gradient/usage/examples)** - See real-world usage examples
 - **[Generator](/unocss-preset-easing-gradient/interactive/generator)** - Visually create and experiment with easing gradients
 - **[How It Works](/unocss-preset-easing-gradient/advanced/how-it-works)** - Learn the principles behind easing gradients
-- **[Expert Usage](/unocss-preset-easing-gradient/advanced/expert-usage)** - Advanced techniques and customizationasing-gradient` package:
+- **[Expert Usage](/unocss-preset-easing-gradient/usage/expert)** - Advanced techniques and customizationasing-gradient` package:
 
 ::: code-group
 
@@ -98,8 +98,8 @@ export default defineConfig({
 
 This preset offers extensive customization options:
 
-- **[How It Works](/unocss-preset-easing-gradient/how-it-works)** - Learn the principles behind easing gradients
-- **[Example Components](/unocss-preset-easing-gradient/examples)** - See real-world usage examples
-- **[Advanced Usage](/unocss-preset-easing-gradient/advanced-usage)** - Detailed documentation of all features
-- **[Technical Details](/unocss-preset-easing-gradient/technical-details)** - Dive into the underlying CSS technologies
-- **[Generator](/unocss-preset-easing-gradient/generator)** - Visually create and experiment with easing gradients
+- **[How It Works](/unocss-preset-easing-gradient/advanced/how-it-works)** - Learn the principles behind easing gradients
+- **[Example Components](/unocss-preset-easing-gradient/usage/examples)** - See real-world usage examples
+- **[Expert Usage](/unocss-preset-easing-gradient/usage/expert)** - Advanced techniques and customization
+- **[Technical Details](/unocss-preset-easing-gradient/advanced/technical-details)** - Dive into the underlying CSS technologies
+- **[Generator](/unocss-preset-easing-gradient/interactive/generator)** - Visually create and experiment with easing gradients
