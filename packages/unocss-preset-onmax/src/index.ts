@@ -7,7 +7,7 @@ import type { PresetScalePxOptions } from 'unocss-preset-scale-px'
 import type { PresetUnoVueOptions } from 'unocss-preset-unovue'
 import type { AttributifyOptions as PresetAttributifyOptions } from 'unocss/preset-attributify'
 import type { PresetWind4Options, Theme } from 'unocss/preset-wind4'
-import { definePreset } from '@unocss/core'
+import { definePreset, symbols } from '@unocss/core'
 import { defu } from 'defu'
 import { presetAttributify, presetWind4, transformerDirectives } from 'unocss'
 import { presetAnimations } from 'unocss-preset-animations'
@@ -165,31 +165,26 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   const rules: Preset['rules'] = [
     [
       /^stack$/,
-      ([,]) => ({
-        'width': '100%',
-        'display': 'grid',
-        'place-content': 'center',
-        'grid-template-columns': '1fr',
-        'grid-template-rows': '1fr',
-      }),
+      ([,]) => [
+        {
+          [symbols.selector]: (selector: string) => `:where(${selector} > *)`,
+          'grid-area': '1 / 1',
+          'justify-self': 'center',
+          'align-self': 'center',
+        },
+        {
+          'width': '100%',
+          'display': 'grid',
+          'place-content': 'center',
+          'grid-template-columns': '1fr',
+          'grid-template-rows': '1fr',
+        },
+      ],
       {
         layer: 'onmax',
       },
     ],
   ]
-
-  const preflightBase = `
-.stack > * {
-  grid-area: 1 / 1;
-  justify-self: center;
-  align-self: center;
-}
-`
-
-  preflights.push({
-    layer: 'onmax',
-    getCSS: () => preflightBase,
-  })
 
   return {
     name: 'unocss-preset-onmax',
