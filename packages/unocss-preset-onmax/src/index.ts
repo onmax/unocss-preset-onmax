@@ -163,33 +163,33 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
     presets.push(presetScalePx(scalePxOptions))
 
   const rules: Preset['rules'] = [
-    // Temporarily remove stack rule to fix CSS generation issue
-    // [
-    //   /^stack$/,
-    //   () => ({
-    //     'width': '100%',
-    //     'display': 'grid',
-    //     'place-content': 'center',
-    //     'grid-template-columns': '1fr',
-    //     'grid-template-rows': '1fr',
-    //   }),
-    //   {
-    //     layer: 'onmax',
-    //   },
-    // ],
-    // [
-    //   /^stack$/,
-    //   () => ({
-    //     [symbols.selector]: selector => `:where(${selector} > *)`,
-    //     'grid-area': '1 / 1',
-    //     'justify-self': 'center',
-    //     'align-self': 'center',
-    //   }),
-    //   {
-    //     layer: 'onmax',
-    //   },
-    // ],
+    [
+      /^stack$/,
+      ([,]) => ({
+        'width': '100%',
+        'display': 'grid',
+        'place-content': 'center',
+        'grid-template-columns': '1fr',
+        'grid-template-rows': '1fr',
+      }),
+      {
+        layer: 'onmax',
+      },
+    ],
   ]
+
+  const preflightBase = `
+.stack > * {
+  grid-area: 1 / 1;
+  justify-self: center;
+  align-self: center;
+}
+`
+
+  preflights.push({
+    layer: 'onmax',
+    getCSS: () => preflightBase,
+  })
 
   return {
     name: 'unocss-preset-onmax',
