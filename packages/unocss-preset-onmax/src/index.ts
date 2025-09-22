@@ -165,21 +165,21 @@ export const presetOnmax = definePreset((options: PresetOnmaxOptions = {}) => {
   const rules: Preset['rules'] = [
     [
       /^stack$/,
-      function* () {
-        yield {
+      ([,]) => [
+        {
+          [symbols.selector]: (selector: string) => `:where(${selector} > *)`,
+          'grid-area': '1 / 1',
+          'justify-self': 'center',
+          'align-self': 'center',
+        },
+        {
           'width': '100%',
           'display': 'grid',
           'place-content': 'center',
           'grid-template-columns': '1fr',
           'grid-template-rows': '1fr',
-        }
-        yield {
-          [symbols.selector]: selector => `:where(${selector} > *)`,
-          'grid-area': '1 / 1',
-          'justify-self': 'center',
-          'align-self': 'center',
-        }
-      },
+        },
+      ],
       {
         layer: 'onmax',
       },

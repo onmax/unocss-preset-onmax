@@ -21,7 +21,7 @@ describe('basic setup', () => {
       /* layer: default */
       .text-4{font-size:0.25rem;}
       .var\\:test\\:cssvar{--test:cssvar;}
-      .bg-gradient-fn-from-blue{--un-gradient-fn-from:oklch(0.707 0.165 254.624);}"
+      .bg-gradient-fn-from-blue{--un-gradient-fn-from:oklch(70.7% 0.165 254.624);}"
     `)
   })
 })

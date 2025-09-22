@@ -4,9 +4,15 @@ Create perceptually uniform gradients that look more natural to the human eye.
 
 ## Overview
 
+<script setup>
+  import {withBase} from 'vitepress'
+
+  const imagePath = withBase('/assets/images/easing-gradient-comparison.svg')
+</script>
+
 <figure>
 
-![Comparison between linear gradient and easing gradient showing more natural color distribution](/unocss-preset-onmax/assets/images/easing-gradient-comparison.svg)
+<img :src={{ imagePath }}" alt="Comparison between linear gradient and easing gradient showing more natural color distribution" />
 
 <figcaption>Left: Standard linear gradient with uneven color perception. Right: Easing gradient with perceptually balanced transition.</figcaption>
 </figure>

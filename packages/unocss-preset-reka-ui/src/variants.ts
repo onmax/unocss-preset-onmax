@@ -5,9 +5,16 @@ import type { Variant } from 'unocss'
 import { variantMatcher } from '@unocss/rule-utils'
 
 function dataVariant(prefix: string, attribute: string, selector: string): Variant {
-  return variantMatcher(`${prefix}${attribute}`, input => ({
-    selector: `${selector}${input.selector}, ${selector} ${input.selector}`,
-  }))
+  return variantMatcher(`${prefix}${attribute}`, (input) => {
+    const base = `${selector}${input.selector}` // element that itself has the data-state + class
+    const desc = `${selector} ${input.selector}` // descendant of a data-state element
+
+    return {
+      // 1) Element itself carries the attribute: keep it only if it has no deeper same-match
+      // 2) Attribute is on an ancestor: pick descendants only if that ancestor doesn't contain a deeper same-match
+      selector: `${base}:not(:has(${base})), ${selector}:not(:has(${desc})) ${input.selector}`,
+    }
+  })
 }
 
 export function getVariants(prefix: string): Variant[] {
