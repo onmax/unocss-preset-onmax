@@ -4,6 +4,17 @@ bg-gray-100
 focus-visible
 has-focus-visible
 group-has-focus-visible:text-orange
+data-inverted:text-red
+data-inverted:text-pink
 hocus:text-green
 group-hocus:text-purple
+leader-hocus:text-yellow
+selected:bg-blue
+not-selected:opacity-50
+global-dark:text-white
+motion-from-start:translate-x-0
+motion-to-end:opacity-100
+data-open:block
+data-closed:hidden
+data-active:text-green
 [has-focus-visible=""]

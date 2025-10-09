@@ -3,11 +3,11 @@
 
 <!-- Inverted variant -->
 <div data-inverted>
-  <div class="inverted:text-red">This becomes red when parent is inverted</div>
+  <div class="data-inverted:text-red">This becomes red when parent is inverted</div>
 </div>
 
 <!-- Inverted variant on same element -->
-<div data-inverted class="inverted:text-pink">This element itself is pink when inverted</div>
+<div data-inverted class="data-inverted:text-pink">This element itself is pink when inverted</div>
 
 <!-- Hocus variant -->
 <button class="hocus:text-green">Hover or focus me to turn text green</button>
@@ -17,7 +17,30 @@
   <span class="group-hocus:text-purple"> This turns purple when you hover/focus the parent </span>
 </div>
 
+<!-- Leader hocus variant -->
+<div>
+  <div class="leader">
+    <span class="leader-hocus:text-yellow">This turns yellow when .leader parent is hovered/focused</span>
+  </div>
+</div>
+
 <!-- Group has-focus-visible variant -->
 <div class="group bg-gray-100 p-4">
   <span class="group-has-focus-visible:text-orange"> This turns orange when the parent has focus-visible state </span>
 </div>
+
+<!-- Selected variants -->
+<div data-selected class="selected:bg-blue">Selected element with blue bg</div>
+<div class="not-selected:opacity-50">Not selected element with reduced opacity</div>
+
+<!-- Global dark variant -->
+<div class="global-dark:text-white">White text in global dark mode</div>
+
+<!-- Radix motion variants -->
+<div data-motion="from-start" class="motion-from-start:translate-x-0">Motion from start</div>
+<div data-motion="to-end" class="motion-to-end:opacity-100">Motion to end</div>
+
+<!-- Radix data-state variants -->
+<div data-state="open" class="data-open:block">Open state</div>
+<div data-state="closed" class="data-closed:hidden">Closed state</div>
+<div data-state="active" class="data-active:text-green">Active state</div>

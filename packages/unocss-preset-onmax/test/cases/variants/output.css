@@ -1,13 +1,27 @@
 /* layer: properties */
 @property --un-text-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
 @property --un-bg-opacity{syntax:"<percentage>";inherits:false;initial-value:100%;}
+@property --un-translate-x{syntax:"*";inherits:false;initial-value:0;}
+@property --un-translate-y{syntax:"*";inherits:false;initial-value:0;}
+@property --un-translate-z{syntax:"*";inherits:false;initial-value:0;}
 /* layer: default */
 :where(.group,[group]):hover .group-hocus\:text-purple, :where(.group,[group]):focus-visible .group-hocus\:text-purple{color:color-mix(in oklch, var(--colors-purple-DEFAULT) var(--un-text-opacity), transparent);}
-.hocus\:text-green:hover, .hocus\:text-green:focus-visible{color:color-mix(in oklch, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
+:where(.inverted,[data-inverted]).data-inverted\:text-pink, :where(.inverted,[data-inverted]) .data-inverted\:text-pink{color:color-mix(in oklch, var(--colors-pink-DEFAULT) var(--un-text-opacity), transparent);}
+:where(.inverted,[data-inverted]).data-inverted\:text-red, :where(.inverted,[data-inverted]) .data-inverted\:text-red{color:color-mix(in oklch, var(--colors-red-DEFAULT) var(--un-text-opacity), transparent);}
+.hocus\:text-green:hover, .hocus\:text-green:focus-visible,
+[data-state=active]:not(:has([data-state])) .data-active\:text-green, [data-state=active]:not(:has([data-state])).data-active\:text-green{color:color-mix(in oklch, var(--colors-green-DEFAULT) var(--un-text-opacity), transparent);}
 .text-blue{color:color-mix(in oklch, var(--colors-blue-DEFAULT) var(--un-text-opacity), transparent);}
+*:has(> :where(.leader,[leader]):where(:hover,:focus-visible)) .leader-hocus\:text-yellow{color:color-mix(in oklch, var(--colors-yellow-DEFAULT) var(--un-text-opacity), transparent);}
+html.dark .global-dark\:text-white{color:color-mix(in oklch, var(--colors-white) var(--un-text-opacity), transparent);}
 .group:has(:focus-visible) .group-has-focus-visible\:text-orange{color:color-mix(in oklch, var(--colors-orange-DEFAULT) var(--un-text-opacity), transparent);}
 .p-4{padding:calc(var(--spacing) * 4);}
 .bg-gray-100{background-color:color-mix(in oklch, var(--colors-gray-100) var(--un-bg-opacity), transparent);}
+[data-selected].selected\:bg-blue, [data-selected] .selected\:bg-blue{background-color:color-mix(in oklch, var(--colors-blue-DEFAULT) var(--un-bg-opacity), transparent);}
+:not([data-selected]), :not([data-selected]) .not-selected\:opacity-50{opacity:50%;}
+[data-motion=to-end].motion-to-end\:opacity-100{opacity:100%;}
+[data-state=open]:not(:has([data-state])) .data-open\:block, [data-state=open]:not(:has([data-state])).data-open\:block{display:block;}
+[data-state=closed]:not(:has([data-state])) .data-closed\:hidden, [data-state=closed]:not(:has([data-state])).data-closed\:hidden{display:none;}
 .has-focus-visible:has(:focus),
 [has-focus-visible=""]:has(:focus){visibility:visible;}
 .focus-visible:focus{visibility:visible;}
+[data-motion=from-start].motion-from-start\:translate-x-0{--un-translate-x:calc(var(--spacing) * 0);translate:var(--un-translate-x) var(--un-translate-y);}
