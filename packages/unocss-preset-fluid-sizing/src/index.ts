@@ -336,6 +336,13 @@ class PresetConfig {
       ] as const)
     }
 
+    // Add custom CSS variable slash syntax: f-$myvar-10/20
+    shortcuts.push([
+      getRegExp(`^${this.prefix}\\$(\\w+)-(\\d+)/(\\d+)$`),
+      ([, varName, min, max]) => `${this.prefix}$${varName} ${this.prefix}$${varName}-min-${min} ${this.prefix}$${varName}-max-${max}`,
+      { autocomplete: `${this.prefix}$<name>-<num>/<num>` },
+    ] as const)
+
     // Skip theme shortcuts if disabled or not requested
     if (disableTheme || !themeShortcuts) {
       return shortcuts

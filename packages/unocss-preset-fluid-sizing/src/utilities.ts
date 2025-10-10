@@ -49,4 +49,53 @@ export const fluidSizeUtilities: [string, string[]][] = [
   ['translate-x', ['--un-translate-x']],
   ['translate-y', ['--un-translate-y']],
   ['translate-z', ['--un-translate-z']],
+
+  // Scroll utilities
+  ['scroll-p', ['scroll-padding']],
+  ['scroll-px', ['scroll-padding-left', 'scroll-padding-right']],
+  ['scroll-py', ['scroll-padding-top', 'scroll-padding-bottom']],
+  ['scroll-pt', ['scroll-padding-top']],
+  ['scroll-pb', ['scroll-padding-bottom']],
+  ['scroll-pl', ['scroll-padding-left']],
+  ['scroll-pr', ['scroll-padding-right']],
+  ['scroll-m', ['scroll-margin']],
+  ['scroll-mx', ['scroll-margin-left', 'scroll-margin-right']],
+  ['scroll-my', ['scroll-margin-top', 'scroll-margin-bottom']],
+  ['scroll-mt', ['scroll-margin-top']],
+  ['scroll-mb', ['scroll-margin-bottom']],
+  ['scroll-ml', ['scroll-margin-left']],
+  ['scroll-mr', ['scroll-margin-right']],
+
+  // Border utilities
+  ['border', ['border-width']],
+  ['border-x', ['border-left-width', 'border-right-width']],
+  ['border-y', ['border-top-width', 'border-bottom-width']],
+  ['border-t', ['border-top-width']],
+  ['border-b', ['border-bottom-width']],
+  ['border-l', ['border-left-width']],
+  ['border-r', ['border-right-width']],
+
+  // Outline utilities
+  ['outline', ['outline-width']],
+  ['outline-offset', ['outline-offset']],
+
+  // Inset utilities (positioning)
+  ['inset', ['top', 'right', 'bottom', 'left']],
+  ['inset-x', ['left', 'right']],
+  ['inset-y', ['top', 'bottom']],
+
+  // Space utilities (for flex/grid children)
+  ['space-x', ['--un-space-x-reverse', '--un-space-x']],
+  ['space-y', ['--un-space-y-reverse', '--un-space-y']],
+
+  // Backdrop and filter utilities
+  ['backdrop-blur', ['--un-backdrop-blur']],
+  ['blur', ['--un-blur']],
+
+  // Layout utilities
+  ['basis', ['flex-basis']],
+  ['indent', ['text-indent']],
+
+  // Column utilities (only column-gap, not columns count)
+  ['column-gap', ['column-gap']],
 ]

@@ -60,4 +60,11 @@ describe('cases', () => {
     await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/case-4/matched.txt'))
     await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/case-4/output.css'))
   })
+
+  it('case 5 - new utilities (scroll, border, outline, inset, space, filter, layout, columns)', async () => {
+    const input = readFileSync(resolve(__dirname, './cases/case-5/input.html'), 'utf-8')
+    const { css, matched } = await uno.generate(input, { preflights: false })
+    await expect([...matched].join('\n')).toMatchFileSnapshot(resolve(__dirname, './cases/case-5/matched.txt'))
+    await expect(css).toMatchFileSnapshot(resolve(__dirname, './cases/case-5/output.css'))
+  })
 })

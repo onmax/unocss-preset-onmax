@@ -2,3 +2,5 @@
 [f~="$myvar-min-0"]
 [f~="$myvar-max-100"]
 [mt~="$f-myvar"]
+f-$custom-20/50
+[f~="$spacing-10/30"]

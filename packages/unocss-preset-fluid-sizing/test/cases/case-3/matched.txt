@@ -128,6 +128,7 @@ f-text-max-container-2000
 f-text-12/16
 f-text-14/18
 f-text-16/20
+f-$myvar-10/20
 f-text-18/24
 f-mt-10/20
 f-p-8/16
@@ -164,6 +165,7 @@ f-gap-lg
 f-gap-xl
 f-mt-lg
 f-shadow-lg
+[f~="$spacing-5/15"]
 [text-f-2xs=""]
 [text-f-xs=""]
 [text-f-sm=""]

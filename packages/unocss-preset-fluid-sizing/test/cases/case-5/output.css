@@ -1,0 +1,90 @@
+/* layer: shortcuts */
+.f-scroll-p-lg{--f-scroll-p-min:32;--f-scroll-p-max:48;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-scroll-p-md{--f-scroll-p-min:24;--f-scroll-p-max:32;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-scroll-p-sm{--f-scroll-p-min:16;--f-scroll-p-max:24;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-scroll-p-xl{--f-scroll-p-min:48;--f-scroll-p-max:72;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-scroll-p-xs{--f-scroll-p-min:12;--f-scroll-p-max:16;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-border-lg{--f-border-min:32;--f-border-max:48;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-border-md{--f-border-min:24;--f-border-max:32;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-border-sm{--f-border-min:16;--f-border-max:24;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-border-xl{--f-border-min:48;--f-border-max:72;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-border-xs{--f-border-min:12;--f-border-max:16;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-outline-lg{--f-outline-min:32;--f-outline-max:48;outline-width:clamp(calc(var(--f-outline-unit, 1px) * var(--f-outline-min, 16)), calc(var(--f-outline-unit, 1px) * var(--f-outline-min, 16) + (var(--f-outline-max, 16) - var(--f-outline-min, 16)) * (var(--f-outline-container, 100vw) - (var(--f-outline-unit, 1px) * var(--f-outline-min-container, 320))) / (var(--f-outline-max-container, 1920) - var(--f-outline-min-container, 320))), calc(var(--f-outline-unit, 1px) * var(--f-outline-max, 16)));}
+.f-inset-x-md{--f-inset-x-min:24;--f-inset-x-max:32;left:clamp(calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-min, 16)), calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-min, 16) + (var(--f-inset-x-max, 16) - var(--f-inset-x-min, 16)) * (var(--f-inset-x-container, 100vw) - (var(--f-inset-x-unit, 1px) * var(--f-inset-x-min-container, 320))) / (var(--f-inset-x-max-container, 1920) - var(--f-inset-x-min-container, 320))), calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-max, 16)));right:clamp(calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-min, 16)), calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-min, 16) + (var(--f-inset-x-max, 16) - var(--f-inset-x-min, 16)) * (var(--f-inset-x-container, 100vw) - (var(--f-inset-x-unit, 1px) * var(--f-inset-x-min-container, 320))) / (var(--f-inset-x-max-container, 1920) - var(--f-inset-x-min-container, 320))), calc(var(--f-inset-x-unit, 1px) * var(--f-inset-x-max, 16)));}
+/* layer: default */
+[scroll-p-lg=""]{scroll-padding:1.125rem;}
+[scroll-p-sm=""]{scroll-padding:0.875rem;}
+[scroll-p-xl=""]{scroll-padding:1.25rem;}
+[scroll-p-xs=""]{scroll-padding:0.75rem;}
+.outline{outline-style:solid;}
+.filter{filter:var(--un-blur) var(--un-brightness) var(--un-contrast) var(--un-drop-shadow) var(--un-grayscale) var(--un-hue-rotate) var(--un-invert) var(--un-saturate) var(--un-sepia);}
+.f-scroll-p-min-10{--f-scroll-p-min:10;}
+.f-scroll-p-10\/20{--f-scroll-p-min:10;--f-scroll-p-max:20;scroll-padding:clamp(calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16)), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min, 16) + (var(--f-scroll-p-max, 16) - var(--f-scroll-p-min, 16)) * (var(--f-scroll-p-container, 100vw) - (var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-min-container, 320))) / (var(--f-scroll-p-max-container, 1920) - var(--f-scroll-p-min-container, 320))), calc(var(--f-scroll-p-unit, 1px) * var(--f-scroll-p-max, 16)));}
+.f-scroll-p-max-20{--f-scroll-p-max:20;}
+.f-scroll-px-min-10{--f-scroll-px-min:10;}
+.f-scroll-px-max-20{--f-scroll-px-max:20;}
+.f-scroll-py-min-10{--f-scroll-py-min:10;}
+.f-scroll-py-max-20{--f-scroll-py-max:20;}
+.f-scroll-pt-min-10{--f-scroll-pt-min:10;}
+.f-scroll-pt-max-20{--f-scroll-pt-max:20;}
+.f-scroll-pb-min-10{--f-scroll-pb-min:10;}
+.f-scroll-pb-max-20{--f-scroll-pb-max:20;}
+.f-scroll-pl-min-10{--f-scroll-pl-min:10;}
+.f-scroll-pl-max-20{--f-scroll-pl-max:20;}
+.f-scroll-pr-min-10{--f-scroll-pr-min:10;}
+.f-scroll-pr-max-20{--f-scroll-pr-max:20;}
+.f-scroll-m-min-10{--f-scroll-m-min:10;}
+.f-scroll-m-max-20{--f-scroll-m-max:20;}
+.f-scroll-mx-min-10{--f-scroll-mx-min:10;}
+.f-scroll-mx-max-20{--f-scroll-mx-max:20;}
+.f-scroll-my-min-10{--f-scroll-my-min:10;}
+.f-scroll-my-max-20{--f-scroll-my-max:20;}
+.f-scroll-mt-min-10{--f-scroll-mt-min:10;}
+.f-scroll-mt-max-20{--f-scroll-mt-max:20;}
+.f-scroll-mb-min-10{--f-scroll-mb-min:10;}
+.f-scroll-mb-max-20{--f-scroll-mb-max:20;}
+.f-scroll-ml-min-10{--f-scroll-ml-min:10;}
+.f-scroll-ml-max-20{--f-scroll-ml-max:20;}
+.f-scroll-mr-min-10{--f-scroll-mr-min:10;}
+.f-scroll-mr-max-20{--f-scroll-mr-max:20;}
+.f-border-min-1{--f-border-min:1;}
+.f-border-1\/4{--f-border-min:1;--f-border-max:4;border-width:clamp(calc(var(--f-border-unit, 1px) * var(--f-border-min, 16)), calc(var(--f-border-unit, 1px) * var(--f-border-min, 16) + (var(--f-border-max, 16) - var(--f-border-min, 16)) * (var(--f-border-container, 100vw) - (var(--f-border-unit, 1px) * var(--f-border-min-container, 320))) / (var(--f-border-max-container, 1920) - var(--f-border-min-container, 320))), calc(var(--f-border-unit, 1px) * var(--f-border-max, 16)));}
+.f-border-max-4{--f-border-max:4;}
+.f-border-x-min-1{--f-border-x-min:1;}
+.f-border-x-max-4{--f-border-x-max:4;}
+.f-border-y-min-1{--f-border-y-min:1;}
+.f-border-y-max-4{--f-border-y-max:4;}
+.f-border-t-min-1{--f-border-t-min:1;}
+.f-border-t-max-4{--f-border-t-max:4;}
+.f-border-b-min-1{--f-border-b-min:1;}
+.f-border-b-max-4{--f-border-b-max:4;}
+.f-border-l-min-1{--f-border-l-min:1;}
+.f-border-l-max-4{--f-border-l-max:4;}
+.f-border-r-min-1{--f-border-r-min:1;}
+.f-border-r-max-4{--f-border-r-max:4;}
+.f-outline-min-1{--f-outline-min:1;}
+.f-outline-2\/4{--f-outline-min:2;--f-outline-max:4;outline-width:clamp(calc(var(--f-outline-unit, 1px) * var(--f-outline-min, 16)), calc(var(--f-outline-unit, 1px) * var(--f-outline-min, 16) + (var(--f-outline-max, 16) - var(--f-outline-min, 16)) * (var(--f-outline-container, 100vw) - (var(--f-outline-unit, 1px) * var(--f-outline-min-container, 320))) / (var(--f-outline-max-container, 1920) - var(--f-outline-min-container, 320))), calc(var(--f-outline-unit, 1px) * var(--f-outline-max, 16)));}
+.f-outline-max-4{--f-outline-max:4;}
+.f-outline-offset-min-2{--f-outline-offset-min:2;}
+.f-outline-offset-max-8{--f-outline-offset-max:8;}
+.f-inset-min-0{--f-inset-min:0;}
+.f-inset-0\/100{--f-inset-min:0;--f-inset-max:100;top:clamp(calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16)), calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16) + (var(--f-inset-max, 16) - var(--f-inset-min, 16)) * (var(--f-inset-container, 100vw) - (var(--f-inset-unit, 1px) * var(--f-inset-min-container, 320))) / (var(--f-inset-max-container, 1920) - var(--f-inset-min-container, 320))), calc(var(--f-inset-unit, 1px) * var(--f-inset-max, 16)));right:clamp(calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16)), calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16) + (var(--f-inset-max, 16) - var(--f-inset-min, 16)) * (var(--f-inset-container, 100vw) - (var(--f-inset-unit, 1px) * var(--f-inset-min-container, 320))) / (var(--f-inset-max-container, 1920) - var(--f-inset-min-container, 320))), calc(var(--f-inset-unit, 1px) * var(--f-inset-max, 16)));bottom:clamp(calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16)), calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16) + (var(--f-inset-max, 16) - var(--f-inset-min, 16)) * (var(--f-inset-container, 100vw) - (var(--f-inset-unit, 1px) * var(--f-inset-min-container, 320))) / (var(--f-inset-max-container, 1920) - var(--f-inset-min-container, 320))), calc(var(--f-inset-unit, 1px) * var(--f-inset-max, 16)));left:clamp(calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16)), calc(var(--f-inset-unit, 1px) * var(--f-inset-min, 16) + (var(--f-inset-max, 16) - var(--f-inset-min, 16)) * (var(--f-inset-container, 100vw) - (var(--f-inset-unit, 1px) * var(--f-inset-min-container, 320))) / (var(--f-inset-max-container, 1920) - var(--f-inset-min-container, 320))), calc(var(--f-inset-unit, 1px) * var(--f-inset-max, 16)));}
+.f-inset-max-100{--f-inset-max:100;}
+.f-inset-x-min-0{--f-inset-x-min:0;}
+.f-inset-x-max-100{--f-inset-x-max:100;}
+.f-inset-y-min-0{--f-inset-y-min:0;}
+.f-inset-y-max-100{--f-inset-y-max:100;}
+.f-space-x-min-4>:not([hidden])~:not([hidden]){--f-space-x-min:4;}
+.f-space-x-max-12>:not([hidden])~:not([hidden]){--f-space-x-max:12;}
+.f-space-y-min-4>:not([hidden])~:not([hidden]){--f-space-y-min:4;}
+.f-space-y-max-12>:not([hidden])~:not([hidden]){--f-space-y-max:12;}
+.f-backdrop-blur-min-2{--f-backdrop-blur-min:2;}
+.f-backdrop-blur-max-8{--f-backdrop-blur-max:8;}
+.f-blur-min-2{--f-blur-min:2;}
+.f-blur-max-8{--f-blur-max:8;}
+.f-basis-min-100{--f-basis-min:100;}
+.f-basis-max-300{--f-basis-max:300;}
+.f-indent-min-4{--f-indent-min:4;}
+.f-indent-max-12{--f-indent-max:12;}
+.f-column-gap-min-4{--f-column-gap-min:4;}
+.f-column-gap-max-12{--f-column-gap-max:12;}
