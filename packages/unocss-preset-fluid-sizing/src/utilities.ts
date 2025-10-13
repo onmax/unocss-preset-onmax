@@ -84,10 +84,6 @@ export const fluidSizeUtilities: [string, string[]][] = [
   ['inset-x', ['left', 'right']],
   ['inset-y', ['top', 'bottom']],
 
-  // Space utilities (for flex/grid children)
-  ['space-x', ['--un-space-x-reverse', '--un-space-x']],
-  ['space-y', ['--un-space-y-reverse', '--un-space-y']],
-
   // Backdrop and filter utilities
   ['backdrop-blur', ['--un-backdrop-blur']],
   ['blur', ['--un-blur']],

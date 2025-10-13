@@ -74,6 +74,8 @@ f-scroll-p-10/20
 f-border-1/4
 f-outline-2/4
 f-inset-0/100
+f-space-x-4/12
+f-space-y-8/16
 f-scroll-p-xs
 f-scroll-p-sm
 f-scroll-p-md
