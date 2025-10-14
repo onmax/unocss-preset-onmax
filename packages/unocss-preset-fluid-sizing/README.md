@@ -91,10 +91,23 @@ Sets the base unit for the utility which by default is `1px`. You can also chang
 
 #### CSS Variables
 
-You can also use `$` to store the calculation of the fluid size in a CSS variable. For example `f-$myvar f-$myvar-min-8 f-$myvar-max-12` will set the padding to the value of the CSS variable `--myvar`. Then you can use the CSS variable in your CSS like `--other-value: calc(var(--f-myvar) * 1.5);`.
+You can use `$` to store fluid size calculations in CSS variables. When the variable name matches an existing utility (like `$px`, `$mt`, `$text`), it automatically applies to the corresponding properties.
+
+```html
+<!-- Automatically applies to padding-left and padding-right -->
+<div f="$px-24/32"></div>
+
+<!-- Automatically applies to margin-top -->
+<div class="f-$mt-16/24"></div>
+
+<!-- Custom variable (no auto-apply) -->
+<div f="$myvar-8/12"></div>
+```
+
+Use custom variables in your own CSS: `--other-value: calc(var(--f-myvar) * 1.5);`
 
 > [!WARNING]
-> Due to limitations, the name of the variable can only contain letters, but not numbers nor dashes.
+> Variable names can only contain letters (no numbers or dashes).
 > ✅ `f-$myvar` is correct.
 > ❌ `f-$my-var` is not.
 

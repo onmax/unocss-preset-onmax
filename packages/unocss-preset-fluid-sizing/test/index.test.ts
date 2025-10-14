@@ -30,6 +30,24 @@ describe('presetFluidSizing', async () => {
     const { css } = await uno.generate('flex-f-gap-12', { preflights: false })
     expect(css).toMatchInlineSnapshot(`""`)
   })
+
+  it('cSS var with matching utility name should apply to properties', async () => {
+    const { css } = await uno.generate('<div f="$px-24/32"></div>', { preflights: false })
+    expect(css).toContain('--f-px-min:24')
+    expect(css).toContain('--f-px-max:32')
+    expect(css).toContain('--f-px:clamp')
+    expect(css).toContain('padding-left:var(--f-px)')
+    expect(css).toContain('padding-right:var(--f-px)')
+  })
+
+  it('cSS var with non-matching utility name should only create variable', async () => {
+    const { css } = await uno.generate('<div f="$customvar-10/20"></div>', { preflights: false })
+    expect(css).toContain('--f-customvar-min:10')
+    expect(css).toContain('--f-customvar-max:20')
+    expect(css).toContain('--f-customvar:clamp')
+    expect(css).not.toContain('padding')
+    expect(css).not.toContain('margin')
+  })
 })
 
 describe('cases', () => {

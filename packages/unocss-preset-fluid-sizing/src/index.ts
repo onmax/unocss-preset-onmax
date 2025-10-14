@@ -229,8 +229,9 @@ class PresetConfig {
     return css
   }
 
-  // Make rules factory that works for both normal and CSS var utilities
-  makeRulesFactory(isCSSVar: boolean = false) {
+  // Factory for creating both static utility rules and dynamic CSS variable rules
+  // utilitiesMap needed for CSS vars to auto-apply to matching utility properties
+  makeRulesFactory(isCSSVar: boolean = false, utilitiesMap?: Map<string, string[]>) {
     return (utility: string, cssProperties: string[] = []): Rule<object>[] => {
       const rules: Rule<object>[] = []
 
@@ -270,8 +271,22 @@ class PresetConfig {
         addRule(`${reUtilityBase}`, (matches) => {
           if (matches.length !== 2 || matches.includes(undefined as any))
             return
-          const properties = [this.getCSSVarName('', matches[1])]
-          return this.getFluidCSS({ utility: matches[1], properties })
+          const utilityName = matches[1]
+          const css: Record<string, string> = {}
+
+          const varProperty = this.getCSSVarName('', utilityName)
+          const fluidCSS = this.getFluidCSS({ utility: utilityName, properties: [varProperty] })
+          Object.assign(css, fluidCSS)
+
+          // Apply the variable to matching utility properties to enable direct usage like f="$px-24/32"
+          // This allows the CSS variable to automatically control the corresponding CSS properties
+          if (utilitiesMap && utilitiesMap.has(utilityName)) {
+            const properties = utilitiesMap.get(utilityName)!
+            const varRef = `var(${varProperty})`
+            properties.forEach(prop => css[prop] = varRef)
+          }
+
+          return css
         }, reUtilityBase)
 
         addRule(`${reUtilityBase}-base-(${units})`, ([_, utility, newUnit]) => ({
@@ -319,78 +334,6 @@ class PresetConfig {
     }
   }
 
-  // Generate space utility rules (space-x, space-y)
-  makeSpaceRules(): Rule<object>[] {
-    const rules: Rule<object>[] = []
-
-    // Helper to get fluid clamp value
-    const getFluidValue = (utility: string): string => {
-      const minSize = this.getCSSVar('min', utility)
-      const maxSize = this.getCSSVar('max', utility)
-      const minSizeC = this.getCSSVar('minContainer', utility)
-      const maxSizeC = this.getCSSVar('maxContainer', utility)
-      const containerVar = this.getCSSVar('container', utility)
-      const unitVar = this.getCSSVar('unit', utility)
-
-      const fluid = `calc(${unitVar} * ${minSize} + (${maxSize} - ${minSize}) * (${containerVar} - (${unitVar} * ${minSizeC})) / (${maxSizeC} - ${minSizeC}))`
-      const minValue = `calc(${unitVar} * ${minSize})`
-      const maxValue = `calc(${unitVar} * ${maxSize})`
-      return `clamp(${minValue}, ${fluid}, ${maxValue})`
-    }
-
-    // space-x rules
-    const spaceXBase = `${this.prefix}space-x`
-    const spaceXSelector = (s: string): string => `${s}>:not([hidden])~:not([hidden])`
-
-    rules.push([
-      getRegExp(`^${spaceXBase}-min-(\\d+)$`),
-      ([_, minSize]) => ({ [this.getCSSVarName('min', 'space-x')]: minSize }),
-      { autocomplete: `${spaceXBase}-min-<num>`, selector: spaceXSelector },
-    ])
-    rules.push([
-      getRegExp(`^${spaceXBase}-max-(\\d+)$`),
-      ([_, maxSize]) => ({ [this.getCSSVarName('max', 'space-x')]: maxSize }),
-      { autocomplete: `${spaceXBase}-max-<num>`, selector: spaceXSelector },
-    ])
-    rules.push([
-      getRegExp(`^${spaceXBase}$`),
-      () => ({
-        'margin-left': `calc(var(--un-space-x) * calc(1 - var(--un-space-x-reverse)))`,
-        'margin-right': `calc(var(--un-space-x) * var(--un-space-x-reverse))`,
-        '--un-space-x-reverse': '0',
-        '--un-space-x': getFluidValue('space-x'),
-      }),
-      { autocomplete: spaceXBase, selector: spaceXSelector },
-    ])
-
-    // space-y rules
-    const spaceYBase = `${this.prefix}space-y`
-    const spaceYSelector = (s: string): string => `${s}>:not([hidden])~:not([hidden])`
-
-    rules.push([
-      getRegExp(`^${spaceYBase}-min-(\\d+)$`),
-      ([_, minSize]) => ({ [this.getCSSVarName('min', 'space-y')]: minSize }),
-      { autocomplete: `${spaceYBase}-min-<num>`, selector: spaceYSelector },
-    ])
-    rules.push([
-      getRegExp(`^${spaceYBase}-max-(\\d+)$`),
-      ([_, maxSize]) => ({ [this.getCSSVarName('max', 'space-y')]: maxSize }),
-      { autocomplete: `${spaceYBase}-max-<num>`, selector: spaceYSelector },
-    ])
-    rules.push([
-      getRegExp(`^${spaceYBase}$`),
-      () => ({
-        'margin-top': `calc(var(--un-space-y) * calc(1 - var(--un-space-y-reverse)))`,
-        'margin-bottom': `calc(var(--un-space-y) * var(--un-space-y-reverse))`,
-        '--un-space-y-reverse': '0',
-        '--un-space-y': getFluidValue('space-y'),
-      }),
-      { autocomplete: spaceYBase, selector: spaceYSelector },
-    ])
-
-    return rules
-  }
-
   // Get shortcuts for the given utilities
   getShortcuts(
     utilities: string[],
@@ -413,18 +356,6 @@ class PresetConfig {
       getRegExp(`^${this.prefix}\\$(\\w+)-(\\d+)/(\\d+)$`),
       ([, varName, min, max]) => `${this.prefix}$${varName} ${this.prefix}$${varName}-min-${min} ${this.prefix}$${varName}-max-${max}`,
       { autocomplete: `${this.prefix}$<name>-<num>/<num>` },
-    ] as const)
-
-    // Add space utility shortcuts
-    shortcuts.push([
-      getRegExp(`^${this.prefix}space-x-(\\d+)/(\\d+)$`),
-      ([, min, max]) => `${this.prefix}space-x ${this.prefix}space-x-min-${min} ${this.prefix}space-x-max-${max}`,
-      { autocomplete: `${this.prefix}space-x-<num>/<num>` },
-    ] as const)
-    shortcuts.push([
-      getRegExp(`^${this.prefix}space-y-(\\d+)/(\\d+)$`),
-      ([, min, max]) => `${this.prefix}space-y ${this.prefix}space-y-min-${min} ${this.prefix}space-y-max-${max}`,
-      { autocomplete: `${this.prefix}space-y-<num>/<num>` },
     ] as const)
 
     // Skip theme shortcuts if disabled or not requested
@@ -471,13 +402,7 @@ class PresetConfig {
         }
       }
 
-      // Add space utility theme shortcuts
-      shortcuts.push([`${this.prefix}space-x-${name}`, `${this.prefix}space-x-${min}/${max}`])
-      shortcuts.push([`${this.prefix}space-y-${name}`, `${this.prefix}space-y-${min}/${max}`])
-      if (attributify) {
-        shortcuts.push([`${getPrefixAttribute('space-x')}-${name}`, `${this.prefix}space-x-${min}/${max}`])
-        shortcuts.push([`${getPrefixAttribute('space-y')}-${name}`, `${this.prefix}space-y-${min}/${max}`])
-      }
+      // Space utilities not included as built-ins to keep the preset simple and avoid complex selector generation
     }
 
     return shortcuts
@@ -496,16 +421,18 @@ export function presetFluidSizing(options: PresetFluidSizingOptions = {}): Prese
     themeShortcuts = true,
   } = defu(options, defaultFluidSizingOptions)
 
-  // More efficiently merge utilities using a Set for O(1) lookups
   const userUtilityNames = new Set(userUtilities.map(u => u[0]))
   const mergedUtilities = [
     ...userUtilities,
     ...fluidSizeUtilities.filter(([name]) => !userUtilityNames.has(name)),
   ]
 
+  // Map enables CSS var rules to identify and auto-apply to matching utility properties
+  const utilitiesMap = new Map(mergedUtilities)
+
   // Create rule factories
   const getRules = config.makeRulesFactory(false)
-  const getCSSVarRules = config.makeRulesFactory(true)
+  const getCSSVarRules = config.makeRulesFactory(true, utilitiesMap)
 
   // Generate all rules
   const rules: Rule<object>[] = []
@@ -517,9 +444,6 @@ export function presetFluidSizing(options: PresetFluidSizingOptions = {}): Prese
 
   // Add CSS var rules
   rules.push(...getCSSVarRules('', []))
-
-  // Add space utility rules (special handling)
-  rules.push(...config.makeSpaceRules())
 
   // Generate shortcuts
   const utilityNames = mergedUtilities.map(u => u[0])
