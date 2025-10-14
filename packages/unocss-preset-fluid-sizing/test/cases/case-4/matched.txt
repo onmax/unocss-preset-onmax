@@ -3,4 +3,6 @@
 [f~="$myvar-max-100"]
 [mt~="$f-myvar"]
 f-$custom-20/50
+f-$mt-16/24
 [f~="$spacing-10/30"]
+[f~="$px-24/32"]

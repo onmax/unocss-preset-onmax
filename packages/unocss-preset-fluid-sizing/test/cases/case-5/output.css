@@ -84,9 +84,3 @@
 .f-indent-max-12{--f-indent-max:12;}
 .f-column-gap-min-4{--f-column-gap-min:4;}
 .f-column-gap-max-12{--f-column-gap-max:12;}
-.f-space-x-min-4>:not([hidden])~:not([hidden]){--f-space-x-min:4;}
-.f-space-x-4\/12>:not([hidden])~:not([hidden]){--f-space-x-min:4;--f-space-x-max:12;margin-left:calc(var(--un-space-x) * calc(1 - var(--un-space-x-reverse)));margin-right:calc(var(--un-space-x) * var(--un-space-x-reverse));--un-space-x-reverse:0;--un-space-x:clamp(calc(var(--f-space-x-unit, 1px) * var(--f-space-x-min, 16)), calc(var(--f-space-x-unit, 1px) * var(--f-space-x-min, 16) + (var(--f-space-x-max, 16) - var(--f-space-x-min, 16)) * (var(--f-space-x-container, 100vw) - (var(--f-space-x-unit, 1px) * var(--f-space-x-min-container, 320))) / (var(--f-space-x-max-container, 1920) - var(--f-space-x-min-container, 320))), calc(var(--f-space-x-unit, 1px) * var(--f-space-x-max, 16)));}
-.f-space-x-max-12>:not([hidden])~:not([hidden]){--f-space-x-max:12;}
-.f-space-y-min-4>:not([hidden])~:not([hidden]){--f-space-y-min:4;}
-.f-space-y-8\/16>:not([hidden])~:not([hidden]){--f-space-y-min:8;--f-space-y-max:16;margin-top:calc(var(--un-space-y) * calc(1 - var(--un-space-y-reverse)));margin-bottom:calc(var(--un-space-y) * var(--un-space-y-reverse));--un-space-y-reverse:0;--un-space-y:clamp(calc(var(--f-space-y-unit, 1px) * var(--f-space-y-min, 16)), calc(var(--f-space-y-unit, 1px) * var(--f-space-y-min, 16) + (var(--f-space-y-max, 16) - var(--f-space-y-min, 16)) * (var(--f-space-y-container, 100vw) - (var(--f-space-y-unit, 1px) * var(--f-space-y-min-container, 320))) / (var(--f-space-y-max-container, 1920) - var(--f-space-y-min-container, 320))), calc(var(--f-space-y-unit, 1px) * var(--f-space-y-max, 16)));}
-.f-space-y-max-12>:not([hidden])~:not([hidden]){--f-space-y-max:12;}
