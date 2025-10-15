@@ -4,7 +4,9 @@
 import type { Variant } from 'unocss'
 import { variantMatcher } from '@unocss/rule-utils'
 
-function dataVariant(prefix: string, attribute: string, selector: string): Variant {
+// Complex variant for nestable states (open/closed, expanded/collapsed)
+// Uses :has() to prevent styles from leaking to nested components
+function nestableDataVariant(prefix: string, attribute: string, selector: string): Variant {
   return variantMatcher(`${prefix}${attribute}`, (input) => {
     const base = `${selector}${input.selector}` // element that itself has the data-state + class
     const desc = `${selector} ${input.selector}` // descendant of a data-state element
@@ -17,79 +19,91 @@ function dataVariant(prefix: string, attribute: string, selector: string): Varia
   })
 }
 
+// Simple variant for non-nestable states (on/off, pressed, selected, etc.)
+// These are leaf components that semantically cannot nest, so simpler selector is sufficient
+function simpleDataVariant(prefix: string, attribute: string, selector: string): Variant {
+  return variantMatcher(`${prefix}${attribute}`, (input) => {
+    return {
+      selector: `${selector}${input.selector}, ${selector} ${input.selector}`,
+    }
+  })
+}
+
 export function getVariants(prefix: string): Variant[] {
   const variants = [
-    // State
-    dataVariant(prefix, 'open', '[data-state="open"]'),
-    dataVariant(prefix, 'closed', '[data-state="closed"]'),
-    dataVariant(prefix, 'on', '[data-state="on"]'),
-    dataVariant(prefix, 'off', '[data-state="off"]'),
-    dataVariant(prefix, 'expanded', '[data-state="expanded"]'),
-    dataVariant(prefix, 'collapsed', '[data-state="collapsed"]'),
-    dataVariant(prefix, 'expanded', '[data-expanded]'),
-    dataVariant(prefix, 'collapsed', ':not([data-expanded])'),
-    dataVariant(prefix, 'active', '[data-state="active"]'),
-    dataVariant(prefix, 'inactive', '[data-state="inactive"]'),
+    // Nestable States (can contain nested instances of same state)
+    nestableDataVariant(prefix, 'open', '[data-state="open"]'),
+    nestableDataVariant(prefix, 'closed', '[data-state="closed"]'),
+    nestableDataVariant(prefix, 'expanded', '[data-state="expanded"]'),
+    nestableDataVariant(prefix, 'collapsed', '[data-state="collapsed"]'),
+    nestableDataVariant(prefix, 'expanded', '[data-expanded]'),
+    nestableDataVariant(prefix, 'collapsed', ':not([data-expanded])'),
+    nestableDataVariant(prefix, 'active', '[data-state="active"]'),
+    nestableDataVariant(prefix, 'inactive', '[data-state="inactive"]'),
 
-    // Orientation and Position
-    dataVariant(prefix, 'horizontal', '[data-orientation="horizontal"]'),
-    dataVariant(prefix, 'vertical', '[data-orientation="vertical"]'),
-    dataVariant(prefix, 'top', '[data-side="top"]'),
-    dataVariant(prefix, 'right', '[data-side="right"]'),
-    dataVariant(prefix, 'bottom', '[data-side="bottom"]'),
-    dataVariant(prefix, 'left', '[data-side="left"]'),
+    // Non-nestable States (leaf components that don't nest)
+    simpleDataVariant(prefix, 'on', '[data-state="on"]'),
+    simpleDataVariant(prefix, 'off', '[data-state="off"]'),
+    simpleDataVariant(prefix, 'checked', '[data-state="checked"]'),
 
-    // Interactive States
-    dataVariant(prefix, 'disabled', '[data-disabled]'),
-    dataVariant(prefix, 'enabled', ':not([data-disabled])'),
-    dataVariant(prefix, 'pressed', '[data-pressed]'),
-    dataVariant(prefix, 'not-pressed', ':not([data-pressed])'),
-    dataVariant(prefix, 'focused', '[data-focus]'),
-    dataVariant(prefix, 'not-focused', ':not([data-focus])'),
-    dataVariant(prefix, 'focused', '[data-focused]'),
-    dataVariant(prefix, 'not-focused', ':not([data-focused])'),
-    dataVariant(prefix, 'readonly', '[data-readonly]'),
-    dataVariant(prefix, 'not-readonly', ':not([data-readonly])'),
+    // Orientation and Position (non-nestable - element properties)
+    simpleDataVariant(prefix, 'horizontal', '[data-orientation="horizontal"]'),
+    simpleDataVariant(prefix, 'vertical', '[data-orientation="vertical"]'),
+    simpleDataVariant(prefix, 'top', '[data-side="top"]'),
+    simpleDataVariant(prefix, 'right', '[data-side="right"]'),
+    simpleDataVariant(prefix, 'bottom', '[data-side="bottom"]'),
+    simpleDataVariant(prefix, 'left', '[data-side="left"]'),
 
-    // Selection States
-    dataVariant(prefix, 'selected', '[data-selected]'),
-    dataVariant(prefix, 'not-selected', ':not([data-selected])'),
-    dataVariant(prefix, 'highlighted', '[data-highlighted]'),
-    dataVariant(prefix, 'not-highlighted', ':not([data-highlighted])'),
-    dataVariant(prefix, 'checked', '[data-state="checked"]'),
+    // Interactive States (non-nestable - element properties)
+    simpleDataVariant(prefix, 'disabled', '[data-disabled]'),
+    simpleDataVariant(prefix, 'enabled', ':not([data-disabled])'),
+    simpleDataVariant(prefix, 'pressed', '[data-pressed]'),
+    simpleDataVariant(prefix, 'not-pressed', ':not([data-pressed])'),
+    simpleDataVariant(prefix, 'focused', '[data-focus]'),
+    simpleDataVariant(prefix, 'not-focused', ':not([data-focus])'),
+    simpleDataVariant(prefix, 'focused', '[data-focused]'),
+    simpleDataVariant(prefix, 'not-focused', ':not([data-focused])'),
+    simpleDataVariant(prefix, 'readonly', '[data-readonly]'),
+    simpleDataVariant(prefix, 'not-readonly', ':not([data-readonly])'),
 
-    // Validation States
-    dataVariant(prefix, 'invalid', '[data-invalid]'),
-    dataVariant(prefix, 'valid', ':not([data-invalid])'),
-    dataVariant(prefix, 'complete', '[data-complete]'),
-    dataVariant(prefix, 'incomplete', ':not([data-complete])'),
+    // Selection States (non-nestable - element properties)
+    simpleDataVariant(prefix, 'selected', '[data-selected]'),
+    simpleDataVariant(prefix, 'not-selected', ':not([data-selected])'),
+    simpleDataVariant(prefix, 'highlighted', '[data-highlighted]'),
+    simpleDataVariant(prefix, 'not-highlighted', ':not([data-highlighted])'),
 
-    // Content States
-    dataVariant(prefix, 'empty', '[data-empty]'),
-    dataVariant(prefix, 'not-empty', ':not([data-empty])'),
-    dataVariant(prefix, 'placeholder', '[data-placeholder]'),
-    dataVariant(prefix, 'not-placeholder', ':not([data-placeholder])'),
+    // Validation States (non-nestable - element properties)
+    simpleDataVariant(prefix, 'invalid', '[data-invalid]'),
+    simpleDataVariant(prefix, 'valid', ':not([data-invalid])'),
+    simpleDataVariant(prefix, 'complete', '[data-complete]'),
+    simpleDataVariant(prefix, 'incomplete', ':not([data-complete])'),
 
-    // Visibility and Availability
-    dataVariant(prefix, 'hidden', '[data-hidden]'),
-    dataVariant(prefix, 'not-hidden', ':not([data-hidden])'),
-    dataVariant(prefix, 'fully-hidden', '[data-hidden="fully-hidden"]'),
-    dataVariant(prefix, 'unavailable', '[data-unavailable]'),
-    dataVariant(prefix, 'available', ':not([data-unavailable])'),
+    // Content States (non-nestable - element properties)
+    simpleDataVariant(prefix, 'empty', '[data-empty]'),
+    simpleDataVariant(prefix, 'not-empty', ':not([data-empty])'),
+    simpleDataVariant(prefix, 'placeholder', '[data-placeholder]'),
+    simpleDataVariant(prefix, 'not-placeholder', ':not([data-placeholder])'),
 
-    // Alignment
-    dataVariant(prefix, 'align-start', '[data-align="start"]'),
-    dataVariant(prefix, 'align-end', '[data-align="end"]'),
-    dataVariant(prefix, 'align-center', '[data-align="center"]'),
+    // Visibility and Availability (non-nestable - element properties)
+    simpleDataVariant(prefix, 'hidden', '[data-hidden]'),
+    simpleDataVariant(prefix, 'not-hidden', ':not([data-hidden])'),
+    simpleDataVariant(prefix, 'fully-hidden', '[data-hidden="fully-hidden"]'),
+    simpleDataVariant(prefix, 'unavailable', '[data-unavailable]'),
+    simpleDataVariant(prefix, 'available', ':not([data-unavailable])'),
 
-    // Special Cases
-    dataVariant(prefix, 'linear', '[data-linear]'),
-    dataVariant(prefix, 'non-linear', ':not([data-linear])'),
+    // Alignment (non-nestable - element properties)
+    simpleDataVariant(prefix, 'align-start', '[data-align="start"]'),
+    simpleDataVariant(prefix, 'align-end', '[data-align="end"]'),
+    simpleDataVariant(prefix, 'align-center', '[data-align="center"]'),
+
+    // Special Cases (non-nestable - element properties)
+    simpleDataVariant(prefix, 'linear', '[data-linear]'),
+    simpleDataVariant(prefix, 'non-linear', ':not([data-linear])'),
   ]
 
-  // Add data-indent variant for supporting numbers
+  // Add data-indent variant for supporting numbers (non-nestable)
   for (let i = 0; i <= 10; i++)
-    variants.push(dataVariant(prefix, `indent-${i}`, `[data-indent="${i}"]`))
+    variants.push(simpleDataVariant(prefix, `indent-${i}`, `[data-indent="${i}"]`))
 
   return variants
 }
