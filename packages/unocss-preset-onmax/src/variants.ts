@@ -4,7 +4,7 @@ import { variantMatcher } from '@unocss/rule-utils'
 export const variants: Variant[] = [
   // Inverted variant
   variantMatcher('data-inverted', ({ selector }) => ({
-    selector: `:where(.inverted,[data-inverted])${selector}, :where(.inverted,[data-inverted]) ${selector}`,
+    selector: `:is(.inverted,[data-inverted])${selector}, :is(.inverted,[data-inverted]) ${selector}`,
   })),
 
   // Hocus variants
