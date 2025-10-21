@@ -342,6 +342,9 @@ class PresetConfig {
     const { attributify, disableTheme, themeShortcuts = true } = options
     const shortcuts: Preset['shortcuts'] = []
 
+    const getPrefixAttribute = (utility: string): string =>
+      `${utility}-${this.prefix.endsWith('-') ? this.prefix.slice(0, -1) : this.prefix}`
+
     // Add basic utility shortcuts
     for (const utility of utilities) {
       shortcuts.push([
@@ -349,6 +352,15 @@ class PresetConfig {
         ([, min, max]) => `${this.prefix}${utility} ${this.prefix}${utility}-min-${min} ${this.prefix}${utility}-max-${max}`,
         { autocomplete: `${this.prefix}${utility}-<num>/<num>` },
       ] as const)
+
+      // Add attributify mode shortcuts for slash syntax
+      if (attributify) {
+        shortcuts.push([
+          getRegExp(`^${getPrefixAttribute(utility)}-(\\d+)/(\\d+)$`),
+          ([, min, max]) => `${this.prefix}${utility} ${this.prefix}${utility}-min-${min} ${this.prefix}${utility}-max-${max}`,
+          { autocomplete: `${getPrefixAttribute(utility)}-<num>/<num>` },
+        ] as const)
+      }
     }
 
     // Add custom CSS variable slash syntax: f-$myvar-10/20
@@ -362,9 +374,6 @@ class PresetConfig {
     if (disableTheme || !themeShortcuts) {
       return shortcuts
     }
-
-    const getPrefixAttribute = (utility: string): string =>
-      `${utility}-${this.prefix.endsWith('-') ? this.prefix.slice(0, -1) : this.prefix}`
 
     // Add font size theme shortcuts
     for (const [name, [min, max]] of Object.entries(theme.fontSize)) {

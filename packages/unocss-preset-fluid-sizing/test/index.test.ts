@@ -48,6 +48,13 @@ describe('presetFluidSizing', async () => {
     expect(css).not.toContain('padding')
     expect(css).not.toContain('margin')
   })
+
+  it('should generate fluid text with slash syntax in attributify mode', async () => {
+    const { css } = await uno.generate('<div text="f-20/24"></div>', { preflights: false })
+    expect(css).toContain('--f-text-min:20')
+    expect(css).toContain('--f-text-max:24')
+    expect(css).toContain('font-size:clamp')
+  })
 })
 
 describe('cases', () => {
